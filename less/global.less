@@ -1,0 +1,78 @@
+@import "dependencies/variables-epic.less";
+@import "dependencies/mixin.less";
+@import "dependencies/color-class.less";
+
+@import "components/element.less";
+@import "components/widget.less";
+@import "components/component.less";
+@import "components/tabbed.less";
+@import "components/accordion.less";
+@import "components/cleaner-gallery.less";
+
+/* Important Bootstrap */
+@import "../vendor/bower/bootstrap/less/forms.less";
+@import "../vendor/bower/bootstrap/less/buttons.less";
+@import "../vendor/bower/bootstrap/less/tables.less";
+
+@import "utils/util.less";
+@import "utils/format-text.less";
+@import "utils/swag-box-shadow.less";
+
+@import "region/general.less";
+@import "region/header.less";
+@import "region/content.less";
+@import "region/sidebar.less";
+@import "region/footer.less";
+
+@import "mobile/desktop.less";
+@import "mobile/1024px.less";
+@import "mobile/949px.less";
+@import "mobile/768px.less";
+@import "mobile/529px.less";
+
+/* Remove on release */
+.right-arrow{
+	background: wheat;
+	position: relative;
+	padding: 1rem;
+	&:after {
+		.triangle(right, 4rem, 2rem, wheat);
+		position: absolute;
+		right: -2rem;	
+		top: 0;
+	}
+}
+
+.left-flag{
+	.left-flag(3rem, skyblue);
+}
+
+.right-flag{
+	.right-flag(3rem, lime);
+}
+
+.left-right-flag{
+	.left-right-flag(3rem, teal);
+}
+
+.up-flag{
+	.down-flag(3rem, slateblue);
+}
+
+.down-flag{
+	.down-flag(3rem, crimson);
+}
+
+.up-down-flag{
+	.up-down-flag(3rem, salmon);
+}
+
+.test-box{
+	width: 300px;
+	height: 200px;
+	.common-boxed(#F7F7F7, 2rem, 2rem);
+	&:hover{
+		background: #ddd;
+		.transition(all 0.25s ease-in);
+	}
+}

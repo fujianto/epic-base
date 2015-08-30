@@ -1,0 +1,85 @@
+@import "../dependencies/variables-epic.less";
+// Breadcrumbs
+.breadcrumbs{
+	background: @main-bg;
+	padding: 0;
+	margin: 0 0 2rem 0;
+}
+
+/* Main Pagination */
+.pagination-wrapper{
+	background: @main-bg;
+	.pagination{
+		margin: 0;
+	} 
+
+	a, span{
+		padding: 0 0.5rem;
+	}
+}
+
+/* Custom Flexslider */
+.flexslider-carousel{ 
+	margin-bottom: 2rem;
+	.slides > li{
+		padding: 0 1rem;
+	}
+}
+
+/* Custom Owl Carousel */
+.owl-carousel{
+	position: relative;
+	.owl-next, .owl-prev{
+		position: absolute;
+		top: 25%;
+	}
+
+	.owl-next{
+		right: 0;
+	}
+
+	.owl-prev{
+		left: 0;
+	}
+}
+
+/* For Post Format gallery */
+.caviar_gallery{
+	margin-bottom: 1rem;
+}
+
+.caviar_item{
+	display: inline-block;
+}
+
+/* Feastured video/ audio */
+.featrued{
+	&.embed-wrap, .image{
+		margin-bottom: 2rem;
+	}
+}
+
+/* Post pagination */
+.page-links{
+	margin-top: 2rem;
+}
+
+/* Post Navigation */
+
+.loop-nav{
+	background: @main-bg;
+	padding: 1.5rem;
+	margin: 0;
+}
+
+.post-pagination{
+	margin-top: 2rem;
+}
+
+.bottom-entry-nav{
+	.prev, .next{
+		-ms-word-wrap: break-word;
+		word-wrap: break-word;
+	  	word-break: break-all;
+	}
+}

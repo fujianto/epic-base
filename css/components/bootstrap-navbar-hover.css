@@ -1,0 +1,98 @@
+/* Hover Bootstrap navbar open */
+/* Bootstrap */
+/* BASIC COLOR */
+/* Main Theme Color */
+/* Element Color: */
+/* Font weight */
+/* Primary */
+.primary-bg {
+  background: #ff6347;
+}
+.primary-bg-hover {
+  background: #ff8e7a;
+}
+.primary-color {
+  color: #ff6347;
+}
+.primary-color-hover {
+  color: #ff8e7a;
+}
+.primary-border {
+  border-color: #ff6347;
+}
+.primary-border-hover {
+  border-color: #ff3814;
+}
+.primary-border-bottom {
+  border-bottom-color: #ff6347;
+}
+.primary-border-left {
+  border-left-color: #ff6347;
+}
+/* Secondary */
+.secondary-bg {
+  background: #6a5acd;
+}
+.secondary-color {
+  color: #6a5acd;
+}
+.secondary-border {
+  border-color: #6a5acd;
+}
+/* Tertiary */
+.tertiary-bg {
+  background: #ffd700;
+}
+.tertiary-color {
+  color: #ffd700;
+}
+/* Header BG */
+/* Body BG */
+.body-bg {
+  background: #ffffff;
+}
+/*
+Navbar "hovernav" dropdown menu - this works only for screen sizes larger than phones.
+The Bootstrap CSS is unchanged.
+*/
+@media (min-width: 768px) {
+  /* Use this if you wish to hide the caret
+  .navbar-nav .caret {
+    display: none;
+  } 
+  */
+  .navbar-nav .open ul {
+    display: none;
+  }
+  .navbar-default .navbar-nav .open > a {
+    color: #333;
+    background: none;
+  }
+  .navbar-default .navbar-nav .open > a:hover,
+  .navbar-default .navbar-nav .open > a:focus {
+    color: #333;
+    background: none;
+  }
+  .navbar-default .navbar-nav li:hover,
+  .navbar-default .navbar-nav li:focus {
+    background: #ffd700;
+  }
+  .navbar-default .navbar-nav > li:hover > a {
+    color: #333;
+  }
+  .navbar-inverse .navbar-nav .open > a {
+    color: #969696;
+    background: none;
+  }
+  .navbar-inverse .navbar-nav .open > a:hover,
+  .navbar-inverse .navbar-nav .open > a:focus {
+    color: #969696;
+    background: none;
+  }
+  .navbar-inverse .navbar-nav li:hover {
+    background: #080808;
+  }
+  .navbar-nav .hovernav:hover > .dropdown-menu {
+    display: block;
+  }
+}

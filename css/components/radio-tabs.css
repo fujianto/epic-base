@@ -1,0 +1,129 @@
+/* Bootstrap */
+/* BASIC COLOR */
+/* Main Theme Color */
+/* Element Color: */
+/* Font weight */
+/* Primary */
+.primary-bg {
+  background: #ff6347;
+}
+.primary-bg-hover {
+  background: #ff8e7a;
+}
+.primary-color {
+  color: #ff6347;
+}
+.primary-color-hover {
+  color: #ff8e7a;
+}
+.primary-border {
+  border-color: #ff6347;
+}
+.primary-border-hover {
+  border-color: #ff3814;
+}
+.primary-border-bottom {
+  border-bottom-color: #ff6347;
+}
+.primary-border-left {
+  border-left-color: #ff6347;
+}
+/* Secondary */
+.secondary-bg {
+  background: #6a5acd;
+}
+.secondary-color {
+  color: #6a5acd;
+}
+.secondary-border {
+  border-color: #6a5acd;
+}
+/* Tertiary */
+.tertiary-bg {
+  background: #ffd700;
+}
+.tertiary-color {
+  color: #ffd700;
+}
+/* Header BG */
+/* Body BG */
+.body-bg {
+  background: #ffffff;
+}
+/* Radio Tabs */
+.radio-tabs .checkable-element .checkable-item {
+  border: 1px solid #d1d1d1;
+  cursor: pointer;
+  float: left;
+  padding: 1rem 3rem;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+.radio-tabs .checkable-element .checkable-item.active {
+  background: #ffd700;
+  border-color: #ffd700;
+  color: #ffffff;
+}
+.radio-tabs .checkable-element .tab-label {
+  float: left;
+}
+.radio-tabs .checkable-element .tab-label:first-of-type .checkable-item {
+  border-radius: 5px 0 0 5px;
+}
+.radio-tabs .checkable-element .tab-label:last-of-type .checkable-item {
+  border-radius: 0 5px 5px 0;
+}
+.radio-tabs .checkable-element .tab-label > input {
+  /* HIDE RADIO */
+  visibility: hidden;
+  /* Makes input not-clickable */
+  position: absolute;
+  /* Remove input from document flow */
+}
+.radio-tabs .checkable-element .tab-label > input + .selected-element {
+  /* IMAGE STYLES */
+  cursor: pointer;
+  border: 2px solid #d1d1d1;
+}
+.radio-tabs .checkable-element .tab-label > input + .selected-element img {
+  border-bottom: 1px solid #d1d1d1;
+}
+.radio-tabs .checkable-element .tab-label > input:checked + .selected-element {
+  /* (RADIO CHECKED) IMAGE STYLES */
+  border: 2px solid;
+  border-color: #ffd700;
+}
+.radio-tabs .checkable-element.radio-pills .tab-label > input:checked + .checkable-item {
+  /* (RADIO CHECKED) IMAGE STYLES */
+  background: #ffd700;
+  color: #ffffff;
+}
+.radio-tabs .checkable-element .settings-label {
+  display: inline-block;
+  padding: 1rem;
+}
+.radio-tabs .checkable-element.colors .tab-label > input:checked + .checkable-item {
+  box-shadow: 0px 0px 15px 0px #000000;
+  border: 0;
+}
+.radio-tabs .checkable-element.colors .checkable-item {
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+.radio-tabs .checkable-element.colors .checkable-item.rounded {
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  padding: 2rem;
+  margin-right: 1rem;
+}
+/* Color Example */
+.bg-red {
+  background: crimson !important;
+}
+.bg-green {
+  background: teal !important;
+}
+.bg-yellow {
+  background: wheat !important;
+}

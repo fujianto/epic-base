@@ -1,0 +1,89 @@
+/* Bootstrap */
+@import "../../vendor/bower/bootstrap/less/variables.less";
+@font-family-sans-serif:  "Open sans", sans-serif;
+@icon-font-path:          "../../fonts/glyphicons/";
+
+/* BASIC COLOR */
+@white: #fff;
+@black:  #000;
+@light-black: #333;
+@transparent-black: rgba( 0, 0, 0, 0.1 );
+@crimson: crimson;
+@turqoise: turquoise;
+@gold: gold;
+@slategray: slategray;
+@lightblue: lightblue;
+@dark-gray: #3c3c3c;
+@ash-gray: #aeaeae;
+@light-gray: #D1D1D1;
+
+/* Main Theme Color */
+@primary-color: tomato;
+@secondary-color: slateblue;
+@tertiary-color: @gold;
+@body-color: @white;
+@menu-color: darken(@primary-color, 10%); 
+@menu-hover-color: @tertiary-color;
+/* Element Color: */
+@header-bg: @white;
+@main-bg: @white;
+@body-bg: @body-color;
+@footer-bg: slategray;
+@copyright-bg: @primary-color;
+
+@link-color: @secondary-color;
+@main-text-color: #333;
+@secondary-text-color: #ddd;
+@dark-text-color: #2c3e50;
+
+
+//Social Media
+@facebook-color: #1883d5;
+@twitter-color: #21c2f8;
+@pinterest-color: #ef584d;
+@instagram-color: #2e5e86;
+@gplus-color: #dd4b39;
+@tumblr-color: #43698f;
+@drible-color: #eb5d8c;
+@yahoo-color: #7B0099;
+
+// Navbar
+@navbar-bg: @primary-color;
+@navbar-link-color: #fafafa;
+@navbar-link-color-hover: @light-black;
+
+
+@alpha-color: #d5e9f8;
+
+// Flexslider
+@flexslider-bg: @white;
+@flexslider-border: @white;
+@flexslider-boxshadow: rgba( 0, 0, 0, 0.2 );
+@flexslider-textshadow: rgba( 255, 255, 255, 0.3 );
+@flexslider-control-paging-bg:  #666;
+@flexslider-control-paging-bg2: rgba(0,0,0,0.5);
+@flexslider-control-paging-boxshadow: rgba(0,0,0,0.3);
+@flexslider-control-paging-boxshadow-hover-bg:  @light-black;
+@flexslider-control-paging-boxshadow-hover-bg2:  rgba(0,0,0,0.7);
+@flexslider-control-paging-boxshadow-active-bg:  @black;
+@flexslider-control-paging-boxshadow-active-bg2: rgba( 0, 0, 0, 0.9 );
+
+@font-awesome       : FontAwesome;
+
+/* Font weight */
+@light-font: 300;
+@normal-font: 400;
+@semi-bold-font: 600;
+@bold-font: 700;
+@extra-bold-font: 800;
+
+// Breakpoints
+// ------------------------- Source: http://blog.scur.pl/2012/06/variable-media-queries-less-css/
+@highdensity: ~"only screen and (-webkit-min-device-pixel-ratio: 1.5)",
+              ~"only screen and (min--moz-device-pixel-ratio: 1.5)",
+              ~"only screen and (-o-min-device-pixel-ratio: 3/2)",
+              ~"only screen and (min-device-pixel-ratio: 1.5)";
+@mobile:      ~"only screen and (max-width: 529px)";
+@tablet:      ~"only screen and (min-width: 530px) and (max-width: 949px)";
+@desktop:     ~"only screen and (min-width: 950px) and (max-width: 1128px)";
+@desktop-xl:  ~"only screen and (min-width: 1129px)";

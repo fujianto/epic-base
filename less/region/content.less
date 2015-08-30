@@ -1,0 +1,66 @@
+@import "../dependencies/variables-epic.less";
+@import "../components/comments-area.less";
+
+main.content{
+	margin-top: 3rem;
+}
+
+.sticky {
+  background-color: wheat !important;
+  border: 2px dashed rgb(148, 107, 30) !important;
+  padding: 1.5rem !important;
+}
+
+.entry{
+	.common-boxed(@main-bg, 1rem 0, 0 0 2rem 0);
+	position: relative;
+    z-index: 0;
+    border-bottom: 1px dashed #ddd;
+
+	.featured{
+		margin-bottom: 2rem;
+		img{
+			width: 100%;
+			height: auto;
+		}
+	}
+	
+	.entry-byline{
+		margin-bottom: 1rem;
+	}
+	
+	.entry-title{
+		margin-top: 0;
+		margin-bottom: 1rem;
+		-ms-word-wrap: break-word;
+		word-wrap: break-word;
+	}
+
+	.readmore{
+		margin-bottom: 1rem;
+	}
+
+	&.format-status{
+		p{
+			margin-top: 2rem;
+		}
+	}
+
+	&.format-link{
+		.entry-title{
+			position: relative;
+			padding-left: 4rem;
+			&:before{
+				position: absolute;
+				left: 0;
+				top: 0;
+				font-family: @font-awesome;
+				content: "\f0c1";
+			}
+		}
+	}
+}
+
+.blog-post-meta{
+	 word-break: break-all;
+}

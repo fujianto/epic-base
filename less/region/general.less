@@ -1,0 +1,38 @@
+@import "../dependencies/variables-epic.less";
+
+.container-fluid{
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.row{
+	max-width: 1170px;
+	margin: 0 auto;
+}
+
+body{
+	background: @body-color;
+	
+	&.box, &.frame{
+		.container-fluid{
+			max-width: 1170px;
+		}
+	}
+
+	&.frame{
+		.main{
+			margin: 3rem auto;
+		}
+	}
+
+	&.fluid{
+		.fullgrid-margin{
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		.row{
+			max-width: 1170px;
+		}
+	}
+}

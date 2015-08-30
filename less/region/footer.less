@@ -1,0 +1,32 @@
+@import "../dependencies/variables-epic.less";
+
+.footer-wrapper{
+	background: @footer-bg;
+	margin-top: 3rem;
+
+	.widget{
+		background: transparent;
+		margin-top: 2rem;
+		*{
+			color: @secondary-text-color;
+		}
+
+		a{
+			&:extend(.tertiary-color);
+		}
+	}
+}
+
+.copyright-wrapper{
+	background: @copyright-bg;
+	// padding: 1rem;
+	p{
+		color: @secondary-text-color;
+		margin: 1rem 3rem;
+	}
+
+	a{
+		text-decoration: underline;
+		&:extend(.tertiary-color);
+	}
+}
