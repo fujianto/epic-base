@@ -2,11 +2,11 @@
 
 	<?php if ( is_attachment() ) : // If viewing a single attachment. ?>
 
-		<?php if ( has_excerpt() ) : // If the image has an excerpt/caption. ?>
+		<?php if ( hasesc_html_excerpt() ) : // If the image has an excerpt/caption. ?>
 
 			<?php $src = wp_get_attachment_image_src( get_the_ID(), 'full' ); ?>
 
-			<?php echo img_caption_shortcode( array( 'align' => 'aligncenter', 'width' => esc_attr( $src[1] ), 'caption' => get_the_excerpt() ), wp_get_attachment_image( get_the_ID(), 'full', false ) ); ?>
+			<?php echo img_caption_shortcode( array( 'align' => 'aligncenter', 'width' => esc_attr( $src[1] ), 'caption' => get_theesc_html_excerpt() ), wp_get_attachment_image( get_the_ID(), 'full', false ) ); ?>
 
 		<?php else : // If the image doesn't have a caption. ?>
 
@@ -43,7 +43,7 @@
 		</header><!-- .entry-header -->
 
 		<div <?php hybrid_attr( 'entry-summary' ); ?>>
-			<?php the_excerpt(); ?>
+			<?php theesc_html_excerpt(); ?>
 		</div><!-- .entry-summary -->
 
 	<?php endif; // End single attachment check. ?>
@@ -56,9 +56,21 @@
 
 		<div class="media-info image-info">
 
-			<h3 class="attachment-meta-title"><?php _e( 'Image Info', 'epic-base' ); ?></h3>
+			<h3 class="attachment-meta-title"><?php esc_html_e( 'Image Info', 'epic-base' ); ?></h3>
 
-			<?php hybrid_media_meta(); ?>
+			<ul class="media-meta">
+				<?php $pre = '<li><span class="prep">%s</span>'; ?>
+				<?php hybrid_media_meta( 'dimensions',        array( 'before' => sprintf( $pre, esc_html__( 'Dimensions',    'hybrid-base' ) ), 'after' => '</li>' ) ); ?>
+				<?php hybrid_media_meta( 'created_timestamp', array( 'before' => sprintf( $pre, esc_html__( 'Date',          'hybrid-base' ) ), 'after' => '</li>' ) ); ?>
+				<?php hybrid_media_meta( 'camera',            array( 'before' => sprintf( $pre, esc_html__( 'Camera',        'hybrid-base' ) ), 'after' => '</li>' ) ); ?>
+				<?php hybrid_media_meta( 'aperture',          array( 'before' => sprintf( $pre, esc_html__( 'Aperture',      'hybrid-base' ) ), 'after' => '</li>' ) ); ?>
+				<?php hybrid_media_meta( 'focal_length',      array( 'before' => sprintf( $pre, esc_html__( 'Focal Length',  'hybrid-base' ) ), 'after' => '</li>', 'text' => esc_html__( '%s mm', 'hybrid-base' ) ) ); ?>
+				<?php hybrid_media_meta( 'iso',               array( 'before' => sprintf( $pre, esc_html__( 'ISO',           'hybrid-base' ) ), 'after' => '</li>' ) ); ?>
+				<?php hybrid_media_meta( 'shutter_speed',     array( 'before' => sprintf( $pre, esc_html__( 'Shutter Speed', 'hybrid-base' ) ), 'after' => '</li>', 'text' => esc_html__( '%s sec', 'hybrid-base' ) ) ); ?>
+				<?php hybrid_media_meta( 'file_type',         array( 'before' => sprintf( $pre, esc_html__( 'Type',          'hybrid-base' ) ), 'after' => '</li>' ) ); ?>
+				<?php hybrid_media_meta( 'file_name',         array( 'before' => sprintf( $pre, esc_html__( 'Name',          'hybrid-base' ) ), 'after' => '</li>' ) ); ?>
+				<?php hybrid_media_meta( 'mime_type',         array( 'before' => sprintf( $pre, esc_html__( 'Mime Type',     'hybrid-base' ) ), 'after' => '</li>' ) ); ?>
+			</ul>
 
 		</div><!-- .media-info -->
 
@@ -67,7 +79,7 @@
 		<?php if ( !empty( $gallery ) ) : // Check if the gallery is not empty. ?>
 
 			<div class="image-gallery">
-				<h3 class="attachment-meta-title"><?php _e( 'Gallery', 'epic-base' ); ?></h3>
+				<h3 class="attachment-meta-title"><?php esc_html_e( 'Gallery', 'epic-base' ); ?></h3>
 				<?php echo $gallery; ?>
 			</div>
 

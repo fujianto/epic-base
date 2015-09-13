@@ -29,24 +29,22 @@ define( 'THEME_JS'      , THEME_URI . '/js'            );
 define( 'THEME_FONTS'   , THEME_URI . '/fonts'         );
 define( 'THEME_VENDOR'  , THEME_URI . '/vendor'        );
 
+/* Set Hybrid Core to Composer custom directory */
+define( 'HYBRID_DIR'    , THEME_DIR . '/vendor/composer/justintadlock/hybrid-core/');
+define( 'HYBRID_URI'    , THEME_URI . '/vendor/composer/justintadlock/hybrid-core/');
+
 /* Get the template directory and make sure it has a trailing slash. */
 $epic_base_dir = trailingslashit( get_template_directory() );
 
 /* Load composer dependencies */
 require 'vendor/composer/autoload.php';
 
-/*
-For custom Directory Hybrid
-
-define( 'HYBRID_DIR', trailingslashit( get_template_directory()     ) . '/vendor/hybrid-core' );
-define( 'HYBRID_URI', trailingslashit( get_template_directory_uri() ) . '/vendor/hybrid-core' );
- */
-
 /* Load the Hybrid Core framework and theme files. */
-require_once( $epic_base_dir . 'hybrid-core/hybrid.php'   );
 require_once( $epic_base_dir . 'inc/theme.php'            );
 require_once( $epic_base_dir . 'vendor/caviar/caviar.php' );
-require_once( $epic_base_dir . 'vendor/composer/webdevstudios/cmb2/example-functions.php' );
+require_once( $epic_base_dir . 'vendor/caviar/field-example-metaboxes.php' );
+
+new Caviar();
 
 new Hybrid();
 
@@ -79,6 +77,13 @@ function epic_base_theme_setup() {
 			),
 		array( 'default' => is_rtl() ? '2c-r' :'2c-l' ) 
 		);
+
+	/* Theme Support for Caviar Libarary */
+	add_theme_support( 'caviar-basic-fields' );
+	add_theme_support( 'caviar-field-controls');
+
+	/* Add support for Yoast SEO Breadcrumbs */
+	add_theme_support( 'yoast-seo-breadcrumbs' );
 
 	/* Enable custom template hierarchy. */
 	add_theme_support( 'hybrid-core-template-hierarchy' );

@@ -20,10 +20,10 @@
 .accordion .panel-heading.highlight,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-  background: #ff6347;
+  background: #e5554e;
 }
 .primary-bg-hover {
-  background: #ff8e7a;
+  background: #ec807a;
 }
 .primary-color,
 a:hover,
@@ -33,25 +33,28 @@ a:hover,
 .widget_categories ul li a:hover,
 .widget_categories ul li:hover:after,
 .side-menu ul li a:hover,
-.side-menu ul li:hover:after {
-  color: #ff6347;
+.side-menu ul li:hover:after,
+.entry .entry-title a:hover,
+.footer-wrapper .widget a,
+.copyright-wrapper a {
+  color: #e5554e;
 }
 .primary-color-hover {
-  color: #ff8e7a;
+  color: #ec807a;
 }
 .primary-border,
 .accordion .panel.active .panel-heading,
 .accordion .panel-heading.highlight {
-  border-color: #ff6347;
+  border-color: #e5554e;
 }
 .primary-border-hover {
-  border-color: #ff3814;
+  border-color: #de2a22;
 }
 .primary-border-bottom {
-  border-bottom-color: #ff6347;
+  border-bottom-color: #e5554e;
 }
 .primary-border-left {
-  border-left-color: #ff6347;
+  border-left-color: #e5554e;
 }
 /* Secondary */
 .secondary-bg,
@@ -79,9 +82,7 @@ a {
 .navbar-default .navbar-nav > .active > a {
   background: #ffd700;
 }
-.tertiary-color,
-.footer-wrapper .widget a,
-.copyright-wrapper a {
+.tertiary-color {
   color: #ffd700;
 }
 /* Header BG */
@@ -636,7 +637,12 @@ table > thead > tr > td {
 }
 .widget .widget-title {
   margin-top: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+.widget ul {
+  list-style: disc;
+  padding-left: 1.8rem;
 }
 .social {
   list-style: none;
@@ -960,8 +966,6 @@ table > thead > tr > td {
 }
 /* Post Navigation */
 .loop-nav {
-  background: #ffffff;
-  padding: 1.5rem;
   margin: 0;
 }
 .post-pagination {
@@ -2147,7 +2151,7 @@ fieldset[disabled] .btn-danger.active {
   background-color: #ffffff;
 }
 .btn-link {
-  color: #6a5acd;
+  color: #e5554e;
   font-weight: normal;
   border-radius: 0;
 }
@@ -2168,7 +2172,7 @@ fieldset[disabled] .btn-link {
 }
 .btn-link:hover,
 .btn-link:focus {
-  color: #4333a8;
+  color: #c9251e;
   text-decoration: underline;
   background-color: transparent;
 }
@@ -3209,7 +3213,7 @@ body.fluid .row {
   margin: 0;
 }
 .navbar-default {
-  background: #ff3814;
+  background: #de2a22;
   z-index: 999;
 }
 .navbar-default .navbar-brand {
@@ -3289,7 +3293,7 @@ body.fluid .row {
   color: #ffffff;
 }
 .primary-nav-menu {
-  background: #ff3814;
+  background: #de2a22;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
   z-index: 1;
@@ -3300,7 +3304,7 @@ body.fluid .row {
 .primary-nav-menu .dropdown-menu {
   padding: 0;
   border: 0;
-  background: #ff3814;
+  background: #de2a22;
   box-shadow: none;
   -webkit-box-shadow: none;
   border-radius: 0;
@@ -3424,8 +3428,8 @@ main.content {
   margin-top: 3rem;
 }
 .sticky {
-  background-color: wheat !important;
-  border: 2px dashed #946b1e !important;
+  background-color: #eeeeee !important;
+  border: 1px solid #cccccc !important;
   padding: 1.5rem !important;
 }
 .entry {
@@ -3448,9 +3452,16 @@ main.content {
 }
 .entry .entry-title {
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
   -ms-word-wrap: break-word;
   word-wrap: break-word;
+  font-weight: 300;
+}
+.entry .entry-title a {
+  color: #333333;
+}
+.entry .entry-title a:hover {
+  text-decoration: none;
 }
 .entry .readmore {
   margin-bottom: 1rem;
@@ -3476,7 +3487,7 @@ main.content {
   border-left: 1px solid #d1d1d1;
 }
 .footer-wrapper {
-  background: #708090;
+  background: #f1f1f1;
   margin-top: 3rem;
 }
 .footer-wrapper .widget {
@@ -3484,13 +3495,13 @@ main.content {
   margin-top: 2rem;
 }
 .footer-wrapper .widget * {
-  color: #dddddd;
+  color: #333333;
 }
 .copyright-wrapper {
-  background: #ff6347;
+  background: #d1d1d1;
 }
 .copyright-wrapper p {
-  color: #dddddd;
+  color: #333333;
   margin: 1rem 3rem;
 }
 .copyright-wrapper a {
@@ -3688,3 +3699,4 @@ main.content {
   -o-transition: all 0.25s ease-in;
   transition: all 0.25s ease-in;
 }
+/*# sourceMappingURL=global.css.map */

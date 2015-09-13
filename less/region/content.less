@@ -6,8 +6,8 @@ main.content{
 }
 
 .sticky {
-  background-color: wheat !important;
-  border: 2px dashed rgb(148, 107, 30) !important;
+  background-color: @sticky-bg !important;
+  border: 1px solid @sticky-border !important;
   padding: 1.5rem !important;
 }
 
@@ -31,9 +31,17 @@ main.content{
 	
 	.entry-title{
 		margin-top: 0;
-		margin-bottom: 1rem;
+		margin-bottom: 0.8rem;
 		-ms-word-wrap: break-word;
 		word-wrap: break-word;
+		font-weight: 300;
+		a{
+			color: @entry-title-color;
+			&:hover{
+				&:extend(.primary-color);
+				text-decoration: none;
+			}
+		}
 	}
 
 	.readmore{

@@ -69,9 +69,7 @@ function epic_base_comments_args(){
  */
 function epic_base_entry_byline(){?>
 	<div class="entry-byline">
-		<?php if(has_post_format( get_post_format())) : ?>
-			<?php hybrid_post_format_link(); ?>
-		<?php endif; ?>
+		<?php hybrid_post_format_link(); ?>
 		
 		<span <?php hybrid_attr( 'entry-author' ); ?>><?php the_author_posts_link(); ?></span>
 		<time <?php hybrid_attr( 'entry-published' ); ?>><?php echo get_the_date(); ?></time>
@@ -86,8 +84,8 @@ function epic_base_entry_byline(){?>
  */
 function epic_base_entry_footer(){?>
 	<footer class="entry-footer">
-		<?php hybrid_post_terms( array( 'taxonomy' => 'category', 'text' => __( 'Posted in %s', 'epic-base' ) ) ); ?>
-		<?php hybrid_post_terms( array( 'taxonomy' => 'post_tag', 'text' => __( 'Tagged %s', 'epic-base' ), 'before' => '<br />' ) ); ?>
+		<?php hybrid_post_terms( array( 'taxonomy' => 'category', 'text' => esc_html__( 'Posted in %s', 'epic-base' ) ) ); ?>
+		<?php hybrid_post_terms( array( 'taxonomy' => 'post_tag', 'text' => esc_html__( 'Tagged %s', 'epic-base' ), 'before' => '<br />' ) ); ?>
 	</footer><!-- .entry-footer -->
 <?php }
 

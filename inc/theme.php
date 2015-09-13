@@ -47,9 +47,9 @@ function epic_base_register_image_sizes() {
  * @return void
  */
 function epic_base_register_menus() {
-	register_nav_menu( 'primary',    _x( 'Primary',    'nav menu location', 'epic-base' ) );
-	register_nav_menu( 'secondary',  _x( 'Secondary',  'nav menu location', 'epic-base' ) );
-	register_nav_menu( 'subsidiary', _x( 'Subsidiary', 'nav menu location', 'epic-base' ) );
+	register_nav_menu( 'primary',    esc_html_x( 'Primary',    'nav menu location', 'epic-base' ) );
+	register_nav_menu( 'secondary',  esc_html_x( 'Secondary',  'nav menu location', 'epic-base' ) );
+	register_nav_menu( 'subsidiary', esc_html_x( 'Subsidiary', 'nav menu location', 'epic-base' ) );
 }
 
 /**
@@ -64,16 +64,16 @@ function epic_base_register_sidebars() {
 	hybrid_register_sidebar(
 		array(
 			'id'          => 'primary',
-			'name'        => _x( 'Primary', 'sidebar', 'epic-base' ),
-			'description' => __( 'Add widget to sidebar.', 'epic-base' )
+			'name'        => esc_html_x( 'Primary', 'sidebar', 'epic-base' ),
+			'description' => esc_html__( 'Add widget to sidebar.', 'epic-base' )
 			)
 		);
 
 	hybrid_register_sidebar(
 		array(
 			'id'          => 'subsidiary',
-			'name'        => _x( 'Subsidiary', 'sidebar', 'epic-base' ),
-			'description' => __( 'Add widget to footer.', 'epic-base' ),
+			'name'        => esc_html_x( 'Subsidiary', 'sidebar', 'epic-base' ),
+			'description' => esc_html__( 'Add widget to footer.', 'epic-base' ),
 			'before_widget' => '<div class="sidebar footer-sidebar col-md-4 col-sm-4 col-xs-12"> <div id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</div></div>',
 			)

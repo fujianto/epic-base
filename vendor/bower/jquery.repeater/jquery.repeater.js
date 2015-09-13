@@ -743,7 +743,7 @@ $.fn.repeater = function(fig) {
         };
 
         setIndexes();
-
+        alert(setIndexes());
         var setItemsValues = function ($item, values) {
             var index;
             index = $item.find('[name]').first()

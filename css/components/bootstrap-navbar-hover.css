@@ -6,28 +6,28 @@
 /* Font weight */
 /* Primary */
 .primary-bg {
-  background: #ff6347;
+  background: #e5554e;
 }
 .primary-bg-hover {
-  background: #ff8e7a;
+  background: #ec807a;
 }
 .primary-color {
-  color: #ff6347;
+  color: #e5554e;
 }
 .primary-color-hover {
-  color: #ff8e7a;
+  color: #ec807a;
 }
 .primary-border {
-  border-color: #ff6347;
+  border-color: #e5554e;
 }
 .primary-border-hover {
-  border-color: #ff3814;
+  border-color: #de2a22;
 }
 .primary-border-bottom {
-  border-bottom-color: #ff6347;
+  border-bottom-color: #e5554e;
 }
 .primary-border-left {
-  border-left-color: #ff6347;
+  border-left-color: #e5554e;
 }
 /* Secondary */
 .secondary-bg {

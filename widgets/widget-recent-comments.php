@@ -26,7 +26,7 @@ class Epic_Base_Recent_Comments extends WP_Widget{
     ?>
     
       <?php 
-        $form_controls = new Form_Control();
+        $form_controls = new Field_Controls();
         $id    = $this->get_field_id('title');
         $name  = $this->get_field_name('title');
         $value = esc_attr($instance['title']);

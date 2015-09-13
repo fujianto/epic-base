@@ -25,7 +25,7 @@ class Epic_Base_Recent_Posts extends WP_Widget{
 
     $instance = wp_parse_args((array) $instance, $defautls);
 
-    $form_controls = new Form_Control();
+    $form_controls = new Field_Controls();
     
     /* Title */
     $form_controls->text( __('Title', 'epic-base'), $this->get_field_id('title'),  array('class' => 'widefat', 'name' => $this->get_field_name('title'), 'value' => esc_attr($instance['title'])) ); 

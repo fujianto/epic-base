@@ -24,7 +24,7 @@ class Epic_Base_Banner_Image extends WP_Widget{
 
     $instance = wp_parse_args((array) $instance, $defautls);
 
-    $form_controls = new Form_Control();
+    $form_controls = new Field_Controls();
     $form_controls->text( __('Banner Title', 'epic-base'),  $this->get_field_id('title'), array('class' => 'widefat', 'name' => $this->get_field_name('title'), 'value' => esc_attr($instance['title']) ));  
     
     $counter = 0;
@@ -44,9 +44,6 @@ class Epic_Base_Banner_Image extends WP_Widget{
     $form_controls->text( __('Banner Width?', 'epic-base'), $this->get_field_id('ad_width'), array('class' => 'widefat', 'name' => $this->get_field_name('ad_width'), 'value' => esc_attr($instance['ad_width']) )); 
 
     $form_controls->text( __('Banner Height?', 'epic-base'), $this->get_field_id('ad_height'), array('class' => 'widefat', 'name' => $this->get_field_name('ad_height'), 'value' => esc_attr($instance['ad_height']) )); 
-
-    $id = explode("-", $this->get_field_id("widget_id"));
-    $widget_id =  $id[1] . "-" . $id[2];
   }
 
   //Process widget options for saving
