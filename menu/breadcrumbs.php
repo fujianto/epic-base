@@ -6,7 +6,7 @@
 	<?php breadcrumb_trail(
 		array( 
 			'container'     => 'nav', 
-			'separator'     => '//', 
+			'separator'     => '&raquo', 
 			'show_on_front' => true,
 
 			'labels'        => array( 
