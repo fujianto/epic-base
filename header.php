@@ -37,18 +37,11 @@
 				</div>
 				<!-- End branding -->
 				<div class="col-md-6 share-section">
-					<ul class="social">
-						<li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
-						<li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
-						<li><a href="#"><i class="fa fa-instagram"></i></a></li>
-						<li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
-					</ul>
+					<?php //@TODO add hook to header area ?>
 				</div>
 				<!-- End share section -->
 			</div>
 		</header><!-- #header -->
-		
-		<?php hybrid_get_menu( 'primary' ); // Loads the menu/primary.php template. ?>
 		
 		<div class="wide-banner">
 			<?php if ( get_header_image() && !display_header_text() ) : // If there's a header image but no header text. ?>
@@ -62,5 +55,7 @@
 			<?php endif; // End check for header image. ?>
 		</div>
 		<!-- /.wide-banner -->
+		
+		<?php hybrid_get_menu( 'primary' ); // Loads the menu/primary.php template. ?>
 
 		<div id="main" class="main">

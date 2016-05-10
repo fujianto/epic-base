@@ -19,6 +19,16 @@
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
+/*
+*	REPLACE THIS WITH NEW THEME NAME
+*
+* 	Epic Base / Theme Name (style.css)
+* 	epic_base / function prefix
+* 	$epic_base / Theme Variable
+* 	Epic_Base / Class Prefix
+* 	epic-base / Text Domain
+*/
+
 /* Define constant for easy access to Theme directory*/
 define( 'HOME_URI'      , home_url()                   );
 define( 'THEME_URI'     , get_template_directory_uri() );
@@ -41,12 +51,15 @@ require 'vendor/composer/autoload.php';
 
 /* Load the Hybrid Core framework and theme files. */
 require_once( $epic_base_dir . 'inc/theme.php'            );
+
+new Hybrid();
+
 require_once( $epic_base_dir . 'vendor/caviar/caviar.php' );
 require_once( $epic_base_dir . 'vendor/caviar/field-example-metaboxes.php' );
 
 new Caviar();
 
-new Hybrid();
+
 
 /* Load all files inside inc folder */
 epic_base_load_all_php( $epic_base_dir . 'inc/' );
@@ -76,11 +89,16 @@ function epic_base_theme_setup() {
 			'2c-r'      => __( '2 Columns: Sidebar / Content', 'epic-base' )
 			),
 		array( 'default' => is_rtl() ? '2c-r' :'2c-l' ) 
-		);
+	);
 
-	/* Theme Support for Caviar Libarary */
-	add_theme_support( 'caviar-basic-fields' );
-	add_theme_support( 'caviar-field-controls');
+	/* Add Custom Logo Options */
+	add_theme_support( 'custom-logo', array(
+		'height'      => 100,
+		'width'       => 400,
+		'flex-height' => true,
+		'flex-width'  => true,
+		'header-text' => array( 'site-title', 'site-description' ),
+	) );
 
 	/* Add support for Yoast SEO Breadcrumbs */
 	add_theme_support( 'yoast-seo-breadcrumbs' );

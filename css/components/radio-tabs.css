@@ -30,29 +30,29 @@
 }
 /* Secondary */
 .secondary-bg {
-  background: #6a5acd;
+  background: slateblue;
 }
 .secondary-color {
-  color: #6a5acd;
+  color: slateblue;
 }
 .secondary-border {
-  border-color: #6a5acd;
+  border-color: slateblue;
 }
 /* Tertiary */
 .tertiary-bg {
-  background: #ffd700;
+  background: gold;
 }
 .tertiary-color {
-  color: #ffd700;
+  color: gold;
 }
 /* Header BG */
 /* Body BG */
 .body-bg {
-  background: #ffffff;
+  background: rgba(204, 204, 204, 0.16);
 }
 /* Radio Tabs */
 .radio-tabs .checkable-element .checkable-item {
-  border: 1px solid #d1d1d1;
+  border: 1px solid #D1D1D1;
   cursor: pointer;
   float: left;
   padding: 1rem 3rem;
@@ -60,9 +60,9 @@
   font-weight: normal;
 }
 .radio-tabs .checkable-element .checkable-item.active {
-  background: #ffd700;
-  border-color: #ffd700;
-  color: #ffffff;
+  background: gold;
+  border-color: gold;
+  color: #fff;
 }
 .radio-tabs .checkable-element .tab-label {
   float: left;
@@ -83,27 +83,27 @@
 .radio-tabs .checkable-element .tab-label > input + .selected-element {
   /* IMAGE STYLES */
   cursor: pointer;
-  border: 2px solid #d1d1d1;
+  border: 2px solid #D1D1D1;
 }
 .radio-tabs .checkable-element .tab-label > input + .selected-element img {
-  border-bottom: 1px solid #d1d1d1;
+  border-bottom: 1px solid #D1D1D1;
 }
 .radio-tabs .checkable-element .tab-label > input:checked + .selected-element {
   /* (RADIO CHECKED) IMAGE STYLES */
   border: 2px solid;
-  border-color: #ffd700;
+  border-color: gold;
 }
 .radio-tabs .checkable-element.radio-pills .tab-label > input:checked + .checkable-item {
   /* (RADIO CHECKED) IMAGE STYLES */
-  background: #ffd700;
-  color: #ffffff;
+  background: gold;
+  color: #fff;
 }
 .radio-tabs .checkable-element .settings-label {
   display: inline-block;
   padding: 1rem;
 }
 .radio-tabs .checkable-element.colors .tab-label > input:checked + .checkable-item {
-  box-shadow: 0px 0px 15px 0px #000000;
+  box-shadow: 0px 0px 15px 0px #000;
   border: 0;
 }
 .radio-tabs .checkable-element.colors .checkable-item {
