@@ -33,10 +33,14 @@
 		margin: 0;
 	} 
 
-	a, span{
+	.page-numbers{
 		padding: 1rem 1.5rem;
 		font-size: 1.8rem;
 		margin-right: 1rem;
+	}
+
+	.next.page-numbers , .prev.page-numbers{
+		font-size: 2.5rem;
 	}
 }
 
@@ -103,5 +107,42 @@
 		-ms-word-wrap: break-word;
 		word-wrap: break-word;
 		word-break: break-all;
+	}
+}
+
+/* Attachment Meta */
+.attachment-meta-title{
+	margin: 0 0 2rem 0;
+	font-size: 2rem;
+	font-weight: @semi-bold-font;
+	margin-bottom: 2rem;
+}
+
+ul.media-meta {
+	padding-left: 0;
+	list-style: none;
+	display: table;
+	width: 100%;
+	margin-bottom: 2rem;
+	
+	li {
+		margin-bottom: 1.5rem;
+		display: table-row;
+	}
+
+	.data {
+		display: table-cell;
+		background: #fff;
+		padding: 0.5rem 1rem 0.5rem 2rem;
+		width: 70%;
+	}
+	
+	.prep {
+		margin-right: 1rem;
+		color: #fff;
+		display: table-cell;
+		background: @primary-color;
+		padding: 0.5rem 1rem;
+		width: 30%;
 	}
 }
