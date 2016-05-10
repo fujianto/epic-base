@@ -448,7 +448,6 @@ if( ! class_exists('Basic_Fields')) {
 		}
 	}
 
+	$basicField = new Basic_Fields();
 }
-
-$basicField = new Basic_Fields();
 ?>
