@@ -6,11 +6,11 @@
 	<?php breadcrumb_trail(
 		array( 
 			'container'     => 'nav', 
-			'separator'     => '/', 
+			'separator'     => '//', 
 			'show_on_front' => true,
 
 			'labels'        => array( 
-				'browse' => __( 'You are here:', 'citrusBase' ) 
+				'browse' => __( 'You are here:', 'epic-base' ) 
 			) 
 		) 
 	); ?>

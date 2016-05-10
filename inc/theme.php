@@ -24,7 +24,8 @@ add_action( 'init', 'epic_base_add_editor_styles' );
 /* Unregister WordPress default Widget */
 add_action('widgets_init', 'epic_base_unregister_widget', 1);
 
-
+# Register custom layouts.
+add_action( 'hybrid_register_layouts', 'epic_base_register_layouts' );
 
 /**
  * Registers custom image sizes for the theme. 
@@ -47,9 +48,24 @@ function epic_base_register_image_sizes() {
  * @return void
  */
 function epic_base_register_menus() {
+	
 	register_nav_menu( 'primary',    esc_html_x( 'Primary',    'nav menu location', 'epic-base' ) );
 	register_nav_menu( 'secondary',  esc_html_x( 'Secondary',  'nav menu location', 'epic-base' ) );
 	register_nav_menu( 'subsidiary', esc_html_x( 'Subsidiary', 'nav menu location', 'epic-base' ) );
+}
+
+/**
+ * Registers layouts.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function epic_base_register_layouts() {
+
+	hybrid_register_layout( '1c',   array( 'label' => esc_html__( '1 Column',                     'claypress' ), 'image' => '%s/images/layouts/1c.png'   ) );
+	hybrid_register_layout( '2c-l', array( 'label' => esc_html__( '2 Columns: Content / Sidebar', 'claypress' ), 'image' => '%s/images/layouts/2c-l.png' ) );
+	hybrid_register_layout( '2c-r', array( 'label' => esc_html__( '2 Columns: Sidebar / Content', 'claypress' ), 'image' => '%s/images/layouts/2c-r.png' ) );
 }
 
 /**
@@ -66,8 +82,8 @@ function epic_base_register_sidebars() {
 			'id'          => 'primary',
 			'name'        => esc_html_x( 'Primary', 'sidebar', 'epic-base' ),
 			'description' => esc_html__( 'Add widget to sidebar.', 'epic-base' )
-			)
-		);
+		)
+	);
 
 	hybrid_register_sidebar(
 		array(
@@ -76,8 +92,8 @@ function epic_base_register_sidebars() {
 			'description' => esc_html__( 'Add widget to footer.', 'epic-base' ),
 			'before_widget' => '<div class="sidebar footer-sidebar col-md-4 col-sm-4 col-xs-12"> <div id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</div></div>',
-			)
-		);
+		)
+	);
 }
 
 /**
@@ -89,12 +105,14 @@ function epic_base_register_sidebars() {
  */
 function epic_base_enqueue_scripts() {
 	/* Register the scripts to WP */
-	wp_register_script( 'bootstrap-js', THEME_VENDOR . '/bower/bootstrap/dist/js/bootstrap.min.js', array('jquery'), null, true );
-	wp_register_script( 'fitvids-js', THEME_VENDOR . '/bower/fitvids/jquery.fitvids.js', array('jquery'), null, true );
-	wp_register_script( 'radio-tabs', THEME_JS . '/radio-tabs.js', array('jquery'), null, true );
-	wp_register_script( 'main-js', THEME_JS . '/scripts.js', array('jquery', 'fitvids-js'), null, true );
+	wp_register_script( 'bootstrap-script'  , THEME_VENDOR . '/bower/bootstrap/dist/js/bootstrap.min.js', array('jquery'), null, true );
+	wp_register_script( 'fitvids'           , THEME_VENDOR . '/bower/fitvids/jquery.fitvids.js', array('jquery'), null, true );
+	wp_register_script( 'chosen'            , THEME_VENDOR . '/bower/chosen/chosen.jquery.min.js', array('jquery'), null, true );
+	wp_register_script( 'radio-tabs'        , THEME_JS     . '/radio-tabs.js', array('jquery'), null, true );
+	wp_register_script( 'main-js'           , THEME_JS     . '/scripts.js', array('jquery', 'fitvids'), null, true );
+
 	/* Enqueu scripts to WordPress Footer */
-	wp_enqueue_script('bootstrap-js');
+	wp_enqueue_script('bootstrap-script');
 	wp_enqueue_script('radio-tabs');
 	wp_enqueue_script('main-js');
 }
@@ -132,18 +150,18 @@ function epic_base_enqueue_styles() {
 	wp_enqueue_style( 'style', get_stylesheet_uri() );
 }
 
-// function epic_base_enqueue_admin_styles(){
-// 	wp_enqueue_style( 'fontawesome-admin' , THEME_FONTS. '/font-awesome/css/font-awesome.min.css');
-// 	wp_enqueue_style( 'caviar-styles'     , THEME_VENDOR . '/caviar/css/admin-styles.css');
-// 	wp_enqueue_style( 'radiotabs-admin'   , THEME_VENDOR . '/caviar/css/radio-tabs.css');
-// }
+/*function epic_base_enqueue_admin_styles(){
+	wp_enqueue_style( 'chosen', THEME_VENDOR . '/bower/chosen/chosen.min.css');
+}
 
-// function epic_base_enqueue_admin_scripts(){
-// 	wp_register_script( 'radiotabs-admin-js', THEME_VENDOR.'/caviar/js/radio-tabs.js', array('jquery'), null, true);
-// 	wp_register_script( 'caviar-admin-js', THEME_VENDOR.'/caviar/js/admin-scripts.js', array('jquery', 'radiotabs-admin-js', 'wp-color-picker'), null, true);
+add_action('admin_enqueue_scripts',  'epic_base_enqueue_admin_styles');*/
 
-// 	wp_enqueue_script('caviar-admin-js');
-// }
+/*function epic_base_enqueue_admin_scripts(){
+	wp_register_script( 'chosen', THEME_VENDOR . '/bower/chosen/chosen.jquery.min.js', array('jquery'), null, true );
+	wp_enqueue_script('chosen');
+}
+
+add_action('admin_enqueue_scripts',  'epic_base_enqueue_admin_scripts');*/
 
 // function epic_base_add_color_picker( $hook ) {
 
@@ -181,7 +199,7 @@ function epic_base_load_fonts(){
 }
 
 /**
- * [epic_base_entry_col_width description]
+ * Content column width based on theme layout options
  * @return string entry wrapper class
  */
 function epic_base_entry_col_width(){

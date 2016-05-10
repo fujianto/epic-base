@@ -48,25 +48,25 @@
 /* Secondary */
 .secondary-bg,
 .countdown-timer > div {
-  background: #6a5acd;
+  background: slateblue;
 }
 .secondary-color {
-  color: #6a5acd;
+  color: slateblue;
 }
 .secondary-border {
-  border-color: #6a5acd;
+  border-color: slateblue;
 }
 /* Tertiary */
 .tertiary-bg {
-  background: #ffd700;
+  background: gold;
 }
 .tertiary-color {
-  color: #ffd700;
+  color: gold;
 }
 /* Header BG */
 /* Body BG */
 .body-bg {
-  background: #ffffff;
+  background: rgba(204, 204, 204, 0.16);
 }
 /********************************************************************************************************
  * 3.0 Utilities
@@ -336,7 +336,7 @@ div.icon-right .fa {
   margin-top: 0;
 }
 .side-menu ul li {
-  border-bottom: 1px solid #d1d1d1;
+  border-bottom: 1px solid #D1D1D1;
   padding: 10px 0;
 }
 .side-menu ul li a {
@@ -372,7 +372,7 @@ div.icon-right .fa {
 }
 /* Blocks */
 .block {
-  background: #ffffff;
+  background: #fff;
   padding: 2rem;
   margin: 0 0 2rem 0;
 }
@@ -394,7 +394,7 @@ div.icon-right .fa {
 }
 .countdown-timer > div {
   display: inline-block;
-  color: #ffffff;
+  color: #fff;
   padding: 1.5rem 1rem;
   width: 100px;
   font-size: 2rem;
@@ -477,7 +477,7 @@ div.icon-right .fa {
   right: 0;
   font-family: FontAwesome;
   font-size: 2rem;
-  color: #d1d1d1;
+  color: #D1D1D1;
   content: '\f057';
 }
 .pricing-block .unchecked-options:hover:after {
@@ -485,20 +485,20 @@ div.icon-right .fa {
   right: 0;
 }
 .pricing-block.featured-price * {
-  color: #ffffff;
+  color: #fff;
 }
 .pricing-block.featured-price .checked-options:after {
-  color: #ffffff;
+  color: #fff;
 }
 .pricing-block.featured-price .unchecked-options:after {
-  color: #ffffff;
+  color: #fff;
 }
 .pricing-block.featured-price .btn {
-  background: #ffffff;
-  border-color: #ffffff;
+  background: #fff;
+  border-color: #fff;
 }
 .pricing-block.featured-price .btn:hover {
-  color: #ffffff;
+  color: #fff;
 }
 /* Blog */
 .blog-block {
@@ -535,7 +535,7 @@ div.icon-right .fa {
 .blog-block.style-charlie .label {
   text-align: left;
   margin: 0;
-  color: #ffffff;
+  color: #fff;
 }
 .blog-block.style-charlie footer .btn {
   margin-bottom: 2rem;

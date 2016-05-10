@@ -2,10 +2,10 @@
 @import "../../vendor/bower/bootstrap/less/mixins.less";
 
 .parallax(@backround-color, @backround-image){
-  background: @backround-color @backround-image;
-  background-attachment: fixed;
-  background-position: center center;
-  background-size: cover;
+	background: @backround-color @backround-image;
+	background-attachment: fixed;
+	background-position: center center;
+	background-size: cover;
 }
 
 .mirror-flip{
@@ -163,7 +163,7 @@
 
 	&:before{
 		bottom: -@size/2;
-    border-width: 0 @size/2 @size/2 @size/2;
+		border-width: 0 @size/2 @size/2 @size/2;
 	}
 }
 
@@ -193,48 +193,54 @@
 
 	&:after{
 		bottom: -@size/2;
-    border-width: 0 @size/2 @size/2 @size/2;
+		border-width: 0 @size/2 @size/2 @size/2;
 	}
 }
 
 /* Traingle mixin for arrow button */
 
 .triangle-base() {
-    content: '';
-    display: block;
-    width: 0;
-    height: 0;
-    -moz-transform: scale(.9999);
+	content: '';
+	display: block;
+	width: 0;
+	height: 0;
+	-moz-transform: scale(.9999);
 }
 
 .triangle(@direction, @size, @color) {
-    .triangle(@direction, @size * 2, @size, @color);
+	.triangle(@direction, @size * 2, @size, @color);
 }
 
 .triangle(@direction, @width, @height, @color) when (@direction = up) {
-    .triangle-base();
-    border-left: (@width / 2) solid transparent;
-    border-right: (@width / 2) solid transparent;
-    border-bottom: @height solid @color;
+	.triangle-base();
+	border-left: (@width / 2) solid transparent;
+	border-right: (@width / 2) solid transparent;
+	border-bottom: @height solid @color;
 }
 
 .triangle(@direction, @width, @height, @color) when (@direction = down) {
-    .triangle-base();
-    border-left: (@width / 2) solid transparent;
-    border-right: (@width / 2) solid transparent;
-    border-top: @height solid @color;
+	.triangle-base();
+	border-left: (@width / 2) solid transparent;
+	border-right: (@width / 2) solid transparent;
+	border-top: @height solid @color;
 }
 
 .triangle(@direction, @width, @height, @color) when (@direction = left) {
-    .triangle-base();
-    border-top: (@width / 2) solid transparent;
-    border-bottom: (@width / 2) solid transparent;
-    border-right: @height solid @color;
+	.triangle-base();
+	border-top: (@width / 2) solid transparent;
+	border-bottom: (@width / 2) solid transparent;
+	border-right: @height solid @color;
 }
 
 .triangle(@direction, @width, @height, @color) when (@direction = right) {
-    .triangle-base();
-    border-top: (@width / 2) solid transparent;
-    border-bottom: (@width / 2) solid transparent;
-    border-left: @height solid @color;
+	.triangle-base();
+	border-top: (@width / 2) solid transparent;
+	border-bottom: (@width / 2) solid transparent;
+	border-left: @height solid @color;
+}
+
+.global-boxed(){
+	.common-boxed(@main-bg, 2rem 3rem, 0 0 3rem 0);
+	box-shadow: 0 2px 1px #ccc;
+	border: 1px solid rgba(204, 204, 204, 0.25);
 }

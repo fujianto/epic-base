@@ -111,98 +111,95 @@ jQuery(document).ready(function ($) {
         var opt = new Array();
         var i = 0;
          $.each(options, function(index, key){
-            opt[i] = "<input class='repeatedField' id='"+index+"' type='radio' name='"+name+"' value='"+index+"'/> <label class='radio-label' for='"+index+"'>"+key+"</label>";
+            opt[i] = "<input id='"+index+"' type='radio'name='"+name+"' value='"+index+"'/> <label class='radio-label' for='"+index+"'>"+key+"</label>";
             ++i;
         });
         return opt.join(" ");
     }
 
-    function each_pill(name, options){
-        var opt = new Array();
-        var i = 0;
-         $.each(options, function(index, key){
-            opt[i] = "<div class='checkable-element clearfix radio-pills'> <label class='tab-label'> <input id='"+index+"' type='radio'  name='"+name+"' value='"+index+"'> <div class='checkable-item'>"+key+"</div> </label>";
-
-            opt[i] = "<input class='repeatedField' id='"+index+"' type='radio' name='"+name+"' value='"+index+"'/> <label class='radio-label' for='"+index+"'>"+key+"</label>";
-            ++i;
-        });
-        return opt.join(" ");
-    }
-
-    function each_image(name, options){
-        var opt = new Array();
-        var i = 0;
-
-        $.each(options, function(index, key){
-            opt[i] = "<div class='checkable-element clearfix radio-pills'> <label class='tab-label'> <input id='"+index+"' type='radio'  name='"+name+"' value='"+index+"'> <div class='selected-element'> <img class='image-selected "+index+"' src='"+key+"' alt='"+key+"' id='"+key+"'/> </div> </label>";
-            ++i;
-        });
-        return opt.join(" ");
-    }
-                                            
     function each_checkbox(name, options){
         var opt = new Array();
         var i = 0;
          $.each(options, function(index, key){
-            opt[i] = "<input class='repeatedField' id='"+index+"' type='checkbox' name='"+name+"[]' value='"+index+"'/> <label class='radio-label' for='"+index+"'>"+key+"</label>";
+            opt[i] = "<input id='"+index+"' type='checkbox'name='"+name+"[]' value='"+index+"'/> <label class='radio-label' for='"+index+"'>"+key+"</label>";
             ++i;
         });
         return opt.join(" ");
     }
 
     function addField(){
-        $('.repeater-field').each(function(){
-            var fieldName = jQuery(this).data('name');
-            var fieldId   = jQuery(this).data('id');
-            var fieldnum  = parseInt(jQuery(this).data('fields-count')) - 1;
-            var objFields = jQuery(this).data('fields');
+        jQuery(document).on('click', '.addField', function(e) {
+            e.preventDefault();
+            var markup = new Array(); 
+            var i         =  0;
+            var elId      =  '#'+jQuery(this).parent().parent().parent().attr('id');
+            var fieldName =  jQuery(elId).find('.repeater-field').data('name');
+            var fieldId   =  jQuery(elId).find('.repeater-field').data('id');
+            var fieldnum  =  parseInt(jQuery(elId).find('.repeater-field').find('.repeatingSection').length);
+            var objFields =  jQuery(elId).find('.repeater-field').data('fields');
+            var arrHTML   =  new Array();
 
-            jQuery(document).on('click', '.addField-'+fieldId, function(e) {
-                e.preventDefault();
-                var markup = new Array(); 
-                var i = 0;
+            $.each(objFields, function(index, key){
+                switch (key.type){
+                    case 'text':
+                        markup[i] = "<div class='widget-separator'> "+
+                                        "<span class='control-label'>"+key.title+"</span> "+
+                                        "<input type='text' name='"+fieldName+"["+(fieldnum)+"]["+index+"]' value='' class='widefat repeatedField'> "+
+                                    "</div>";
+                    break;
 
-                $.each(objFields, function(index, key){
-                    switch (key.type){
-                        case 'text':
-                            markup[i] = "<div class='widget-separator'><span class='control-label'>"+key.title+"</span> <input type='text' name='"+fieldName+"["+(fieldnum+1)+"]["+index+"]' value='' class='widefat repeatedField'></div>";
+                    case 'textarea':
+                        markup[i] = "<div class='widget-separator'> "+
+                                        "<span class='control-label'>"+key['title']+"</span> "+
+                                        "<textarea name='"+fieldName+"["+(fieldnum)+"]["+index+"]' class='widefat repeatedField' rows='5' cols='30'></textarea> "+
+                                    "</div>";
+                    break;
+
+                    case 'select':
+                        markup[i] = "<div class='widget-separator'> <span class='control-label'>"+key['title']+"</span> <select class='widefat repeatedField' name='"+fieldName+"["+(fieldnum)+"]["+index+"]'>"+each_opt(key['options']);+"</select> </div>";
                         break;
+                    case 'radio':
+                        markup[i] = "<div class='widget-separator'> <span class='control-label'>"+key['title']+"</span> <div class='radio-wrapper widefat'>"+each_radio(fieldName+"["+(fieldnum)+"]["+index+"]", key['options']);+"</div></div>";
+                        break; 
+                    case 'checkbox':
+                        markup[i] = "<div class='widget-separator'> <span class='control-label'>"+key['title']+"</span> <div class='checkbox-wrapper widefat'>"+each_checkbox(fieldName+"["+(fieldnum)+"]["+index+"]", key['options']);+"</div></div>";
+                        break; 
+                    case 'upload':
+                        markup[i] = 
+                        "<div class='widget-separator'><span class='control-label'>"+key['title']+"</span> "+
+                            "<div id='"+(fieldnum)+"' class='uploadImage upload-controls widefat'> "+
+                                "<div class='upload-wrapper'>    "+
+                                    "<figure class='upload-preview column'> "+
+                                        "<section class='upload-button-group clearfix'><a class='button uploadSingleImage upImage-"+(fieldnum)+" u-pull-left' href='#' title='Upload' data-target='"+(fieldnum)+"' data-size='medium'><i class='fa fa-cloud-upload pr-small'></i> Upload</a><a class='button clearSingleImage "+(fieldnum)+" u-pull-left' href='#' title='Remove' data-target='"+(fieldnum)+"'><i class='fa fa-eraser pr-small'></i> Remove</a> "+
+                                        "</section> "+
+                                        "<img id='image-"+(fieldnum)+"' class='thumb-preview' src='' alt='thumby'> "+
+                                    "</figure> "+
+                                    "<div class='column'> "+
+                                        "<input type='url' class='value-hidden image-url widefat mb-small repeatedField' id='imageUrl-"+(fieldnum)+"' name='"+fieldName+"["+(fieldnum)+"]["+index+"]' value='' data-target='"+(fieldnum)+"'> "+
+                                    "</div> "+
+                                "</div> "+
+                            "</div> "+
+                        "</div>";
+                    break;
 
-                        case 'textarea':
-                            markup[i] = "<div class='widget-separator'><span class='control-label'>"+key['title']+"</span> <textarea name='"+fieldName+"["+(fieldnum+1)+"]["+index+"]' class='widefat repeatedField' rows='5' cols='30'></textarea></div>";
-                        break;
+                    default:
+                    break;
+                } 
 
-                        case 'select':
-                            markup[i] = "<div class='widget-separator'> <span class='control-label'>"+key['title']+"</span> <select class='widefat repeatedField' name='"+fieldName+"["+(fieldnum+1)+"]["+index+"]'>"+each_opt(key['options']);+"</select> </div>";
-                            break;
-                        case 'radio':
-                            markup[i] = "<div class='widget-separator'> <span class='control-label'>"+key['title']+"</span> <div class='radio-wrapper widefat'>"+each_radio(fieldName+"["+(fieldnum+1)+"]["+index+"]", key['options']);+"</div></div>";
-                            break; 
-                        case 'radiopill':
-                            markup[i] = "<div class='widget-separator'> <span class='control-label'>"+key['title']+"</span> <div class='radio-tabs radio-only'> "+each_pill(fieldName+"["+(fieldnum+1)+"]["+index+"]", key['options']);+" </div> </div></div>";
-                            break;
-                         case 'radioimage':
-                            markup[i] = "<div class='widget-separator'> <span class='control-label'>"+key['title']+"</span> <div class='radio-tabs radio-images radio-only'> "+each_image(fieldName+"["+(fieldnum+1)+"]["+index+"]", key['options']);+" </div> </div></div>";
-                            break;
-                        case 'checkbox':
-                            markup[i] = "<div class='widget-separator'> <span class='control-label'>"+key['title']+"</span> <div class='checkbox-wrapper widefat'>"+each_checkbox(fieldName+"["+(fieldnum+1)+"]["+index+"]", key['options']);+"</div></div>";
-                            break; 
-                        case 'upload':
-                            markup[i] = "<div class='widget-separator'><span class='control-label'>"+key['title']+"</span> <div id='"+(fieldnum+1)+"' class='uploadImage upload-controls widefat'> <div class='upload-wrapper'> <figure class='upload-preview column'> <section class='upload-button-group clearfix'><a class='button uploadSingleImage upImage-"+(fieldnum+1)+" u-pull-left' href='#' title='Upload' data-target='"+(fieldnum+1)+"' data-size='medium'><i class='fa fa-cloud-upload pr-small'></i> Upload</a><a class='button clearSingleImage "+(fieldnum+1)+" u-pull-left' href='#' title='Remove' data-target='"+(fieldnum+1)+"'><i class='fa fa-eraser pr-small'></i> Remove</a> </section> <img id='image-"+(fieldnum+1)+"' class='thumb-preview' src='' alt='thumby'> </figure> <div class='column'> <input type='url' class='value-hidden image-url widefat mb-small repeatedField' id='imageUrl-"+(fieldnum+1)+"' name='"+fieldName+"["+(fieldnum+1)+"]["+index+"]' value='' data-target='"+(fieldnum+1)+"'> </div> </div> </div></div>";
-                        break;
-
-                        default:
-                        break;
-                    } 
-
-                    ++i;
-                });
-
-                $(".dynamicAccordion-"+fieldId).append('<div class="repeatingSection repeater_wrapper"> <label class="repeater-title control-label widefat" id="itemFeatures" for="itemFeatures">New Field </label> <div class="accordion-content"> '+markup.join(" ")+' </div> <input type="hidden" class="widefat repeaterOrder" value="'+parseInt(fieldnum+1)+'"/></div> <a href="#" class="button button-secondary button-large deleteField">Delete</a>').accordion('refresh');
-
-                fieldnum++;
+                ++i;
             });
-        });   
+
+            $(".dynamicAccordion-"+fieldId).append(
+                '<div class="repeatingSection repeater_wrapper"> '+
+                    '<label class="repeater-title control-label widefat" id="itemFeatures" for="itemFeatures">New Field</label> '+
+                    '<div class="accordion-content">'+markup.join(" ")+'</div> '+
+                    '<input type="hidden" class="widefat repeaterOrder" value="'+parseInt(fieldnum)+'" /> '+
+                    '<br /> <br /> '+
+                    '<a href="#" class="button button-secondary button-large deleteField">Delete</a> '+
+                '</div> ').accordion('refresh');
+
+            fieldnum++;
+        });
     }
 
     function callAccordion(){
@@ -211,8 +208,10 @@ jQuery(document).ready(function ($) {
             header: '> .repeatingSection > .repeater-title',
             active: false,
             collapsible: true,
-            autoHeight: false,
-        })
+            activate: function(event, ui) {
+                 $( this ).accordion( "refresh" );
+            }
+          })
         .sortable({
             axis: "y",
             handle: ".repeater-title",
@@ -225,7 +224,7 @@ jQuery(document).ready(function ($) {
               // IE doesn't register the blur when sorting
               // so trigger focusout handlers to remove .ui-state-focus
               ui.item.children( ".repeater-title" ).triggerHandler( "focusout" );
-     
+
               // Refresh accordion to handle new order
               $( this ).accordion( "refresh" );
             },
@@ -244,11 +243,6 @@ jQuery(document).ready(function ($) {
         });
     }
 
-/*    function incrementBracketValue(str) {
-        var incrementedValue = parseInt(str.match(/[(\d+)]/)[1]) + 1;
-        return str.replace(/[(\d+)]/, "[" + incrementedValue + "]")
-    }
-*/
     updateColorPickers(); 
     uploadImage();
     removeImage();

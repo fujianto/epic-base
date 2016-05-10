@@ -31,25 +31,25 @@
 }
 /* Secondary */
 .secondary-bg {
-  background: #6a5acd;
+  background: slateblue;
 }
 .secondary-color {
-  color: #6a5acd;
+  color: slateblue;
 }
 .secondary-border {
-  border-color: #6a5acd;
+  border-color: slateblue;
 }
 /* Tertiary */
 .tertiary-bg {
-  background: #ffd700;
+  background: gold;
 }
 .tertiary-color {
-  color: #ffd700;
+  color: gold;
 }
 /* Header BG */
 /* Body BG */
 .body-bg {
-  background: #ffffff;
+  background: rgba(204, 204, 204, 0.16);
 }
 /*
 Navbar "hovernav" dropdown menu - this works only for screen sizes larger than phones.
@@ -75,7 +75,7 @@ The Bootstrap CSS is unchanged.
   }
   .navbar-default .navbar-nav li:hover,
   .navbar-default .navbar-nav li:focus {
-    background: #ffd700;
+    background: gold;
   }
   .navbar-default .navbar-nav > li:hover > a {
     color: #333;

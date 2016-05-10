@@ -13,6 +13,7 @@ class Caviar{
 	public function constants() {
 		define('CAVIAR_DIR'     , trailingslashit( get_template_directory() ) . '/vendor/caviar');
 		define('CAVIAR_DIR_URI' , trailingslashit( get_template_directory_uri() ) . '/vendor/caviar');	
+		define('CAVIAR_BOWER' , 	CAVIAR_DIR_URI . '/vendor/bower');	
 	}
 
 	/**
@@ -20,7 +21,7 @@ class Caviar{
 	 * @return Void
 	 */
 	public function requires(){
-		require_if_theme_supports ('caviar-basic-fields', 	CAVIAR_DIR.'/class/class-basic-fields.php');
-		require_if_theme_supports ('caviar-field-controls', CAVIAR_DIR.'/class/class-field-controls.php');
+		require_once ( CAVIAR_DIR.'/class/class-basic-fields.php');
+		require_once ( CAVIAR_DIR.'/class/class-field-controls.php');
 	}
 }

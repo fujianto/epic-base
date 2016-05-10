@@ -1,20 +1,42 @@
 @import "../dependencies/variables-epic.less";
 // Breadcrumbs
 .breadcrumbs{
-	background: @main-bg;
-	padding: 0;
 	margin: 0 0 2rem 0;
+
+	> * {
+		display: inline-block;
+	}
+
+	.trail-browse{
+		margin: 0;
+		font-size: 1.5rem;
+	}
+
+	.trail-items{
+		margin: 0;
+		font-size: 1.5rem;
+		list-style: none;
+		padding-left: 1.5rem;
+		li{
+			display: inline-block;
+			margin-right: 1rem;
+		}
+	}
 }
 
 /* Main Pagination */
 .pagination-wrapper{
-	background: @main-bg;
+	text-align: center;
+	margin: 4rem 0;
+
 	.pagination{
 		margin: 0;
 	} 
 
 	a, span{
-		padding: 0 0.5rem;
+		padding: 1rem 1.5rem;
+		font-size: 1.8rem;
+		margin-right: 1rem;
 	}
 }
 
@@ -80,6 +102,6 @@
 	.prev, .next{
 		-ms-word-wrap: break-word;
 		word-wrap: break-word;
-	  	word-break: break-all;
+		word-break: break-all;
 	}
 }
