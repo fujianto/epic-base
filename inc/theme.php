@@ -150,30 +150,6 @@ function epic_base_enqueue_styles() {
 	wp_enqueue_style( 'style', get_stylesheet_uri() );
 }
 
-/*function epic_base_enqueue_admin_styles(){
-	wp_enqueue_style( 'chosen', THEME_VENDOR . '/bower/chosen/chosen.min.css');
-}
-
-add_action('admin_enqueue_scripts',  'epic_base_enqueue_admin_styles');*/
-
-/*function epic_base_enqueue_admin_scripts(){
-	wp_register_script( 'chosen', THEME_VENDOR . '/bower/chosen/chosen.jquery.min.js', array('jquery'), null, true );
-	wp_enqueue_script('chosen');
-}
-
-add_action('admin_enqueue_scripts',  'epic_base_enqueue_admin_scripts');*/
-
-// function epic_base_add_color_picker( $hook ) {
-
-// 	if( is_admin() ) { 
-//     // Add the color picker css file       
-// 		wp_enqueue_style( 'wp-color-picker' ); 
-
-//   //   // Include our custom jQuery file with WordPress Color Picker dependency
-// 		// wp_enqueue_script( 'custom-script-handle', plugins_url( 'custom-script.js', __FILE__ ), array( 'wp-color-picker' ), false, true ); 
-// 	}
-// }
-
 /**
  * Add custom editor styles
  * @return void
@@ -196,20 +172,6 @@ function epic_base_load_fonts(){
 	wp_register_style('googleFonts', 'http://fonts.googleapis.com/css?family=Open+Sans:400,500,600,700,300');
 
 	wp_enqueue_style('googleFonts');	
-}
-
-/**
- * Content column width based on theme layout options
- * @return string entry wrapper class
- */
-function epic_base_entry_col_width(){
-	$class = '';
-	/* If one column layout choosen, .col-md-12 will be added to entry-wrapper */
-	if ('1c' === get_theme_mod( 'theme_layout' ) ) {
-		return 'col-md-12';
-	} else{
-		return 'col-md-8';
-	}
 }
 
 /**

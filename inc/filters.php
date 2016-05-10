@@ -13,7 +13,7 @@ function epic_base_body_class( $classes ){
 }
 
 /* Add extra class to body */
-// add_filter( 'body_class', 'epic_base_body_class' );
+add_filter( 'body_class', 'epic_base_body_class' );
 
 /**
  * Filter to add extra attribute to Site Title
@@ -93,7 +93,7 @@ function epic_base_attr_entry_summary( $attr ) {
 	return $attr;
 }
 
-// add_action('hybrid_attr_entry-summary', 'epic_base_attr_entry_summary');
+add_action('hybrid_attr_entry-summary', 'epic_base_attr_entry_summary');
 
 
 /**
@@ -110,4 +110,4 @@ function epic_base_attr_post( $attr ){
 	return $attr;
 }
 
-// add_action('hybrid_attr_post', 'epic_base_attr_post');
+add_action('hybrid_attr_post', 'epic_base_attr_post');

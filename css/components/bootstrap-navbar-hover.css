@@ -75,7 +75,7 @@ The Bootstrap CSS is unchanged.
   }
   .navbar-default .navbar-nav li:hover,
   .navbar-default .navbar-nav li:focus {
-    background: gold;
+    background: #ddd;
   }
   .navbar-default .navbar-nav > li:hover > a {
     color: #333;

@@ -6,14 +6,29 @@
  */
 function epic_base_main_pagination(){
 	$args = array (
-		'prev_text'          => __('<i class="fa fa-chevron-left"></i>'),
-		'next_text'          => __('<i class="fa fa-chevron-right"></i>'),
+		'prev_text'          => __('&laquo'),
+		'next_text'          => __('&raquo'),
 		'type'               => 'plain',
 	); 
 
 	echo '<nav class="pagination-wrapper">';
 	echo paginate_links( $args );
 	echo '</nav>';
+}
+
+/**
+ * Content column width based on theme layout options
+ * 
+ * @return string entry wrapper class
+ */
+function epic_base_entry_col_width(){
+	$class = '';
+	/* If one column layout choosen, .col-md-12 will be added to entry-wrapper */
+	if ('1c' === get_theme_mod( 'theme_layout' ) ) {
+		return 'col-md-8 col-md-offset-2 col-sm-12';
+	} else{
+		return 'col-md-8';
+	}
 }
 
 /**
@@ -46,7 +61,7 @@ function epic_base_comments_args(){
 	      </div>',
 
       	'url' =>
-	      '<div class="form-row">' .
+	      '<div class="form-group">' .
 	      	'<label for="url" class="label_title">' . __( 'Website', 'epic-base' ) . '</label>
 	      	<input id="url" name="url" type="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '"  placeholder="'.__('Fill your Website url' , 'epic-base').'" size="30" />
 	      </div>'
@@ -69,10 +84,10 @@ function epic_base_comments_args(){
  */
 function epic_base_entry_byline(){?>
 	<div class="entry-byline">
-		<?php hybrid_post_format_link(); ?>
+		<?php// hybrid_post_format_link(); ?>
 		
-		<span <?php hybrid_attr( 'entry-author' ); ?>><?php the_author_posts_link(); ?></span>
-		<time <?php hybrid_attr( 'entry-published' ); ?>><?php echo get_the_date(); ?></time>
+		<span <?php hybrid_attr( 'entry-author' ); ?>><?php esc_html_e( "By", "epic-base" ); ?> <?php the_author_posts_link(); ?></span>
+		<time <?php hybrid_attr( 'entry-published' ); ?>><?php esc_html_e( "On", "epic-base" ); ?> <?php echo get_the_date(); ?></time>
 		<?php comments_popup_link( number_format_i18n( 0 ), number_format_i18n( 1 ). ' Comment', '% Comments', 'comments-link', '' ); ?>
 		<?php edit_post_link(); ?>
 	</div><!-- .entry-byline -->

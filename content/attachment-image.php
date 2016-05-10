@@ -2,11 +2,11 @@
 
 	<?php if ( is_attachment() ) : // If viewing a single attachment. ?>
 
-		<?php if ( hasesc_html_excerpt() ) : // If the image has an excerpt/caption. ?>
+		<?php if ( has_excerpt() ) : // If the image has an excerpt/caption. ?>
 
 			<?php $src = wp_get_attachment_image_src( get_the_ID(), 'full' ); ?>
 
-			<?php echo img_caption_shortcode( array( 'align' => 'aligncenter', 'width' => esc_attr( $src[1] ), 'caption' => get_theesc_html_excerpt() ), wp_get_attachment_image( get_the_ID(), 'full', false ) ); ?>
+			<?php echo img_caption_shortcode( array( 'align' => 'aligncenter', 'width' => esc_attr( $src[1] ), 'caption' => get_the_excerpt() ), wp_get_attachment_image( get_the_ID(), 'full', false ) ); ?>
 
 		<?php else : // If the image doesn't have a caption. ?>
 
@@ -43,7 +43,7 @@
 		</header><!-- .entry-header -->
 
 		<div <?php hybrid_attr( 'entry-summary' ); ?>>
-			<?php theesc_html_excerpt(); ?>
+			<?php the_excerpt(); ?>
 		</div><!-- .entry-summary -->
 
 	<?php endif; // End single attachment check. ?>
