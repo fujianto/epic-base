@@ -15,6 +15,13 @@ function caviar_add_meta_box() {
 			'caviar_meta_box_callback',
 			$screen
 		);
+
+		add_meta_box(
+			'caviar_2',
+			__( 'Caviar Metabox 2', 'caviar_textdomain' ),
+			'caviar_meta_box2_callback',
+			$screen
+		);
 	}
 }
 
@@ -49,7 +56,7 @@ function caviar_meta_box_callback( $post ) {
 	$upLicense    = get_post_meta( $post->ID, '_upLicense', true );
 	$rePersonalData    = get_post_meta( $post->ID, '_rePersonalData', true );
 
-	var_dump($rePersonalData);
+	// var_dump($rePersonalData);
 
 	$fields  = array(
 		'title' => array(
@@ -61,6 +68,7 @@ function caviar_meta_box_callback( $post ) {
 			'type'  => 'textarea',
 		),
 		'pic' => array(
+			'id' => 'repeaterPic',
 			'title' => 'Picture',
 			'type'  => 'upload',
 		),
@@ -88,11 +96,16 @@ function caviar_meta_box_callback( $post ) {
 				'2' => 'http://placeimg.com/100/100/tech',
 			),
 		),
+		'pic' => array(
+			'id' => 'profilePic',
+			'title' => 'Picture',
+			'type'  => 'upload',
+		),
 	);
 
 	$fieldControl = new Field_Controls();
-	// $fieldControl->upload('Photo', 'upPhoto', array('name' => 'upPhoto', 'value' => $upPhoto, 'class' => 'single previewImage', 'placeholder' => __('Image URL' , 'epic-base')));
-	// $fieldControl->upload('License Url', 'upLicense', array('name' => 'upLicense', 'value' => $upLicense, 'class' => 'single previewImage', 'placeholder' => __('Driving License url' , 'epic-base')));
+	$fieldControl->upload('Photo', 'upPhoto', array('name' => 'upPhoto', 'value' => $upPhoto, 'class' => 'single previewImage', 'placeholder' => __('Image URL' , 'claypress')));
+	$fieldControl->upload('License Url', 'upLicense', array('name' => 'upLicense', 'value' => $upLicense, 'class' => 'single previewImage', 'placeholder' => __('Driving License url' , 'claypress')));
 
 	$fieldControl->text('Name', 'txtName', array('value' => esc_attr( $txtName ), 'attr' => array('data-test1' => 'test1', 'data-validate' => 'true')));
 	$fieldControl->text('Website', 'txtWebsite', array('type' => 'url','value' => esc_attr( $txtWebsite )));
@@ -104,7 +117,7 @@ function caviar_meta_box_callback( $post ) {
  	// $fieldControl->radiopill('Gender', 'gender', array('name' => 'gender', 'value' => $gender, 'attr' => array('data-test1' => 'test1')), array('male' => 'Male', 'female' => 'Female', 'other' => 'Other'));
  	$fieldControl->radioimage('Gender', 'gender', array('name' => 'gender', 'value' => $gender, 'attr' => array('data-test1' => 'test1')), array('male' => 'http://placeimg.com/100/100/nature', 'female' => 'http://placeimg.com/100/100/tech', 'other' => 'http://placeimg.com/100/100/arch'));
  	$fieldControl->colorpicker('Fav Color', 'colorMeta', array('class' => 'widefat', 'value' => $colorMeta,  'attr' => array('data-color' => 'test1')));
- // 	$fieldControl->editor('About me', 'edAboutMe', array('value' => $edAboutMe), array('textarea_rows' => '5'));
+ 	$fieldControl->editor('About me', 'edAboutMe', array('value' => $edAboutMe), array('textarea_rows' => '5'));
  	
  	// $fieldControl->taxonomy('Category', 'selCats', array('name' =>  'selCats', 'type' => 'select', 'value' => $selCats), 'post_tag', '');
  	$fieldControl->repeaterField('Repeated Feature', 'itemFeatures', array('name' => 'itemFeatures', 'value' => $itemFeatures), $fields);
@@ -112,6 +125,32 @@ function caviar_meta_box_callback( $post ) {
  	$fieldControl->repeaterField('Personal data', 'rePersonalData', array('name' => 'rePersonalData', 'value' => $rePersonalData), $fieldx);
  	?>
 <?php
+}
+
+function caviar_meta_box2_callback( $post ) {
+	wp_nonce_field( 'caviar_save_meta_box2_data', 'caviar_meta_box2_nonce' );
+
+	$txtDetail      = get_post_meta( $post->ID, '_txtDetail', true );
+	$txtArea      	= get_post_meta( $post->ID, '_txtArea', true );
+
+	$fieldy  = array(
+		'scenery' => array(
+			'id' => 'sceneTitle',
+			'title' => 'Scenery',
+			'type'  => 'text',
+		),
+		'pic' => array(
+			'id' => 'scenePic',
+			'title' => 'Scene Pic',
+			'type'  => 'upload',
+		),
+	);
+
+	$fieldControl = new Field_Controls();
+	$fieldControl->upload('Featured', 'upFeatured', array('name' => 'upFeatured', 'value' => $upPhoto, 'class' => 'single previewImage', 'placeholder' => __('Featured URL' , 'claypress')));
+	$fieldControl->editor('Detail', 'txtDetail', array('value' => esc_attr( $txtDetail )));
+	$fieldControl->editor('Area', 'txtArea', array('value' => esc_attr( $txtArea )));
+	$fieldControl->repeaterField('Scene', 'reScene', array('name' => 'reScene', 'value' => $reScene), $fieldy);
 }
 
 /**
@@ -172,3 +211,14 @@ function caviar_save_meta_box_data( $post_id ) {
 }
 
 add_action( 'save_post', 'caviar_save_meta_box_data' );
+
+function caviar_save_meta_box2_data( $post_id ) {
+	$txtDetail = $_POST['txtDetail'];
+	$txtArea = $_POST['txtArea'];
+
+	// Update the meta field in the database.
+	update_post_meta( $post_id, '_txtDetail', $txtDetail );
+	update_post_meta( $post_id, '_txtArea', $txtArea );
+}
+
+add_action( 'save_post', 'caviar_save_meta_box2_data' );

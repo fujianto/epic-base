@@ -33,6 +33,7 @@
 .radio-tabs .checkable-element .tab-label > input + .selected-element {
   /* IMAGE STYLES */
   cursor: pointer;
+  line-height: 0;
   border: 2px solid #d1d1d1;
 }
 .radio-tabs .checkable-element .tab-label > input + .selected-element img {

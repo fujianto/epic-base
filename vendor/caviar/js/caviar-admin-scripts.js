@@ -20,11 +20,11 @@ jQuery(document).ready(function ($) {
 
     function uploadImage() {
         $(document).on('click', '.uploadSingleImage', function (e) {
-
             e.preventDefault();
+            var fieldId     = jQuery(this).data('parent');
             var theTarget   = jQuery(this).data('target');
             var theSize     = jQuery(this).data('size');
-
+            console.log(fieldId == ""); console.log("fieldId");
             if (custom_uploader) {
                 custom_uploader.open();
                 return;
@@ -41,8 +41,14 @@ jQuery(document).ready(function ($) {
                 var attachment = custom_uploader.state().get('selection').first().toJSON();
 
                 jQuery('#' + theTarget).val(attachment.id);
-                var divTarget   = 'img#image-' + theTarget;
-                var urlTarget   = '.image-url#imageUrl-' + theTarget;
+
+                if(fieldId == "" || !fieldId){
+                    var divTarget   = 'img#image-' + theTarget;
+                    var urlTarget   = '.image-url#imageUrl-' + theTarget;
+                } else {
+                    var divTarget   = '#caviar-'+fieldId+' img#image-' + theTarget;
+                    var urlTarget   = '#caviar-'+fieldId+' .image-url#imageUrl-' + theTarget;
+                }
 
                 switch(theSize) {
                     case "icon"     :
@@ -53,7 +59,7 @@ jQuery(document).ready(function ($) {
                     case "large"    :   var theImage = attachment.sizes.full.url
                     break;
                 }
-
+                
                 jQuery(divTarget).attr('src',theImage);
                 jQuery(urlTarget).attr('value',theImage);
 
@@ -63,25 +69,40 @@ jQuery(document).ready(function ($) {
         
         $(document).on('change', '.image-url', function (e) {
             e.preventDefault();
+            var fieldId = jQuery(this).data('parent');
             var theTarget = jQuery(this).attr('data-target');
             var placeImg = jQuery('.thumb-preview').data('placeimg');
-            var divTarget   = 'img#image-' + theTarget;
-            var urlTarget   = '.image-url#imageUrl-' + theTarget;
+
+            if(fieldId == "" || !fieldId){
+                var divTarget   = 'img#image-' + theTarget;
+                var urlTarget   = '.image-url#imageUrl-' + theTarget;
+            } else {
+                var divTarget   = '#caviar-'+fieldId+' img#image-' + theTarget;
+                var urlTarget   = '#caviar-'+fieldId+' .image-url#imageUrl-' + theTarget;
+            }
 
             jQuery(divTarget).attr('src', $(this).val());
         });
     }
 
     function removeImage(){
+       
         $(document).on('click', '.clearSingleImage', function (e) {
             e.preventDefault();
+            var fieldId = jQuery(this).data('parent');
             var theTarget = jQuery(this).attr('data-target');
             var placeImg = jQuery('.thumb-preview').data('placeimg');
-            var divTarget   = 'img#image-' + theTarget;
-            var urlTarget   = '.image-url#imageUrl-' + theTarget;
+            
+            if(fieldId == "" || !fieldId){
+                var divTarget   = 'img#image-' + theTarget;
+                var urlTarget   = '.image-url#imageUrl-' + theTarget;
+            } else {
+                var divTarget   = '#caviar-'+fieldId+' img#image-' + theTarget;
+                var urlTarget   = '#caviar-'+fieldId+' .image-url#imageUrl-' + theTarget;
+            }
 
             confirmed = confirm("Are you sure want to remove the image?");
-
+            
             if (confirmed) {
               jQuery(divTarget).attr('src', placeImg);
               jQuery(urlTarget).attr('value', '');
@@ -91,7 +112,7 @@ jQuery(document).ready(function ($) {
 
     // // Delete a repeating section
     jQuery(document).on('click', '.deleteField', function(){
-        $(this).parent().parent('div').remove();
+        $(this).closest('.repeatingSection').remove();
 
         return false;
     });
@@ -132,13 +153,22 @@ jQuery(document).ready(function ($) {
             e.preventDefault();
             var markup = new Array(); 
             var i         =  0;
-            var elId      =  '#'+jQuery(this).parent().parent().parent().attr('id');
-            var fieldName =  jQuery(elId).find('.repeater-field').data('name');
-            var fieldId   =  jQuery(elId).find('.repeater-field').data('id');
-            var fieldnum  =  parseInt(jQuery(elId).find('.repeater-field').find('.repeatingSection').length);
-            var objFields =  jQuery(elId).find('.repeater-field').data('fields');
+            var parent    =  jQuery(this).parent().prev().data('id');
+            var elId      =  '#caviar-'+jQuery(this).parent().prev().data('id');
+            var fieldName =  jQuery(elId).data('name');
+            var fieldId   =  jQuery(elId).data('id');
+            var fieldnum  =  parseInt(jQuery(elId).find('.repeatingSection').length);
+            var objFields =  jQuery(elId).data('fields');
             var arrHTML   =  new Array();
+            
+            // console.log(jQuery(elId).find('.repeatingSection').length);
+            // console.log(jQuery(elId).attr('class'));
+            // console.log(jQuery(elId).attr('data-name'));
+            // console.log(jQuery(elId).data('id'));
+            // console.log(parseInt(jQuery(elId).find('.repeatingSection').length));
 
+            callAccordion();
+            
             $.each(objFields, function(index, key){
                 switch (key.type){
                     case 'text':
@@ -170,7 +200,7 @@ jQuery(document).ready(function ($) {
                             "<div id='"+(fieldnum)+"' class='uploadImage upload-controls widefat'> "+
                                 "<div class='upload-wrapper'>    "+
                                     "<figure class='upload-preview column'> "+
-                                        "<section class='upload-button-group clearfix'><a class='button uploadSingleImage upImage-"+(fieldnum)+" u-pull-left' href='#' title='Upload' data-target='"+(fieldnum)+"' data-size='medium'><i class='fa fa-cloud-upload pr-small'></i> Upload</a><a class='button clearSingleImage "+(fieldnum)+" u-pull-left' href='#' title='Remove' data-target='"+(fieldnum)+"'><i class='fa fa-eraser pr-small'></i> Remove</a> "+
+                                        "<section class='upload-button-group clearfix'><a class='button uploadSingleImage upImage-"+(fieldnum)+" u-pull-left' href='#' title='Upload' data-target='"+(fieldnum)+"' data-parent='"+parent+"' data-size='medium'><i class='fa fa-cloud-upload pr-small'></i> Upload</a><a class='button clearSingleImage "+(fieldnum)+" u-pull-left' href='#' title='Remove' data-parent='"+parent+"' data-target='"+(fieldnum)+"'><i class='fa fa-eraser pr-small'></i> Remove</a> "+
                                         "</section> "+
                                         "<img id='image-"+(fieldnum)+"' class='thumb-preview' src='' alt='thumby'> "+
                                     "</figure> "+
@@ -192,10 +222,9 @@ jQuery(document).ready(function ($) {
             $(".dynamicAccordion-"+fieldId).append(
                 '<div class="repeatingSection repeater_wrapper"> '+
                     '<label class="repeater-title control-label widefat" id="itemFeatures" for="itemFeatures">New Field</label> '+
-                    '<div class="accordion-content">'+markup.join(" ")+'</div> '+
+                    '<div class="accordion-content">'+markup.join(" ")+'<a href="#" class="button button-secondary button-large deleteField">Delete</a></div> '+
                     '<input type="hidden" class="widefat repeaterOrder" value="'+parseInt(fieldnum)+'" /> '+
                     '<br /> <br /> '+
-                    '<a href="#" class="button button-secondary button-large deleteField">Delete</a> '+
                 '</div> ').accordion('refresh');
 
             fieldnum++;

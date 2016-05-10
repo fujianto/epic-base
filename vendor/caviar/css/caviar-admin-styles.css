@@ -63,8 +63,7 @@
 }
 /* Repeater Field */
 .repeater_wrapper {
-  background-color: #f1f1f1;
-  padding: 14px 14px 0 14px;
+  padding: 0 30px 0 0;
 }
 .repeater_wrapper .ui-icon-triangle-1-e:before {
   content: '\f140';
@@ -84,10 +83,16 @@
 }
 .repeater-title {
   margin-bottom: 5px;
-  padding-bottom: 15px;
+  padding: 15px 0 15px 15px;
   font-weight: bold;
   border-bottom: 0;
   display: block;
+}
+.redux-container .ui-accordion .ui-accordion-header .ui-icon,
+.control-section-redux .ui-accordion .ui-accordion-header .ui-icon,
+.control-panel-redux .ui-accordion .ui-accordion-header .ui-icon,
+.redux-metabox .ui-accordion .ui-accordion-header .ui-icon {
+  left: 0;
 }
 .ui-state-highlight {
   height: 50px;

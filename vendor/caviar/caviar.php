@@ -11,9 +11,12 @@ class Caviar{
 	 * @return void
 	 */
 	public function constants() {
-		define('CAVIAR_DIR'     , trailingslashit( get_template_directory() ) . '/vendor/caviar');
-		define('CAVIAR_DIR_URI' , trailingslashit( get_template_directory_uri() ) . '/vendor/caviar');	
-		define('CAVIAR_BOWER' , 	CAVIAR_DIR_URI . '/vendor/bower');	
+		$extension_dir = trailingslashit( str_replace( '\\', '/', dirname( __FILE__ ) ) );
+		$extension_url = site_url( str_replace( trailingslashit( str_replace( '\\', '/', ABSPATH ) ), '', $extension_dir ) );
+
+		define('CAVIAR_DIR'     , $extension_dir);
+		define('CAVIAR_DIR_URI' , $extension_url);	
+		define('CAVIAR_BOWER'   , CAVIAR_DIR_URI . '/vendor/bower');	
 	}
 
 	/**

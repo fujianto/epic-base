@@ -22,18 +22,17 @@ if( ! class_exists('Field_Controls')) {
 			wp_enqueue_style( 'caviar-fontawesome' , 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css');
 			wp_enqueue_style( 'chosen'             , CAVIAR_BOWER . '/chosen/chosen.min.css');
 
-			wp_enqueue_style('jquery-ui');
+			wp_enqueue_style('jquery-ui', 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css');
 		}
 
 		public function caviar_enqueue_admin_scripts(){
 			wp_register_script( 'radiotabs-admin-js' , CAVIAR_DIR_URI. '/js/caviar-radio-tabs.js', array('jquery'), null, true);
 			wp_register_script( 'chosen'             , CAVIAR_BOWER . '/chosen/chosen.jquery.min.js', array('jquery'), null, true );
 			wp_register_script( 'caviar-admin-js'    , CAVIAR_DIR_URI. '/js/caviar-admin-scripts.js', array('jquery', 'radiotabs-admin-js', 'wp-color-picker', 'chosen'), null, true);
-		
+			
 			wp_enqueue_script('jquery-ui-accordion');
 			wp_enqueue_script('jquery-ui-sortable');
 			wp_enqueue_script('jquery-ui-tabs');
-
 			wp_enqueue_script('caviar-admin-js');
 		}
 
@@ -98,7 +97,7 @@ if( ! class_exists('Field_Controls')) {
 					case 'text'		:
 					case 'textarea'	:  $opt[] = $basicField->$type($set['title'], $id, array("echo" => false, "class" => "widefat repeatedField", "value" => $value[$key], "name" => $field_name));
 					  break;
-				 	case 'upload'   :  $opt[] = $this->$type($set['title'], $counter, array("echo" => false, "class" => "widefat repeatedField", "value" => $value[$key], "name" => $field_name), null);
+				 	case 'upload'   :  $opt[] = $this->$type($set['title'], $counter, array("echo" => false, "class" => "widefat repeatedField", "value" => $value[$key], "name" => $field_name, 'data_parent' => $id), null);
 				 		break;
 				 	case 'radioimage' :
 				 	case 'radiopill' : $opt[] = $this->$type($set['title'], $id, array("echo" => false, "class" => "widefat repeatedField", "value" => $value[$key], "name" => $field_name), $set['options']);
@@ -405,7 +404,7 @@ if( ! class_exists('Field_Controls')) {
 			/* Validation for every control attributes must have value */
 			$control_id          = self::must_exists( $id, "id='$id'", '');
 			$control_name        = self::must_exists( $name, "name='$name'", 'name="'.$id.'"');
-			// $control_class       = self::must_exists( $class, "class='$class'", "class='widefat'");
+			$control_parent		 = $data_parent;
 			$control_type        = self::must_exists( $type, "type='$type'", "type='text'");
 			$control_value       = self::must_exists( $value, "value='$value'", '');
 			$control_placeholder = self::must_exists( $placeholder, "placeholder='$placeholder'", '');
@@ -428,7 +427,6 @@ if( ! class_exists('Field_Controls')) {
 			);
 			wp_localize_script( 'caviar-admin-js', 'object_name', $translation_array );
 		
-
 			/* Print markup before control*/
 			$input = $before_control.
 
@@ -439,8 +437,8 @@ if( ! class_exists('Field_Controls')) {
 				"<div class='upload-wrapper'>".
 					"<figure class='upload-preview column'>".
 						"<section class='upload-button-group clearfix'>".
-							"<a class='button uploadSingleImage upImage-$id u-pull-left' href='#' title='".__( 'Upload', 'caviar' )."' data-target='$id' data-size='medium'><i class='fa fa-cloud-upload pr-small'></i> ".__( 'Upload', 'caviar' )."</a>".
-							"<a class='button clearSingleImage $id u-pull-left' href='#' title='".__( 'Remove', 'caviar' )."' data-target='$id'><i class='fa fa-eraser pr-small'></i> ".__( 'Remove', 'caviar' )."</a>".
+							"<a class='button uploadSingleImage upImage-$id u-pull-left' href='#' title='".__( 'Upload', 'caviar' )."' data-target='$id' data-parent='$control_parent' data-size='medium'><i class='fa fa-cloud-upload pr-small'></i> ".__( 'Upload', 'caviar' )."</a>".
+							"<a class='button clearSingleImage $id u-pull-left' data-parent='$control_parent'  href='#' title='".__( 'Remove', 'caviar' )."' data-target='$id'><i class='fa fa-eraser pr-small'></i> ".__( 'Remove', 'caviar' )."</a>".
 						"</section>".
 						// Use Image between manually inputted to input url or selected from media library
 						(($thumb == false) ? "<img id='image-$id' class='thumb-preview' src='$srcValue' data-placeimg='$default_image' alt='thumby'>" : "<img id='image-$id' class='thumb-preview' src='$thumb[0]' data-placeimg='$default_image' alt='thumbx'>").
@@ -464,7 +462,7 @@ if( ! class_exists('Field_Controls')) {
 				echo $input;
 			}	
 		}
-
+		
 		/**
 		 * Repeatable Field
 		 *
@@ -488,7 +486,7 @@ if( ! class_exists('Field_Controls')) {
 			$control_type        = self::must_exists( $type, "type='$type'", "type='text'");
 			$control_value       = self::must_exists( $value, "value='$value'", '');
 			$control_placeholder = self::must_exists( $placeholder, "placeholder='$placeholder'", '');
-			$control_label       = self::must_exists( $title, "<label class='control-label' $control_id for='$id'>$title</label>", '');
+			$control_label       = self::must_exists( $title, "<label class='control-label  main-label' for='$id'>$title</label>", '');
 			$control_info        = self::must_exists( $info, "<span class='control-info'>$info</span>", '');
 			$before_control 	 = self::must_exists( $before_control, $before_control,  "<div class='widget-separator'>" );
 			$after_control 	 	 = self::must_exists( $after_control, $after_control,  "</div>" );
@@ -499,12 +497,14 @@ if( ! class_exists('Field_Controls')) {
 			/* Print label before control */
 			echo $control_label;
 
-			echo "<div class='repeater-field dynamicAccordion-".$id."' data-id='".$id."' data-name='".$name."' data-fields='".json_encode($fields)."' data-fields-count='".count($value)."'>";
+			wp_enqueue_style('jquery-ui', 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css');
+			
+			echo "<div id='caviar-".$id."' class='repeater-field dynamicAccordion-".$id."' data-id='".$id."' data-name='".$name."' data-fields='".json_encode($fields)."' data-fields-count='".count($value)."'>";
 	 		echo self::each_repeater($title, $id, $name, $value, $fields).
 	 		 	'<div class="widget-separator"> <span id="'.$id.'-clone"></span> </div>';
 		 	echo "</div>";
 		 	echo "<div class='formRowRepeatingSection'>
-	 			<a href='#' class='button button-primary button-large addField-$id'>".__('Add Field' , 'caviar')."</a>
+	 			<a href='#' class='button button-primary button-large addField'>".__('Add Field' , 'caviar')."</a>
 	 		</div>";
 		 	
 
@@ -525,7 +525,6 @@ if( ! class_exists('Field_Controls')) {
 
 	}
 
+	$fieldControl = new Field_Controls();
 }
-
-$fieldControl = new Field_Controls();
 ?>
