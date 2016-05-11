@@ -48,10 +48,9 @@ function epic_base_register_image_sizes() {
  * @return void
  */
 function epic_base_register_menus() {
-	
 	register_nav_menu( 'primary',    esc_html_x( 'Primary',    'nav menu location', 'epic-base' ) );
-	register_nav_menu( 'secondary',  esc_html_x( 'Secondary',  'nav menu location', 'epic-base' ) );
-	register_nav_menu( 'subsidiary', esc_html_x( 'Subsidiary', 'nav menu location', 'epic-base' ) );
+	/*register_nav_menu( 'secondary',  esc_html_x( 'Secondary',  'nav menu location', 'epic-base' ) );
+	register_nav_menu( 'subsidiary', esc_html_x( 'Subsidiary', 'nav menu location', 'epic-base' ) );*/
 }
 
 /**
@@ -158,6 +157,10 @@ function epic_base_add_editor_styles() {
 	add_editor_style( hybrid_locate_theme_file( array('css/editor-styles.css')) );
 }
 
+/**
+ * Remove unused default widget
+ * @return void
+ */
 function epic_base_unregister_widget() {
 	unregister_widget('WP_Widget_Recent_Posts');
 	unregister_widget('WP_Widget_Recent_Comments');
@@ -224,11 +227,48 @@ function epic_base_load_all_php($directory){
 	}
 }
 
-function epic_base_admin_scripts(){
+/**
+ * Returns a set of image attachment links based on size.
+ *
+ * @return string
+ */
+function epic_base_get_image_size_links() {
+	if (has_post_thumbnail()) {
+
+		$featured_image_ID = get_post_thumbnail_id(get_the_ID());
+		// Set up an empty array for the links.
+		$links = array();
+
+		// Get the intermediate image sizes and add the full size to the array.
+		$sizes   = get_intermediate_image_sizes();
+		$sizes[] = 'full';
+
+		// Loop through each of the image sizes.
+		foreach ( $sizes as $size ) {
+
+			// Get the image source, width, height, and whether it's intermediate.
+			$image = wp_get_attachment_image_src( $featured_image_ID, $size );
+
+			// Add the link to the array if there's an image and if $is_intermediate (4th array value) is true or full size.
+			if ( ! empty( $image ) && ( true === $image[3] || 'full' == $size ) ) {
+
+				// Translators: Media dimensions - 1 is width and 2 is height.
+				$label = sprintf( esc_html__( '%1$s &#215; %2$s', 'hybrid-core' ), number_format_i18n( absint( $image[1] ) ), number_format_i18n( absint( $image[2] ) ) );
+
+				$links[] = sprintf( '<a href="%s" download="%s" class="image-size-link">%s</a>', $image[0], $image[0], $label );
+			}
+		}
+
+		// Join the links in a string and return.
+		return join( ' <span class="sep">/</span> ', $links );
+	}
+}
+
+/*function epic_base_admin_scripts(){
 	wp_register_script( 'repeater-js', THEME_VENDOR . '/bower/jquery.repeater/jquery.repeater.min.js', array('jquery'), null, true );
 	wp_register_script( 'admin-js', THEME_JS . '/admin-script.js', array('jquery', 'repeater-js'), null, true );
 
 	wp_enqueue_script('admin-js');
 }
 
-add_action('admin_enqueue_scripts', 'epic_base_admin_scripts' );
+add_action('admin_enqueue_scripts', 'epic_base_admin_scripts' );*/
