@@ -3,13 +3,15 @@
 <main <?php hybrid_attr( 'content' ); ?>>
 
 	<div class="row">
-		<?php if ( ! is_front_page()) : // If Not viewing on Frontpage ?>
-
-			<?php hybrid_get_menu( 'breadcrumbs' ); // Loads the menu/breadcrumbs.php template. ?>
-
-		<?php endif; // End check for Not viewing on Frontpage. ?>
-
+		
 		<div class="entry-wrapper <?php echo epic_base_entry_col_width(); ?> first">
+			
+			<?php if ( ! is_front_page()) : // If Not viewing on Frontpage ?>
+
+				<?php hybrid_get_menu( 'breadcrumbs' ); // Loads the menu/breadcrumbs.php template. ?>
+
+			<?php endif; // End check for Not viewing on Frontpage. ?>
+
 
 			<?php if ( ! is_front_page() && hybrid_is_plural() ) : // If viewing a multi-post page ?>
 

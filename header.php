@@ -42,7 +42,7 @@
 				<!-- End share section -->
 			</div>
 		</header><!-- #header -->
-		
+
 		<div class="wide-banner">
 			<?php if ( get_header_image() && !display_header_text() ) : // If there's a header image but no header text. ?>
 
