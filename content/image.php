@@ -69,16 +69,16 @@
 
 		<ul class="media-meta">
 			<?php $pre = '<li><span class="prep">%s</span>'; ?>
-			<?php hybrid_media_meta( 'dimensions',        array( 'post_id' => $featured_image_ID, 'before' => sprintf( $pre, esc_html__( 'Dimensions',    'hybrid-base' ) ), 'after' => '</li>' ) ); ?>
-			<?php hybrid_media_meta( 'created_timestamp', array( 'post_id' => $featured_image_ID, 'before' => sprintf( $pre, esc_html__( 'Date',          'hybrid-base' ) ), 'after' => '</li>' ) ); ?>
-			<?php hybrid_media_meta( 'camera',            array( 'post_id' => $featured_image_ID, 'before' => sprintf( $pre, esc_html__( 'Camera',        'hybrid-base' ) ), 'after' => '</li>' ) ); ?>
-			<?php hybrid_media_meta( 'aperture',          array( 'post_id' => $featured_image_ID, 'before' => sprintf( $pre, esc_html__( 'Aperture',      'hybrid-base' ) ), 'after' => '</li>' ) ); ?>
-			<?php hybrid_media_meta( 'focal_length',      array( 'post_id' => $featured_image_ID, 'before' => sprintf( $pre, esc_html__( 'Focal Length',  'hybrid-base' ) ), 'after' => '</li>', 'text' => esc_html__( '%s mm', 'hybrid-base' ) ) ); ?>
-			<?php hybrid_media_meta( 'iso',               array( 'post_id' => $featured_image_ID, 'before' => sprintf( $pre, esc_html__( 'ISO',           'hybrid-base' ) ), 'after' => '</li>' ) ); ?>
-			<?php hybrid_media_meta( 'shutter_speed',     array( 'post_id' => $featured_image_ID, 'before' => sprintf( $pre, esc_html__( 'Shutter Speed', 'hybrid-base' ) ), 'after' => '</li>', 'text' => esc_html__( '%s sec', 'hybrid-base' ) ) ); ?>
-			<?php hybrid_media_meta( 'file_type',         array( 'post_id' => $featured_image_ID, 'before' => sprintf( $pre, esc_html__( 'Type',          'hybrid-base' ) ), 'after' => '</li>' ) ); ?>
-			<?php hybrid_media_meta( 'file_name',         array( 'post_id' => $featured_image_ID, 'before' => sprintf( $pre, esc_html__( 'Name',          'hybrid-base' ) ), 'after' => '</li>' ) ); ?>
-			<?php hybrid_media_meta( 'mime_type',         array( 'post_id' => $featured_image_ID, 'before' => sprintf( $pre, esc_html__( 'Mime Type',     'hybrid-base' ) ), 'after' => '</li>' ) ); ?>
+			<?php hybrid_media_meta( 'dimensions',        array( 'post_id' => $featured_image_ID, 'before' => sprintf( $pre, esc_html__( 'Dimensions',    'epic-base' ) ), 'after' => '</li>' ) ); ?>
+			<?php hybrid_media_meta( 'created_timestamp', array( 'post_id' => $featured_image_ID, 'before' => sprintf( $pre, esc_html__( 'Date',          'epic-base' ) ), 'after' => '</li>' ) ); ?>
+			<?php hybrid_media_meta( 'camera',            array( 'post_id' => $featured_image_ID, 'before' => sprintf( $pre, esc_html__( 'Camera',        'epic-base' ) ), 'after' => '</li>' ) ); ?>
+			<?php hybrid_media_meta( 'aperture',          array( 'post_id' => $featured_image_ID, 'before' => sprintf( $pre, esc_html__( 'Aperture',      'epic-base' ) ), 'after' => '</li>' ) ); ?>
+			<?php hybrid_media_meta( 'focal_length',      array( 'post_id' => $featured_image_ID, 'before' => sprintf( $pre, esc_html__( 'Focal Length',  'epic-base' ) ), 'after' => '</li>', 'text' => esc_html__( '%s mm', 'epic-base' ) ) ); ?>
+			<?php hybrid_media_meta( 'iso',               array( 'post_id' => $featured_image_ID, 'before' => sprintf( $pre, esc_html__( 'ISO',           'epic-base' ) ), 'after' => '</li>' ) ); ?>
+			<?php hybrid_media_meta( 'shutter_speed',     array( 'post_id' => $featured_image_ID, 'before' => sprintf( $pre, esc_html__( 'Shutter Speed', 'epic-base' ) ), 'after' => '</li>', 'text' => esc_html__( '%s sec', 'epic-base' ) ) ); ?>
+			<?php hybrid_media_meta( 'file_type',         array( 'post_id' => $featured_image_ID, 'before' => sprintf( $pre, esc_html__( 'Type',          'epic-base' ) ), 'after' => '</li>' ) ); ?>
+			<?php hybrid_media_meta( 'file_name',         array( 'post_id' => $featured_image_ID, 'before' => sprintf( $pre, esc_html__( 'Name',          'epic-base' ) ), 'after' => '</li>' ) ); ?>
+			<?php hybrid_media_meta( 'mime_type',         array( 'post_id' => $featured_image_ID, 'before' => sprintf( $pre, esc_html__( 'Mime Type',     'epic-base' ) ), 'after' => '</li>' ) ); ?>
 		</ul>
 
 	</div><!-- .media-info -->
