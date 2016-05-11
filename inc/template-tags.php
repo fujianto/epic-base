@@ -24,8 +24,8 @@ function epic_base_main_pagination(){
 function epic_base_entry_col_width(){
 	$class = '';
 	/* If one column layout choosen, .col-md-12 will be added to entry-wrapper */
-	if ('1c' === get_theme_mod( 'theme_layout' ) ) {
-		return 'col-md-8 col-md-offset-2 col-sm-12';
+	if ('1c' === hybrid_get_theme_layout() ) {
+		return 'col-md-10 col-md-offset-1 col-sm-12';
 	} else{
 		return 'col-md-8';
 	}
