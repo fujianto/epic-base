@@ -108,6 +108,16 @@ figure {
 .fa {
   font-family: FontAwesome;
 }
+.screen-reader-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
 /* Button
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 input[type="submit"],
@@ -628,13 +638,6 @@ table > thead > tr > td {
   font-size: 6rem;
 }
 /* WIDGET */
-.widget {
-  background: #fff;
-  padding: 2rem 3rem;
-  margin: 0 0 3rem 0;
-  box-shadow: 0 2px 1px #ccc;
-  border: 1px solid rgba(204, 204, 204, 0.25);
-}
 .widget .widget-title {
   margin-top: 0;
   margin-bottom: 1.5rem;
@@ -644,6 +647,17 @@ table > thead > tr > td {
 .widget ul {
   list-style: disc;
   padding-left: 1.8rem;
+}
+.sidebar.sidebar-primary .widget,
+.sidebar.sidebar-secondary .widget {
+  background: #fff;
+  padding: 2rem 3rem;
+  margin: 0 0 3rem 0;
+  box-shadow: 0 2px 1px #ccc;
+  border: 1px solid rgba(204, 204, 204, 0.25);
+}
+.sidebar-header-right .widget-title {
+  display: none;
 }
 .social {
   list-style: none;
@@ -3410,6 +3424,9 @@ body.fluid .row {
   width: 100%;
   max-height: 250px;
 }
+/* .branding-wrapper {
+    margin: 2rem 0;
+} */
 .comments-wrapper {
   position: relative;
   background: #fff;
@@ -3615,6 +3632,9 @@ main.content {
   .last {
     padding-left: 30px !important;
     padding-right: 0 !important;
+  }
+  .header-right {
+    padding-right: 0;
   }
 }
 /* iPads (portrait and landscape) ----------- */
