@@ -2,7 +2,7 @@
 
 /**
  * Pagination for Post / Page Archive
- * @return [type] [description]
+ * @return void
  */
 function epic_base_main_pagination(){
 	$args = array (
@@ -97,10 +97,30 @@ function epic_base_entry_byline(){?>
  * [epic_base_entry_footer description]
  * @return Void
  */
-function epic_base_entry_footer(){?>
+function epic_base_entry_footer() {	?>
 	<footer class="entry-footer">
 		<?php hybrid_post_terms( array( 'taxonomy' => 'category', 'text' => esc_html__( 'Posted in %s', 'epic-base' ) ) ); ?>
 		<?php hybrid_post_terms( array( 'taxonomy' => 'post_tag', 'text' => esc_html__( 'Tagged %s', 'epic-base' ), 'before' => '<br />' ) ); ?>
 	</footer><!-- .entry-footer -->
 <?php }
 
+function epic_base_header_right_content() { ?>
+	<div class="col-md-8 header-right ta-right">
+		<aside <?php hybrid_attr( 'sidebar', 'header-right' ); ?>>
+
+			<?php if ( is_active_sidebar( 'header-right' ) ) : // If the sidebar has widgets. ?>
+
+				<?php dynamic_sidebar( 'header-right' ); // Displays the header-right sidebar. ?>
+
+			<?php else : // If the sidebar has no widgets, show search form. ?>
+				
+				<?php get_search_form(); ?>
+				
+			<?php endif; // End widgets check. ?>
+
+		</aside><!-- #sidebar-header-right -->
+	</div>
+<?php
+}
+
+add_action("epic_base_header_right", "epic_base_header_right_content");
