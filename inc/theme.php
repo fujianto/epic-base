@@ -121,9 +121,8 @@ function epic_base_register_sidebars() {
 function epic_base_enqueue_scripts() {
 	/* Register the scripts to WP */
 	wp_register_script( 'bootstrap-script'  , THEME_VENDOR . '/bower/bootstrap/dist/js/bootstrap.min.js', array('jquery'), null, true );
-	wp_register_script( 'fitvids'           , THEME_VENDOR . '/bower/fitvids/jquery.fitvids.js', array('jquery'), null, true );
 	wp_register_script( 'radio-tabs'        , THEME_JS     . '/radio-tabs.js', array('jquery'), null, true );
-	wp_register_script( 'main-js'           , THEME_JS     . '/scripts.js', array('jquery', 'fitvids'), null, true );
+	wp_register_script( 'main-js'           , THEME_JS     . '/scripts.js', array('jquery'), null, true );
 
 	/* Enqueu scripts to WordPress Footer */
 	wp_enqueue_script('bootstrap-script');

@@ -4,7 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "26a4d9f4f5c4b8f418c6101e08d88d02",
+    "hash": "b93216c60881dec69878bf50a9aee926",
+    "content-hash": "9bd1e78ae03815a385a81105e0160ddc",
     "packages": [
         {
             "name": "justintadlock/hybrid-core",
@@ -132,16 +133,16 @@
         },
         {
             "name": "webdevstudios/cmb2",
-            "version": "v2.1.0",
+            "version": "v2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WebDevStudios/CMB2.git",
-                "reference": "4aeaa0db3afd9cef6aef47205f41cbe127a57035"
+                "reference": "22fd55f4a89346323b8a7d66ed70d9989ce52622"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WebDevStudios/CMB2/zipball/4aeaa0db3afd9cef6aef47205f41cbe127a57035",
-                "reference": "4aeaa0db3afd9cef6aef47205f41cbe127a57035",
+                "url": "https://api.github.com/repos/WebDevStudios/CMB2/zipball/22fd55f4a89346323b8a7d66ed70d9989ce52622",
+                "reference": "22fd55f4a89346323b8a7d66ed70d9989ce52622",
                 "shasum": ""
             },
             "require": {
@@ -173,14 +174,47 @@
                 "plugin",
                 "wordpress"
             ],
-            "time": "2015-08-05 16:03:31"
+            "time": "2016-02-29 22:09:38"
+        },
+        {
+            "name": "zamoose/themehookalliance",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zamoose/themehookalliance.git",
+                "reference": "969c949df8c0a9740f27b88755d053762be5d283"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zamoose/themehookalliance/zipball/969c949df8c0a9740f27b88755d053762be5d283",
+                "reference": "969c949df8c0a9740f27b88755d053762be5d283",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Doug Stewart",
+                    "homepage": "http://literalbarrage.org"
+                }
+            ],
+            "description": "Theme Hook Alliance",
+            "homepage": "https://github.com/zamoose/themehookalliance",
+            "keywords": [
+                "wordpress"
+            ],
+            "time": "2015-08-05 03:42:29"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "webcode/wp-bootstrap-navwalker": 20
+        "webcode/wp-bootstrap-navwalker": 20,
+        "zamoose/themehookalliance": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

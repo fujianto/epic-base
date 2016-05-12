@@ -25,7 +25,9 @@ function epic_base_entry_col_width(){
 	$class = '';
 	/* If one column layout choosen, .col-md-12 will be added to entry-wrapper */
 	if ('1c' === hybrid_get_theme_layout() ) {
-		return 'col-md-10 col-md-offset-1 col-sm-12';
+		return 'col-md-12 col-sm-12';
+	} else if ('2c-r' === hybrid_get_theme_layout() ) {
+		return 'col-md-8 col-md-push-4';
 	} else{
 		return 'col-md-8';
 	}
@@ -105,7 +107,7 @@ function epic_base_entry_footer() {	?>
 <?php }
 
 function epic_base_header_right_content() { ?>
-	<div class="col-md-8 header-right ta-right">
+	<div class="col-md-8 col-sm-8 header-right">
 		<aside <?php hybrid_attr( 'sidebar', 'header-right' ); ?>>
 
 			<?php if ( is_active_sidebar( 'header-right' ) ) : // If the sidebar has widgets. ?>

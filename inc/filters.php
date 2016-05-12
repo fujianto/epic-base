@@ -60,7 +60,11 @@ function epic_base_attr_sidebar( $attr, $context ){
 	$sidebar_name = hybrid_get_sidebar_name( $context );
 
 	if( $sidebar_name === 'Primary') {
-		$attr['class'] = $attr['class']. ' col-md-4 sidebar-primary last';
+		if ('2c-r' === hybrid_get_theme_layout() ) {
+			$attr['class'] = $attr['class']. ' col-md-4 col-md-pull-8';
+		} else {
+			$attr['class'] = $attr['class']. ' col-md-4';
+		}	
 	}
 
 	return $attr;

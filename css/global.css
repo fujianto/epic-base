@@ -996,6 +996,22 @@ table > thead > tr > td {
 .featrued .image {
   margin-bottom: 2rem;
 }
+.embed-wrap {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+.embed-wrap iframe,
+.embed-wrap object,
+.embed-wrap embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 /* Post pagination */
 .page-links {
   margin-top: 2rem;
@@ -3424,6 +3440,9 @@ body.fluid .row {
   width: 100%;
   max-height: 250px;
 }
+.header-right {
+  text-align: right;
+}
 /* .branding-wrapper {
     margin: 2rem 0;
 } */
@@ -3633,9 +3652,6 @@ main.content {
     padding-left: 30px !important;
     padding-right: 0 !important;
   }
-  .header-right {
-    padding-right: 0;
-  }
 }
 /* iPads (portrait and landscape) ----------- */
 /* Tablet */
@@ -3644,6 +3660,13 @@ main.content {
 @media only screen and (max-width: 529px) {
   .navbar-default .collapse.navbar-collapse {
     padding: 0 1.5rem;
+  }
+  .branding-wrapper {
+    margin: 2rem 0;
+    text-align: center;
+  }
+  .header-right {
+    text-align: center;
   }
 }
 /* Remove on release */

@@ -4,8 +4,8 @@
 
 	<div class="row">
 		
-		<div class="entry-wrapper <?php echo epic_base_entry_col_width(); ?> first">
-			
+		<div class="entry-wrapper <?php echo epic_base_entry_col_width(); ?>">
+
 			<?php if ( ! is_front_page()) : // If Not viewing on Frontpage ?>
 
 				<?php hybrid_get_menu( 'breadcrumbs' ); // Loads the menu/breadcrumbs.php template. ?>

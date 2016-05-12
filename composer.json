@@ -3,6 +3,7 @@
 		"webcode/wp-bootstrap-navwalker" : "dev-master",
 		"tgmpa/tgm-plugin-activation" : "~2.0 < 3.0",
 		"justintadlock/hybrid-core" : "~3.0",
+		 "zamoose/themehookalliance" : "dev-master",
 		"webdevstudios/cmb2" : "~2.0 < 3.0"
 	},
 	"config": {

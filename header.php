@@ -27,7 +27,7 @@
 
 		<header <?php hybrid_attr( 'header' ); ?>>
 			<div class="row">
-				<div class="col-md-4" <?php hybrid_attr( 'branding' ); ?>>
+				<div class="col-md-4 col-sm-4" <?php hybrid_attr( 'branding' ); ?>>
 
 					<div class="branding-wrapper">
 						<?php if ( get_custom_logo() == "" || get_custom_logo() == null  ) : // If custom logo exist. ?>
