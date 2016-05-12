@@ -80,14 +80,30 @@ function epic_base_register_sidebars() {
 		array(
 			'id'          => 'primary',
 			'name'        => esc_html_x( 'Primary', 'sidebar', 'epic-base' ),
-			'description' => esc_html__( 'Add widget to sidebar.', 'epic-base' )
+			'description' => esc_html__( 'Add widget to Primary sidebar.', 'epic-base' )
+		)
+	);
+
+	hybrid_register_sidebar(
+		array(
+			'id'          => 'secondary',
+			'name'        => esc_html_x( 'Secondary', 'sidebar', 'epic-base' ),
+			'description' => esc_html__( 'Add widget to Secondary sidebar.', 'epic-base' )
+		)
+	);
+
+	hybrid_register_sidebar(
+		array(
+			'id'          => 'header-right',
+			'name'        => esc_html_x( 'Header Right', 'sidebar', 'epic-base' ),
+			'description' => esc_html__( 'Add widget to Header right.', 'epic-base' )
 		)
 	);
 
 	hybrid_register_sidebar(
 		array(
 			'id'          => 'subsidiary',
-			'name'        => esc_html_x( 'Subsidiary', 'sidebar', 'epic-base' ),
+			'name'        => esc_html_x( 'Footer', 'sidebar', 'epic-base' ),
 			'description' => esc_html__( 'Add widget to footer.', 'epic-base' ),
 			'before_widget' => '<div class="sidebar footer-sidebar col-md-4 col-sm-4 col-xs-12"> <div id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</div></div>',
