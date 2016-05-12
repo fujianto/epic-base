@@ -27,19 +27,22 @@
 
 		<header <?php hybrid_attr( 'header' ); ?>>
 			<div class="row">
-				<div class="col-md-6" <?php hybrid_attr( 'branding' ); ?>>
-					<?php if ( display_header_text() ) : // If user chooses to display header text. ?>
+				<div class="col-md-4" <?php hybrid_attr( 'branding' ); ?>>
 
-						<?php hybrid_site_title(); ?>
-						<?php hybrid_site_description(); ?>
+					<div class="branding-wrapper">
+						<?php if ( display_header_text() ) : // If user chooses to display header text. ?>
 
-					<?php endif; // End check for header text. ?>
+							<?php hybrid_site_title(); ?>
+							<?php hybrid_site_description(); ?>
+
+						<?php endif; // End check for header text. ?>
+					</div>
+				
 				</div>
 				<!-- End branding -->
-				<div class="col-md-6 share-section">
-					<?php //@TODO add hook to header area ?>
-				</div>
-				<!-- End share section -->
+				
+				<?php do_action('epic_base_header_right');?>
+				<!-- End right header section -->
 			</div>
 		</header><!-- #header -->
 
