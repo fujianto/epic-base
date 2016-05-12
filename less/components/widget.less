@@ -3,8 +3,6 @@
 @import "../dependencies/mixin.less";
 
 .widget{
-	.global-boxed();
-
 	.widget-title{
 		margin-top: 0;
 		margin-bottom: 1.5rem;
@@ -15,6 +13,21 @@
 	ul{
 		list-style: disc;
 		padding-left: 1.8rem;
+	}
+}
+
+.sidebar{
+	&.sidebar-primary, &.sidebar-secondary {
+		.widget{
+			.global-boxed();
+		}
+	}
+}
+
+
+.sidebar-header-right{
+	.widget-title{
+		display: none;
 	}
 }
 
