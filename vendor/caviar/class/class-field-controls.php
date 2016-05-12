@@ -61,7 +61,7 @@ if( ! class_exists('Field_Controls')) {
 						"<label class='repeater-title control-label widefat' id='".$id."' for='".$id."'>".$label." ".$counter."</label>".
 						"<div class='accordion-content'>".
 			 				$this->each_repeater_fields($id, $name, $val, $fields, $counter).
-			 				"<a href='#' class='button button-secondary button-large deleteField'>".__("Delete" , "caviar")."</a>".
+			 				"<a href='#' class='button button-secondary button-large deleteField'>".esc_html__("Delete" , "caviar")."</a>".
 			 			"</div>".
 			 			$this->text('', $id.'['.$counter.'][repeaterOrder]', array('type' => 'hidden' , 'name' => $name.'['.$counter.'][repeaterOrder]', 'class' => 'widefat repeaterOrder', 'echo' => false, 'value' => $val['repeaterOrder'])).
 		 			"</div>";
@@ -80,7 +80,7 @@ if( ! class_exists('Field_Controls')) {
 
 			foreach($fields as $key => $set) {
 				$defaults	= array(
-					'title'		=> __("Title", "caviar"),
+					'title'		=> esc_html__("Title", "caviar"),
 					'options'	=> array(),
 					'args'		=> array(),
 					'type'		=> 'text',
@@ -421,7 +421,7 @@ if( ! class_exists('Field_Controls')) {
 
 			// Localize the script with new data
 			$translation_array = array(
-				'some_string' => __( 'Some string to translate', 'plugin-domain' ),
+				'some_string' => esc_html__( 'Some string to translate', 'plugin-domain' ),
 				'a_value' => '10',
 				'upid' => $id,
 			);
@@ -437,8 +437,8 @@ if( ! class_exists('Field_Controls')) {
 				"<div class='upload-wrapper'>".
 					"<figure class='upload-preview column'>".
 						"<section class='upload-button-group clearfix'>".
-							"<a class='button uploadSingleImage upImage-$id u-pull-left' href='#' title='".__( 'Upload', 'caviar' )."' data-target='$id' data-parent='$control_parent' data-size='medium'><i class='fa fa-cloud-upload pr-small'></i> ".__( 'Upload', 'caviar' )."</a>".
-							"<a class='button clearSingleImage $id u-pull-left' data-parent='$control_parent'  href='#' title='".__( 'Remove', 'caviar' )."' data-target='$id'><i class='fa fa-eraser pr-small'></i> ".__( 'Remove', 'caviar' )."</a>".
+							"<a class='button uploadSingleImage upImage-$id u-pull-left' href='#' title='".esc_html__( 'Upload', 'caviar' )."' data-target='$id' data-parent='$control_parent' data-size='medium'><i class='fa fa-cloud-upload pr-small'></i> ".esc_html__( 'Upload', 'caviar' )."</a>".
+							"<a class='button clearSingleImage $id u-pull-left' data-parent='$control_parent'  href='#' title='".esc_html__( 'Remove', 'caviar' )."' data-target='$id'><i class='fa fa-eraser pr-small'></i> ".esc_html__( 'Remove', 'caviar' )."</a>".
 						"</section>".
 						// Use Image between manually inputted to input url or selected from media library
 						(($thumb == false) ? "<img id='image-$id' class='thumb-preview' src='$srcValue' data-placeimg='$default_image' alt='thumby'>" : "<img id='image-$id' class='thumb-preview' src='$thumb[0]' data-placeimg='$default_image' alt='thumbx'>").
@@ -504,7 +504,7 @@ if( ! class_exists('Field_Controls')) {
 	 		 	'<div class="widget-separator"> <span id="'.$id.'-clone"></span> </div>';
 		 	echo "</div>";
 		 	echo "<div class='formRowRepeatingSection'>
-	 			<a href='#' class='button button-primary button-large addField'>".__('Add Field' , 'caviar')."</a>
+	 			<a href='#' class='button button-primary button-large addField'>".esc_html__('Add Field' , 'caviar')."</a>
 	 		</div>";
 		 	
 

@@ -10,7 +10,7 @@
 			'show_on_front' => true,
 
 			'labels'        => array( 
-				'browse' => __( 'You are here:', 'epic-base' ) 
+				'browse' => esc_html__( 'You are here:', 'epic-base' ) 
 			) 
 		) 
 	); ?>

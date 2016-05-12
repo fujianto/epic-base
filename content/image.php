@@ -34,7 +34,7 @@
 			<?php wp_link_pages(); ?>
 
 			<div class="entry-byline">
-				<span class="image-sizes"><?php printf( __( 'Image Sizes: %s', 'epic-base' ), epic_base_get_image_size_links() ); ?></span>
+				<span class="image-sizes"><?php printf( esc_html__( 'Image Sizes: %s', 'epic-base' ), epic_base_get_image_size_links() ); ?></span>
 			</div><!-- .entry-byline -->
 
 		</div><!-- .entry-content -->

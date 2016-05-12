@@ -11,9 +11,9 @@
 			<?php the_widget(
 				'WP_Widget_Text',
 				array(
-					'title'  => __( 'Example Widget', 'epic-base' ),
+					'title'  => esc_html__( 'Example Widget', 'epic-base' ),
 					/* Translators: The %s are placeholders for HTML, so the order can't be changed. */
-					'text'   => sprintf( __( 'This is an example widget to show how the Primary sidebar looks by default. You can add custom widgets from the %swidgets screen%s in the admin.', 'epic-base' ), current_user_can( 'edit_theme_options' ) ? '<a href="' . admin_url( 'widgets.php' ) . '">' : '', current_user_can( 'edit_theme_options' ) ? '</a>' : '' ),
+					'text'   => sprintf( esc_html__( 'This is an example widget to show how the Primary sidebar looks by default. You can add custom widgets from the %swidgets screen%s in the admin.', 'epic-base' ), current_user_can( 'edit_theme_options' ) ? '<a href="' . admin_url( 'widgets.php' ) . '">' : '', current_user_can( 'edit_theme_options' ) ? '</a>' : '' ),
 					'filter' => true,
 				),
 				array(

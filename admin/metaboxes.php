@@ -14,7 +14,7 @@ function cmb2_sample_metaboxes() {
    */
   $cmb = new_cmb2_box( array(
       'id'            => 'test_metabox',
-      'title'         => __( 'Test Metabox', 'cmb2' ),
+      'title'         => esc_html__( 'Test Metabox', 'cmb2' ),
       'object_types'  => array( 'page', ), // Post type
       'context'       => 'normal',
       'priority'      => 'high',
@@ -25,8 +25,8 @@ function cmb2_sample_metaboxes() {
 
   // Regular text field
   $cmb->add_field( array(
-      'name'       => __( 'Test Text', 'cmb2' ),
-      'desc'       => __( 'field description (optional)', 'cmb2' ),
+      'name'       => esc_html__( 'Test Text', 'cmb2' ),
+      'desc'       => esc_html__( 'field description (optional)', 'cmb2' ),
       'id'         => $prefix . 'text',
       'type'       => 'text',
       'show_on_cb' => 'cmb2_hide_if_no_cats', // function should return a bool value
@@ -38,8 +38,8 @@ function cmb2_sample_metaboxes() {
 
   // URL text field
   $cmb->add_field( array(
-      'name' => __( 'Website URL', 'cmb2' ),
-      'desc' => __( 'field description (optional)', 'cmb2' ),
+      'name' => esc_html__( 'Website URL', 'cmb2' ),
+      'desc' => esc_html__( 'field description (optional)', 'cmb2' ),
       'id'   => $prefix . 'url',
       'type' => 'text_url',
       // 'protocols' => array('http', 'https', 'ftp', 'ftps', 'mailto', 'news', 'irc', 'gopher', 'nntp', 'feed', 'telnet'), // Array of allowed protocols
@@ -48,8 +48,8 @@ function cmb2_sample_metaboxes() {
 
   // Email text field
   $cmb->add_field( array(
-      'name' => __( 'Test Text Email', 'cmb2' ),
-      'desc' => __( 'field description (optional)', 'cmb2' ),
+      'name' => esc_html__( 'Test Text Email', 'cmb2' ),
+      'desc' => esc_html__( 'field description (optional)', 'cmb2' ),
       'id'   => $prefix . 'email',
       'type' => 'text_email',
       // 'repeatable' => true,

@@ -22,7 +22,7 @@
 	<div id="container" class="container-fluid">
 
 		<div class="skip-link">
-			<a href="#content" class="sr-only screen-reader-text"><?php _e( 'Skip to content', 'epic-base' ); ?></a>
+			<a href="#content" class="sr-only screen-reader-text"><?php esc_html_e( 'Skip to content', 'epic-base' ); ?></a>
 		</div><!-- .skip-link -->
 
 		<header <?php hybrid_attr( 'header' ); ?>>

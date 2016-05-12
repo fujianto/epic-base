@@ -84,9 +84,9 @@ function epic_base_theme_setup() {
 	add_theme_support( 
 		'theme-layouts', 
 		array(
-			'1c'        => __( '1 Column',                     'epic-base' ),
-			'2c-l'      => __( '2 Columns: Content / Sidebar', 'epic-base' ),
-			'2c-r'      => __( '2 Columns: Sidebar / Content', 'epic-base' )
+			'1c'        => esc_html__( '1 Column',                     'epic-base' ),
+			'2c-l'      => esc_html__( '2 Columns: Content / Sidebar', 'epic-base' ),
+			'2c-r'      => esc_html__( '2 Columns: Sidebar / Content', 'epic-base' )
 			),
 		array( 'default' => is_rtl() ? '2c-r' :'2c-l' ) 
 	);

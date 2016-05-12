@@ -11,14 +11,14 @@ function caviar_add_meta_box() {
 
 		add_meta_box(
 			'caviar_sectionid',
-			__( 'Caviar Metabox Field Example', 'caviar_textdomain' ),
+			esc_html__( 'Caviar Metabox Field Example', 'caviar_textdomain' ),
 			'caviar_meta_box_callback',
 			$screen
 		);
 
 		add_meta_box(
 			'caviar_2',
-			__( 'Caviar Metabox 2', 'caviar_textdomain' ),
+			esc_html__( 'Caviar Metabox 2', 'caviar_textdomain' ),
 			'caviar_meta_box2_callback',
 			$screen
 		);
@@ -104,8 +104,8 @@ function caviar_meta_box_callback( $post ) {
 	);
 
 	$fieldControl = new Field_Controls();
-	$fieldControl->upload('Photo', 'upPhoto', array('name' => 'upPhoto', 'value' => $upPhoto, 'class' => 'single previewImage', 'placeholder' => __('Image URL' , 'claypress')));
-	$fieldControl->upload('License Url', 'upLicense', array('name' => 'upLicense', 'value' => $upLicense, 'class' => 'single previewImage', 'placeholder' => __('Driving License url' , 'claypress')));
+	$fieldControl->upload('Photo', 'upPhoto', array('name' => 'upPhoto', 'value' => $upPhoto, 'class' => 'single previewImage', 'placeholder' => esc_html__('Image URL' , 'claypress')));
+	$fieldControl->upload('License Url', 'upLicense', array('name' => 'upLicense', 'value' => $upLicense, 'class' => 'single previewImage', 'placeholder' => esc_html__('Driving License url' , 'claypress')));
 
 	$fieldControl->text('Name', 'txtName', array('value' => esc_attr( $txtName ), 'attr' => array('data-test1' => 'test1', 'data-validate' => 'true')));
 	$fieldControl->text('Website', 'txtWebsite', array('type' => 'url','value' => esc_attr( $txtWebsite )));
@@ -147,7 +147,7 @@ function caviar_meta_box2_callback( $post ) {
 	);
 
 	$fieldControl = new Field_Controls();
-	$fieldControl->upload('Featured', 'upFeatured', array('name' => 'upFeatured', 'value' => $upPhoto, 'class' => 'single previewImage', 'placeholder' => __('Featured URL' , 'claypress')));
+	$fieldControl->upload('Featured', 'upFeatured', array('name' => 'upFeatured', 'value' => $upPhoto, 'class' => 'single previewImage', 'placeholder' => esc_html__('Featured URL' , 'claypress')));
 	$fieldControl->editor('Detail', 'txtDetail', array('value' => esc_attr( $txtDetail )));
 	$fieldControl->editor('Area', 'txtArea', array('value' => esc_attr( $txtArea )));
 	$fieldControl->repeaterField('Scene', 'reScene', array('name' => 'reScene', 'value' => $reScene), $fieldy);
