@@ -2,24 +2,12 @@
   "name": "epic",
   "version": "0.1.0",
   "dependencies": {
-    "awesome-bootstrap-checkbox": "~0.3.4",
     "bootstrap": "~3.3.4",
-    "bootstrap-chosen": "~1.0.1",
-    "bootstrap-filestyle" : "~1.1.2",
-    "bootstrap-switch": "~3.3.2",
-    "chosen": "~1.4.2",
     "fitvids" : "~1.1.0",
-    "FlexSlider" : "~2.5.0",
-    "footable" : "~2.0.3",
-    "holderjs" : "~2.8.0",
     "jquery.countdown" : "~2.0.4",
     "jQuery-Form-Validator" : "~2.2.1",
     "lesshat" : "~3.0.2",
-    "magnific-popup": "~1.0.0",
     "matchHeight" : "~0.6.0",
-    "eonasdan-bootstrap-datetimepicker": "~4.7.14",
-    "sticky": "~1.0.1",
-    "owl-carousel2": "~2.0.0",
-    "jquery.repeater" : "~0.1.5"
+    "sticky": "~1.0.1"
   }
 }
