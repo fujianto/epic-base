@@ -6,8 +6,8 @@
  */
 function epic_base_main_pagination(){
 	$args = array (
-		'prev_text'          => __('&laquo'),
-		'next_text'          => __('&raquo'),
+		'prev_text'          => __('&laquo', 'epic-base'),
+		'next_text'          => __('&raquo', 'epic-base'),
 		'type'               => 'plain',
 	); 
 
@@ -52,26 +52,26 @@ function epic_base_comments_args(){
    	'fields' => apply_filters('comment_form_default_fields',  array( 
      		'author' =>
 	      '<div class="form-group">' .
-	      	'<label for="name" class="label_title">' . __( 'Name', 'epic-base' ) . '' . ( $req ? '*' : '' ) . '</label> 
-	      	 <input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" placeholder="'. __('Fill your name ' , 'epic-base') .' ' . ( $req ? __('(required)', 'epic-base')  : '' ) . '" size="30"' . $aria_req . ' />
+	      	'<label for="name" class="label_title">' . esc_html__( 'Name', 'epic-base' ) . '' . ( $req ? '*' : '' ) . '</label> 
+	      	 <input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" placeholder="'. esc_html__('Fill your name ' , 'epic-base') .' ' . ( $req ? esc_html__('(required)', 'epic-base')  : '' ) . '" size="30"' . $aria_req . ' />
 	      </div>',
 
       	'email' =>
 	      '<div class="form-group">' .
-	      	'<label for="email" class="label_title">' . __( 'Email', 'epic-base' ) . ' ' . ( $req ? '*' : '' ) . '</label>
-	      	 <input id="email" name="email" type="email" value="' . esc_attr( $commenter['comment_author_email'] ) . '" placeholder="'.__('Fill your email' , 'epic-base').' ' . ( $req ? __('(required)', 'epic-base')  : '' ) . '" size="30"' . $aria_req . ' />
+	      	'<label for="email" class="label_title">' . esc_html__( 'Email', 'epic-base' ) . ' ' . ( $req ? '*' : '' ) . '</label>
+	      	 <input id="email" name="email" type="email" value="' . esc_attr( $commenter['comment_author_email'] ) . '" placeholder="'.esc_html__('Fill your email' , 'epic-base').' ' . ( $req ? esc_html__('(required)', 'epic-base')  : '' ) . '" size="30"' . $aria_req . ' />
 	      </div>',
 
       	'url' =>
 	      '<div class="form-group">' .
-	      	'<label for="url" class="label_title">' . __( 'Website', 'epic-base' ) . '</label>
-	      	<input id="url" name="url" type="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '"  placeholder="'.__('Fill your Website url' , 'epic-base').'" size="30" />
+	      	'<label for="url" class="label_title">' . esc_html__( 'Website', 'epic-base' ) . '</label>
+	      	<input id="url" name="url" type="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '"  placeholder="'.esc_html__('Fill your Website url' , 'epic-base').'" size="30" />
 	      </div>'
    	)),
         // redefine your own textarea (the comment body)
     'comment_field' => 
     	'<div class="form-group"> 
-  			<label for="message" class="label_title">' . __( 'Comments', 'epic-base' ) . '</label>
+  			<label for="message" class="label_title">' . esc_html__( 'Comments', 'epic-base' ) . '</label>
   			<textarea id="comment" name="comment" aria-required="true" cols="30" rows="10"></textarea> 
     	</div>'
 	
