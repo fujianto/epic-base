@@ -1,6 +1,9 @@
 <?php get_header(); // Loads the header.php template. ?>
 
+<?php tha_content_before(); ?>
+
 <main <?php hybrid_attr( 'content' ); ?>>
+	<?php tha_content_top(); ?>
 
 	<div class="row">
 		
@@ -20,8 +23,12 @@
 			<?php endif; // End check for multi-post page. ?>
 
 			<?php if ( have_posts() ) : // Checks if any posts were found. ?>
+				
+				<?php tha_content_while_before(); ?>
 
 				<?php while ( have_posts() ) : // Begins the loop through found posts. ?>
+					
+					<?php tha_entry_before(); ?>
 
 					<?php the_post(); // Loads the post data. ?>
 
@@ -34,6 +41,8 @@
 					<?php endif; // End check for single post. ?>
 
 				<?php endwhile; // End found posts loop. ?>
+
+				<?php tha_content_while_after(); ?>
 				
 				<!-- Pagination for older / newer post -->
 
@@ -49,6 +58,10 @@
 		<?php hybrid_get_sidebar( 'primary' ); // Loads the sidebar/primary.php template. ?>
 		<!-- /.entry-wrapper -->
 	</div>
+
+	<?php tha_content_bottom(); ?>
 </main><!-- #content -->
+
+<?php tha_content_after(); ?>
 
 <?php get_footer(); // Loads the footer.php template. ?>

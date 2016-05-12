@@ -59,7 +59,7 @@ require_once( $epic_base_dir . 'vendor/caviar/field-example-metaboxes.php' );
 
 new Caviar();
 
-
+require_once( $epic_base_dir . 'vendor/composer/zamoose/themehookalliance/tha-theme-hooks.php' );
 
 /* Load all files inside inc folder */
 epic_base_load_all_php( $epic_base_dir . 'inc/' );
