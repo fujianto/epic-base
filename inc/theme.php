@@ -122,7 +122,6 @@ function epic_base_enqueue_scripts() {
 	/* Register the scripts to WP */
 	wp_register_script( 'bootstrap-script'  , THEME_VENDOR . '/bower/bootstrap/dist/js/bootstrap.min.js', array('jquery'), null, true );
 	wp_register_script( 'fitvids'           , THEME_VENDOR . '/bower/fitvids/jquery.fitvids.js', array('jquery'), null, true );
-	wp_register_script( 'chosen'            , THEME_VENDOR . '/bower/chosen/chosen.jquery.min.js', array('jquery'), null, true );
 	wp_register_script( 'radio-tabs'        , THEME_JS     . '/radio-tabs.js', array('jquery'), null, true );
 	wp_register_script( 'main-js'           , THEME_JS     . '/scripts.js', array('jquery', 'fitvids'), null, true );
 
@@ -146,7 +145,6 @@ function epic_base_enqueue_styles() {
 
 	/* Customized Bootstrap Css*/
 	wp_enqueue_style( 'bootstrap-epic',  THEME_CSS   . '/customs/bootstrap-epic.css');
-	wp_enqueue_style( 'flexslider-epic', THEME_CSS   . '/components/flexslider-epic.css');
 	wp_enqueue_style( 'fontawesome',     THEME_FONTS . '/font-awesome/css/font-awesome.min.css');
 	wp_enqueue_style( 'radio-tabs',      THEME_CSS   . '/components/radio-tabs.css');
 	wp_enqueue_style( 'global',      	 THEME_CSS   . '/global.css');
