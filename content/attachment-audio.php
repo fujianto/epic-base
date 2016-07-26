@@ -2,6 +2,8 @@
 
 	<article <?php hybrid_attr( 'post' ); ?>>
 
+		<?php tha_entry_top(); ?>
+
 		<?php hybrid_attachment(); // Function for handling non-image attachments. ?>
 
 		<header class="entry-header">
@@ -17,6 +19,8 @@
 			<time <?php hybrid_attr( 'entry-published' ); ?>><?php echo get_the_date(); ?></time>
 			<?php edit_post_link(); ?>
 		</footer><!-- .entry-footer -->
+		
+		<?php tha_entry_bottom(); ?>
 
 	</article><!-- .entry -->
 
@@ -24,7 +28,7 @@
 
 		<div class="media-info">
 
-			<h3><?php esc_html_e( 'Image Info'( 'Audio Info', 'epic-base' ); ?></h3>
+			<h3><?php esc_html_e( 'Audio Info', 'epic-base' ); ?></h3>
 
 			<ul class="media-meta">
 				<?php $pre = '<li><span class="prep">%s</span>'; ?>
@@ -49,6 +53,8 @@
 
 	<article <?php hybrid_attr( 'post' ); ?>>
 
+		<?php tha_entry_top(); ?>
+
 		<?php get_the_image( array( 'size' => 'full', 'order' => array( 'featured', 'attachment' ) ) ); ?>
 
 		<header class="entry-header">
@@ -58,7 +64,9 @@
 		<div <?php hybrid_attr( 'entry-summary' ); ?>>
 			<?php the_excerpt(); ?>
 		</div><!-- .entry-summary -->
+		
+		<?php tha_entry_bottom(); ?>
 
 	</article><!-- .entry -->
-
+	
 <?php endif; // End single attachment check. ?>

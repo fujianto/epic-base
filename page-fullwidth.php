@@ -1,3 +1,11 @@
+<?php 
+/**
+ * Template Name: Fullwidth
+ *
+ * @package Epic Base
+ */
+?>
+
 <?php get_header(); // Loads the header.php template. ?>
 
 <?php tha_content_before(); ?>
@@ -8,7 +16,7 @@
 
 	<div class="row">
 		
-		<div class="entry-wrapper <?php do_action('epic_base_entry_col_width'); ?>">
+		<div class="entry-wrapper col-md-12 col-sm-12">
 
 			<?php if ( ! is_front_page()) : // If Not viewing on Frontpage ?>
 
@@ -49,7 +57,7 @@
 				
 				<!-- Pagination for older / newer post -->
 
-				<?php locate_template( array( 'template-parts/loop-nav.php' ), true ); // Loads the template-parts/loop-nav.php template. ?>
+				<?php //locate_template( array( 'template-parts/loop-nav.php' ), true ); // Loads the template-parts/loop-nav.php template. ?>
 		
 			<?php else : // If no posts were found. ?>
 
@@ -58,8 +66,6 @@
 			<?php endif; // End check for posts. ?>
 		</div>
 
-		<?php hybrid_get_sidebar( 'primary' ); // Loads the sidebar/primary.php template. ?>
-		<!-- /.entry-wrapper -->
 	</div>
 
 	<?php tha_content_bottom(); ?>

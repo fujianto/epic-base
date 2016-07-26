@@ -1,3 +1,5 @@
+
+
 <?php if ( function_exists('yoast_breadcrumb') ) :
 	yoast_breadcrumb('<p id="breadcrumbs">','</p>');
 ?>
@@ -6,12 +8,9 @@
 	<?php breadcrumb_trail(
 		array( 
 			'container'     => 'nav', 
-			'separator'     => '&raquo', 
-			'show_on_front' => true,
-
-			'labels'        => array( 
-				'browse' => esc_html__( 'You are here:', 'epic-base' ) 
-			) 
+			'separator'     => '>', 
+			'show_browse'   => false,
+			'show_on_front' => false,
 		) 
 	); ?>
 

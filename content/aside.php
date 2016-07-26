@@ -1,4 +1,6 @@
 <article <?php hybrid_attr( 'post' ); ?>>
+	
+	<?php tha_entry_top(); ?>
 
 	<?php if ( is_singular( get_post_type() ) ) : // If viewing a single post. ?>
 
@@ -33,5 +35,7 @@
 		</div><!-- .entry-content -->
 
 	<?php endif; // End single post check. ?>
+
+	<?php tha_entry_bottom(); ?>
 
 </article><!-- .entry -->

@@ -1,6 +1,8 @@
 <?php if ( is_attachment() ) : // If viewing a single attachment. ?>
 
 	<article <?php hybrid_attr( 'post' ); ?>>
+		
+		<?php tha_entry_top(); ?>
 
 		<?php hybrid_attachment(); // Function for handling non-image attachments. ?>
 
@@ -17,6 +19,8 @@
 			<time <?php hybrid_attr( 'entry-published' ); ?>><?php echo get_the_date(); ?></time>
 			<?php edit_post_link(); ?>
 		</footer><!-- .entry-footer -->
+		
+		<?php tha_entry_bottom(); ?>
 
 	</article><!-- .entry -->
 
@@ -44,6 +48,8 @@
 
 	<article <?php hybrid_attr( 'post' ); ?>>
 
+		<?php tha_entry_top(); ?>
+
 		<?php get_the_image(); ?>
 
 		<header class="entry-header">
@@ -53,6 +59,8 @@
 		<div <?php hybrid_attr( 'entry-summary' ); ?>>
 			<?php the_excerpt(); ?>
 		</div><!-- .entry-summary -->
+
+		<?php tha_entry_top(); ?>
 
 	</article><!-- .entry -->
 

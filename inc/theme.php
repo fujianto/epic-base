@@ -49,8 +49,8 @@ function epic_base_register_image_sizes() {
  */
 function epic_base_register_menus() {
 	register_nav_menu( 'primary',    esc_html_x( 'Primary',    'nav menu location', 'epic-base' ) );
-	/*register_nav_menu( 'secondary',  esc_html_x( 'Secondary',  'nav menu location', 'epic-base' ) );
-	register_nav_menu( 'subsidiary', esc_html_x( 'Subsidiary', 'nav menu location', 'epic-base' ) );*/
+	// register_nav_menu( 'secondary',  esc_html_x( 'Secondary',  'nav menu location', 'epic-base' ) );
+	// register_nav_menu( 'subsidiary', esc_html_x( 'Subsidiary', 'nav menu location', 'epic-base' ) );
 }
 
 /**

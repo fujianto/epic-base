@@ -24,7 +24,7 @@
 		</header><!-- .entry-header -->
 
 		<div <?php hybrid_attr( 'entry-summary' ); ?>>
-			<?php the_excerpt(); ?>
+			<?php the_content(); ?>
 		</div><!-- .entry-summary -->
 
 	<?php endif; // End single page check. ?>

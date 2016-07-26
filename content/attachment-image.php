@@ -1,4 +1,6 @@
 <article <?php hybrid_attr( 'post' ); ?>>
+	
+	<?php tha_entry_top(); ?>
 
 	<?php if ( is_attachment() ) : // If viewing a single attachment. ?>
 
@@ -47,6 +49,8 @@
 		</div><!-- .entry-summary -->
 
 	<?php endif; // End single attachment check. ?>
+	
+	<?php tha_entry_bottom(); ?>
 
 </article><!-- .entry -->
 
