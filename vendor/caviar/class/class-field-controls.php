@@ -2,7 +2,11 @@
 if( ! class_exists('Field_Controls')) {
 
 	class Field_Controls extends Basic_Fields{
-
+		/**
+	     * @var Singleton The reference to *Singleton* instance of this class
+	     */
+		private static $instance;
+		
 		public function __construct(){
 			/* Enable media library */
 			add_action( 'admin_enqueue_scripts', 'wp_enqueue_media' );
@@ -14,6 +18,14 @@ if( ! class_exists('Field_Controls')) {
 
 			/* Add the color picker css file */       
 			add_action( 'admin_enqueue_scripts',  array($this, 'caviar_add_color_picker'));
+		}
+
+		public static function getInstance(){
+			if (null === static::$instance) {
+				static::$instance = new static();
+			}
+
+			return static::$instance;
 		}
 
 		public function caviar_enqueue_admin_styles(){
@@ -91,7 +103,7 @@ if( ! class_exists('Field_Controls')) {
 				$type 	= $set['type'];
 
 				$field_name = $name.'['.$counter.']'.'['.$key.']';
-				$basicField = new Basic_Fields();
+				$basicField = Basic_Fields::getInstance();
 
 				switch($type) :
 					case 'text'		:
@@ -525,6 +537,6 @@ if( ! class_exists('Field_Controls')) {
 
 	}
 
-	$fieldControl = new Field_Controls();
+	Field_Controls::getInstance();
 }
 ?>

@@ -57,8 +57,7 @@ new Hybrid();
 require_once( $epic_base_dir . 'vendor/caviar/caviar.php' );
 require_once( $epic_base_dir . 'vendor/caviar/field-example-metaboxes.php' );
 
-new Caviar();
-
+/* Theme Hook Alliance Hook*/
 require_once( $epic_base_dir . 'vendor/composer/zamoose/themehookalliance/tha-theme-hooks.php' );
 
 /* Load all files inside inc folder */

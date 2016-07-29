@@ -29,7 +29,25 @@ if( ! class_exists('Basic_Fields')) {
 			'attr' 	         => array(),
 		);
 
+		/**
+	     * @var Singleton The reference to *Singleton* instance of this class
+	     */
+		private static $instance;
+
 		public function __construct(){}
+
+		/**
+	     * Returns the *Singleton* instance of this class.
+	     *
+	     * @return Singleton The *Singleton* instance.
+	     */
+		public static function getInstance(){
+			if (null === static::$instance) {
+				static::$instance = new static();
+			}
+
+			return static::$instance;
+		}
 
 		/**
 		 * Check if variable not empty or null
@@ -448,6 +466,6 @@ if( ! class_exists('Basic_Fields')) {
 		}
 	}
 
-	$basicField = new Basic_Fields();
+	Basic_Fields::getInstance();
 }
 ?>
