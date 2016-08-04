@@ -7,7 +7,8 @@
  */
 function epic_base_body_class( $classes ){
 	/* Set default layout to fluid by adding class to body */
-	$classes[] = 'fluid';	
+	$theme_name = strtolower(str_replace(' ', '-', wp_get_theme()->get( 'Name' )));
+	$classes[] = 'fluid '.$theme_name;		
 
 	return $classes;
 }
