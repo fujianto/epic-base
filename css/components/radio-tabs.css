@@ -1,9 +1,3 @@
-/* Bootstrap */
-/* BASIC COLOR */
-/* Main Theme Color */
-/* Element Color: */
-/* Font weight */
-/* Primary */
 .primary-bg {
   background: #e5554e;
 }
@@ -28,7 +22,6 @@
 .primary-border-left {
   border-left-color: #e5554e;
 }
-/* Secondary */
 .secondary-bg {
   background: slateblue;
 }
@@ -38,15 +31,12 @@
 .secondary-border {
   border-color: slateblue;
 }
-/* Tertiary */
 .tertiary-bg {
   background: gold;
 }
 .tertiary-color {
   color: gold;
 }
-/* Header BG */
-/* Body BG */
 .body-bg {
   background: rgba(204, 204, 204, 0.16);
 }
