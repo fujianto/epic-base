@@ -16,7 +16,7 @@ function epic_base_custom_background_setup() {
 	add_theme_support(
 		'custom-background',
 		array(
-			'default-color'    => '#F5F5F5',
+			'default-color'    => 'F5F5F5',
 			'default-image'    => '',
 			'wp-head-callback' => 'epic_base_custom_background_callback',
 		)

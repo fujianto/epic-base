@@ -13,40 +13,6 @@ jQuery(document).ready(function($) {
   		jQuery(".primary-nav-menu").sticky({topSpacing:0});
 	}
 
-  /*Just for test */
-  // jQuery(".primary-nav-menu").on('sticky-start', function() { 
-  // 	console.log("START"); 
-  // 	jQuery(this).animate({
-  // 		height:'40px',
-  // 	});
-
-  // 	jQuery('.navbar-default').animate({
-  // 		height:'40px',
-  // 	});
-  // });
-
-  // jQuery(".primary-nav-menu").on('sticky-end', function() { 
-  // 	console.log('END'); 
-  // 	jQuery(this).animate({
-  // 		height:'64px',
-  // 	});
-  // 	jQuery('.navbar-default').animate({
-  // 		height:'64px',
-  // 	});
-  // });
-
-	/* Custom Radio Tab */
-	if(jQuery("#tabs-option-logo").length > 0 && jQuery("#tabs-option-logo").length > 0 && jQuery("#tabs-option-logo").length > 0) {
-	  customLemonTabs('#tabs-option-logo');
-	  customLemonTabs('#tabs-option-layout');
-	  customLemonTabs('#tab-color-options');
-	}
-
-	/* Custom style input file */
-  if(jQuery.filestyle){	
-		jQuery(":file").filestyle();
-	}
-
 	/* Lightbox gallery */
 	if(jQuery(".gallery-group").length > 0 ) {
 		/* Popup Gallery */

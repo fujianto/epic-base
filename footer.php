@@ -5,10 +5,8 @@
 		<footer <?php hybrid_attr( 'footer' ); ?>>
 
 			<?php tha_footer_top(); ?>
-
-			<div class="row">
-				<?php hybrid_get_sidebar( 'subsidiary' ); // Loads the sidebar/subsidiary.php template. ?>
-			</div>
+			
+			<?php hybrid_get_sidebar( 'subsidiary' ); // Loads the sidebar/subsidiary.php template. ?>
 			
 			<?php tha_footer_bottom(); ?>
 		</footer><!-- #footer -->
