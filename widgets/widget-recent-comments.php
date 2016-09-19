@@ -8,7 +8,7 @@ class Epic_Base_Recent_Comments extends WP_Widget{
   public function __construct(){
     parent::__construct(
       'recent_comments',
-      __('Epic Base: Recent Comments' , 'epic-base'),
+      __('Recent Comments' , 'epic-base'),
       array('description' => __(' Display recent comments','epic-base'))
     );
   }

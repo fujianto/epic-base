@@ -1,3 +1,4 @@
+/*  Primary Color */
 .primary-bg {
   background: #e5554e;
 }
@@ -22,6 +23,7 @@
 .primary-border-left {
   border-left-color: #e5554e;
 }
+/*  Secondary Color */
 .secondary-bg {
   background: slateblue;
 }
@@ -31,14 +33,12 @@
 .secondary-border {
   border-color: slateblue;
 }
+/*  Tertiary Color */
 .tertiary-bg {
   background: gold;
 }
 .tertiary-color {
   color: gold;
-}
-.body-bg {
-  background: rgba(204, 204, 204, 0.16);
 }
 /* Radio Tabs */
 .radio-tabs .checkable-element .checkable-item {

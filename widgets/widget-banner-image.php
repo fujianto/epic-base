@@ -7,7 +7,7 @@ class Epic_Base_Banner_Image extends WP_Widget{
   public function __construct(){
     parent::__construct(
       'banner_image',
-      __('Epic Base: Banner Image ' , 'epic-base'),
+      __('Banner Image ' , 'epic-base'),
       array('description' => __(' Display Banner Image','epic-base'))
     );
   }

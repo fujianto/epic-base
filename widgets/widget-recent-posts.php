@@ -8,7 +8,7 @@ class Epic_Base_Recent_Posts extends WP_Widget{
   public function __construct(){
     parent::__construct(
       'recent_posts',
-      __('Epic Base: Recent Posts ' , 'epic-base'),
+      __('Recent Posts ' , 'epic-base'),
       array('description' => __(' Display recent posts','epic-base'))
     );
   }
