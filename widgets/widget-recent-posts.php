@@ -24,59 +24,24 @@ class Epic_Base_Recent_Posts extends WP_Widget{
     );
 
     $instance = wp_parse_args((array) $instance, $defautls);
+    ?>
+    <p>
+      <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title', 'epic-base'); ?></label>
+      <input class="widefat" type="text" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr($instance['title']); ?>"/>
+    </p>
 
-    $form_controls = new Field_Controls();
-    
-    /* Title */
-    $form_controls->text( __('Title', 'epic-base'), $this->get_field_id('title'),  array('class' => 'widefat', 'name' => $this->get_field_name('title'), 'value' => esc_attr($instance['title'])) ); 
-
-    /* Post Count */
-    $form_controls->text(  __('How many Post?', 'epic-base'), $this->get_field_id('posts_number'), array( 'class' => 'widefat', 'name' => $this->get_field_name('posts_number'), 'value' => esc_attr($instance['posts_number']) )); 
-
-    /* Category */
-    // $form_controls->taxonomy( __('Which category?', 'epic-base'), $this->get_field_id('posts_category'), array('name' => $this->get_field_name('posts_category'), 'class' => 'widefat', 'value' => esc_attr($instance['posts_category']) ), 'category', '' );
-
-    // $form_controls->radio( __('Posts Order?', 'epic-base'), $this->get_field_id('posts_order'),
-    //   /* Select html attributes*/
-    //   array(
-    //     'type' => 'pills',
-    //     'class' => 'widefat', 
-    //     'name'  => $this->get_field_name('posts_order'),
-    //     'value' => esc_attr($instance['posts_order'])
-    //     ),
-    //   /* The Options / value of select control*/
-    //   array(
-    //     'asc'  => __('Ascending' , 'epic-base'),
-    //     'desc' => __('Descending' , 'epic-base')
-    // )); 
-
-    // $form_controls->select( __('Order by?', 'epic-base'),  $this->get_field_id('posts_orderby'),
-    //   /* Select html attributes*/
-    //   array(
-    //     'multiple' => false,
-    //     'class' => 'widefat', 
-    //     'name'  => $this->get_field_name('posts_orderby'),
-    //     'value' => esc_attr($instance['posts_orderby'])
-    //     ),
-    //   /* The Options / value of select control*/
-    //   array(
-    //    'name'       => __('Name' , 'epic-base'), 
-    //    'count'      => __('Count' , 'epic-base'), 
-    //    'id'         => __('ID' , 'epic-base'), 
-    //    'slug'       => __('Slug' , 'epic-base'), 
-    //    'term_group' => __('Term Group' , 'epic-base')
-    //  )); 
+    <p>
+      <label for="<?php echo $this->get_field_id('posts_number'); ?>"><?php _e('How many Post?', 'epic-base'); ?></label>
+      <input class="widefat" type="text" id="<?php echo $this->get_field_id('posts_number'); ?>" name="<?php echo $this->get_field_name('posts_number'); ?>" value="<?php echo esc_attr($instance['posts_number']); ?>"/>
+    </p>
+    <?php
   }
 
   //Process widget options for saving
   public function  update($new_instance, $old_instance) {
    $instance = $old_instance;
-
    $instance['title']          = strip_tags($new_instance['title']);
    $instance['posts_number']   = strip_tags($new_instance['posts_number']);
-   // $instance['posts_category'] = strip_tags($new_instance['posts_category']);
-   // $instance['posts_order']    = strip_tags($new_instance['posts_order']);
-   // $instance['posts_orderby']  = strip_tags($new_instance['posts_orderby']);
   
    return $instance;
   }
@@ -86,11 +51,7 @@ class Epic_Base_Recent_Posts extends WP_Widget{
     extract($args);
 
     $title = apply_filters('widget-title', $instance['title']);
-
     $posts_number   = $instance['posts_number'];
-    // $posts_category = $instance['posts_category'];
-    // $posts_order    = $instance['posts_order'];
-    // $posts_orderby  = $instance['posts_orderby'];
 
     echo $before_widget;
 
@@ -99,9 +60,6 @@ class Epic_Base_Recent_Posts extends WP_Widget{
     }
 
     $args = array (
-      // 'cat'             => $posts_category,
-      // 'order'           => $posts_order,
-      // 'orderby'         => $posts_orderby,
       'posts_per_page'  => $posts_number,
       'post__not_in'    => get_option('sticky_posts'),
     );

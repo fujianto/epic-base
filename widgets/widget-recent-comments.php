@@ -18,64 +18,20 @@ class Epic_Base_Recent_Comments extends WP_Widget{
     $defautls = array(
       'title'          => __('Recent Comments', 'epic-base'),
       'comments_number'       => 5,
-      'comments_order'        => 'ASC',
-      'comments_show_avatar'  => true,
     );
 
     $instance = wp_parse_args((array) $instance, $defautls);
     ?>
-    
-      <?php 
-        $form_controls = new Field_Controls();
-        $id    = $this->get_field_id('title');
-        $name  = $this->get_field_name('title');
-        $value = esc_attr($instance['title']);
-        $form_controls->text( __('Title', 'epic-base'), $id,  array('class' => 'widefat', 'name' => $name, 'value' => $value) ); 
-      ?>
 
-      <?php 
-        $form_controls->text(  __('How many comment displayed?', 'epic-base'), $this->get_field_id('comments_number'), array( 'class' => 'widefat', 'name' => $this->get_field_name('comments_number'), 'value' => esc_attr($instance['comments_number']) )); 
-      ?>
+      <p>
+        <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title', 'epic-base'); ?></label>
+        <input class="widefat" type="text" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr($instance['title']); ?>"/>
+      </p>
 
-      <?php 
-        $id            = $this->get_field_id('comments_order');
-        $name          = $this->get_field_name('comments_order');
-        $selected      = esc_attr($instance['comments_order']);
-
-        $form_controls->select( __('Comment Order?', 'epic-base'), $id,
-          /* Select html attributes*/
-          array(
-            'multiple' => false,
-            'class' => 'widefat', 
-            'name'  => $name,
-            'value' => $selected
-          ),
-          /* The Options / value of select control*/
-          array(
-            'asc'  => __('Ascending' , 'epic-base'),
-            'desc' => __('Descending' , 'epic-base')
-        )); 
-      ?>
-
-      <?php 
-        $id            = $this->get_field_id('comments_show_avatar');
-        $name          = $this->get_field_name('comments_show_avatar');
-        $selected      = esc_attr($instance['comments_show_avatar']);
-
-        $form_controls->select( __('Show comment author avatar?', 'epic-base'), $id,
-          /* Select html attributes*/
-          array(
-            'multiple' => false,
-            'class'    => 'widefat', 
-            'name'     => $name,
-            'value'    => $selected
-          ),
-          /* The Options / value of select control*/
-          array(
-           'show' => __('Show' , 'epic-base'), 
-           'hide' => __('Hide' , 'epic-base'), 
-        )); 
-      ?>
+      <p>
+        <label for="<?php echo $this->get_field_id('comments_number'); ?>"><?php _e('How many comment displayed?', 'epic-base'); ?></label>
+        <input class="widefat" type="text" id="<?php echo $this->get_field_id('comments_number'); ?>" name="<?php echo $this->get_field_name('comments_number'); ?>" value="<?php echo esc_attr($instance['comments_number']); ?>"/>
+      </p>
 
     <?php
   }
@@ -86,8 +42,6 @@ class Epic_Base_Recent_Comments extends WP_Widget{
 
    $instance['title']                 = strip_tags($new_instance['title']);
    $instance['comments_number']       = strip_tags($new_instance['comments_number']);
-   $instance['comments_order']        = strip_tags($new_instance['comments_order']);
-   $instance['comments_show_avatar']  = strip_tags($new_instance['comments_show_avatar']);
 
    return $instance;
   }
@@ -98,8 +52,6 @@ class Epic_Base_Recent_Comments extends WP_Widget{
 
     $title                 = apply_filters('widget-title', $instance['title']);
     $comments_number       = $instance['comments_number'];
-    $comments_order        = $instance['comments_order'];
-    $comments_show_avatar  = $instance['comments_show_avatar'];
 
     echo $before_widget;
 
@@ -108,7 +60,6 @@ class Epic_Base_Recent_Comments extends WP_Widget{
     }
 
     $args = array (
-      'order'    > $comments_order,
       'number'  => $comments_number,
       'status'  => 'approve',
     );
@@ -128,13 +79,11 @@ class Epic_Base_Recent_Comments extends WP_Widget{
           $end_dotted = (strlen($content) > 80 ) ? '...' : ''; ?>
 
           <li>
-            <?php if($comments_show_avatar === 'show' ) : ?>
-              <figure class="featured-thumb pull-left">
-                <?php echo get_avatar( $comment, 60 ); ?>
-              </figure>
-            <?php endif; ?>
+            <figure class="featured-thumb pull-left">
+              <?php echo get_avatar( $comment, 60 ); ?>
+            </figure>
 
-            <div class="rcomment pull-right <?php echo ( ($comments_show_avatar === 'hide' ) ? 'u-full-width' : '' ); ?>">
+            <div class="rcomment pull-right">
               <b class="author-name"><a href="<?php echo $link;?>"><?php echo $auth;?></a></b>
               <p class="comment-excerpt"><?php echo substr($content, 0, 80); ?> <?php echo $end_dotted; ?></p>
             </div> 

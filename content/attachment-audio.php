@@ -32,17 +32,17 @@
 
 			<ul class="media-meta">
 				<?php $pre = '<li><span class="prep">%s</span>'; ?>
-				<?php hybrid_media_meta( 'length_formatted', array( 'before' => sprintf( $pre, esc_html__( 'Run Time',  'hybrid-base' ) ), 'after' => '</li>' ) ); ?>
-				<?php hybrid_media_meta( 'artist',           array( 'before' => sprintf( $pre, esc_html__( 'Artist',    'hybrid-base' ) ), 'after' => '</li>' ) ); ?>
-				<?php hybrid_media_meta( 'composer',         array( 'before' => sprintf( $pre, esc_html__( 'Composer',  'hybrid-base' ) ), 'after' => '</li>' ) ); ?>
-				<?php hybrid_media_meta( 'album',            array( 'before' => sprintf( $pre, esc_html__( 'Album',     'hybrid-base' ) ), 'after' => '</li>' ) ); ?>
-				<?php hybrid_media_meta( 'track_number',     array( 'before' => sprintf( $pre, esc_html__( 'Track',     'hybrid-base' ) ), 'after' => '</li>' ) ); ?>
-				<?php hybrid_media_meta( 'year',             array( 'before' => sprintf( $pre, esc_html__( 'Year',      'hybrid-base' ) ), 'after' => '</li>' ) ); ?>
-				<?php hybrid_media_meta( 'genre',            array( 'before' => sprintf( $pre, esc_html__( 'Genre',     'hybrid-base' ) ), 'after' => '</li>' ) ); ?>
-				<?php hybrid_media_meta( 'file_type',        array( 'before' => sprintf( $pre, esc_html__( 'Type',      'hybrid-base' ) ), 'after' => '</li>' ) ); ?>
-				<?php hybrid_media_meta( 'file_name',        array( 'before' => sprintf( $pre, esc_html__( 'Name',      'hybrid-base' ) ), 'after' => '</li>' ) ); ?>
-				<?php hybrid_media_meta( 'file_size',        array( 'before' => sprintf( $pre, esc_html__( 'Size',      'hybrid-base' ) ), 'after' => '</li>' ) ); ?>
-				<?php hybrid_media_meta( 'mime_type',        array( 'before' => sprintf( $pre, esc_html__( 'Mime Type', 'hybrid-base' ) ), 'after' => '</li>' ) ); ?>
+				<?php hybrid_media_meta( 'length_formatted', array( 'before' => sprintf( $pre, esc_html__( 'Run Time',  'epic-base' ) ), 'after' => '</li>' ) ); ?>
+				<?php hybrid_media_meta( 'artist',           array( 'before' => sprintf( $pre, esc_html__( 'Artist',    'epic-base' ) ), 'after' => '</li>' ) ); ?>
+				<?php hybrid_media_meta( 'composer',         array( 'before' => sprintf( $pre, esc_html__( 'Composer',  'epic-base' ) ), 'after' => '</li>' ) ); ?>
+				<?php hybrid_media_meta( 'album',            array( 'before' => sprintf( $pre, esc_html__( 'Album',     'epic-base' ) ), 'after' => '</li>' ) ); ?>
+				<?php hybrid_media_meta( 'track_number',     array( 'before' => sprintf( $pre, esc_html__( 'Track',     'epic-base' ) ), 'after' => '</li>' ) ); ?>
+				<?php hybrid_media_meta( 'year',             array( 'before' => sprintf( $pre, esc_html__( 'Year',      'epic-base' ) ), 'after' => '</li>' ) ); ?>
+				<?php hybrid_media_meta( 'genre',            array( 'before' => sprintf( $pre, esc_html__( 'Genre',     'epic-base' ) ), 'after' => '</li>' ) ); ?>
+				<?php hybrid_media_meta( 'file_type',        array( 'before' => sprintf( $pre, esc_html__( 'Type',      'epic-base' ) ), 'after' => '</li>' ) ); ?>
+				<?php hybrid_media_meta( 'file_name',        array( 'before' => sprintf( $pre, esc_html__( 'Name',      'epic-base' ) ), 'after' => '</li>' ) ); ?>
+				<?php hybrid_media_meta( 'file_size',        array( 'before' => sprintf( $pre, esc_html__( 'Size',      'epic-base' ) ), 'after' => '</li>' ) ); ?>
+				<?php hybrid_media_meta( 'mime_type',        array( 'before' => sprintf( $pre, esc_html__( 'Mime Type', 'epic-base' ) ), 'after' => '</li>' ) ); ?>
 			</ul>
 
 		</div><!-- .media-info -->

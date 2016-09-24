@@ -10,12 +10,12 @@
  * You should have received a copy of the GNU General Public License along with this program; if not, write 
  * to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  *
- * @package    EpicBase
+ * @package    Epic Base
  * @subpackage Functions
- * @version    0.0.1
+ * @version    0.2.5
  * @author     Septian Ahmad Fujianto <septianahmad@naisinpo.com>
- * @copyright  Copyright (c) 2013 - 2015, Septian Ahmad Fujianto
- * @link       http://seotemplates.net/themes/epic-base
+ * @copyright  Copyright (c) 2013 - 2016, Septian Ahmad Fujianto
+ * @link       http://septianfujianto.com/themes/epic-base/
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
@@ -54,11 +54,11 @@ require_once( $epic_base_dir . 'inc/theme.php'            );
 
 new Hybrid();
 
-require_once( $epic_base_dir . 'vendor/caviar/caviar.php' );
-require_once( $epic_base_dir . 'vendor/caviar/field-example-metaboxes.php' );
-
-/* Theme Hook Alliance Hook*/
+/* Theme Hook Alliance */
 require_once( $epic_base_dir . 'vendor/composer/zamoose/themehookalliance/tha-theme-hooks.php' );
+
+/* Bootstrap Custom Nav Walker */
+require_once( $epic_base_dir . 'vendor/wp-bootstrap-navwalker/wp_bootstrap_navwalker.php' );
 
 /* Load all files inside inc folder */
 epic_base_load_all_php( $epic_base_dir . 'inc/' );

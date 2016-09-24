@@ -1,5 +1,5 @@
-<div class="row">
-	<div class="col-md-4 col-sm-4" <?php hybrid_attr( 'branding' ); ?>>
+<div class="flex-row">
+	<div class="flex-col col-3 col-branding" <?php hybrid_attr( 'branding' ); ?>>
 
 		<div class="branding-wrapper">
 			<?php if ( get_custom_logo() == "" || get_custom_logo() == null  ) : // If custom logo exist. ?>
@@ -21,8 +21,9 @@
 		</div>		
 
 	</div>
-	<!-- End branding -->
 	
-	<?php do_action('epic_base_header_right');?>
+	<div class="flex-col col-7 col-header-right ta-right">
+		<?php do_action('epic_base_header_right');?>
+	</div>
 	<!-- End right header section -->
 </div>

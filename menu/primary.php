@@ -26,8 +26,8 @@
 							'container_class'   => 'collapse navbar-collapse',
 							'container_id'      => 'primary-menu',
 							'menu_class'        => 'nav navbar-nav',
-							'fallback_cb'       => 'BootstrapNavWalker::fallback',
-							'walker'            => new BootstrapNavWalker()
+							'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+							'walker'            => new wp_bootstrap_navwalker()
 						)
 					); ?>
 			</nav>

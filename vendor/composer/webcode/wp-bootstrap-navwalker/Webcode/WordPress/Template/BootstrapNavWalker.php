@@ -49,7 +49,7 @@ class BootstrapNavWalker extends \Walker_Nav_Menu {
 
             // If item has_children add atts to a.
             if ($args->has_children && $depth === 0) {
-                if (THEME_IS_RESPONSIVE) {
+                if (true) {
                     $atts['href'] = '#';
                     $atts['data-toggle'] = 'dropdown';
                 } else {

@@ -69,21 +69,20 @@ add_action( 'epic_base_header_content', 'epic_base_header_content_area' );
 
 
 function epic_base_header_right_content_area() { ?>
-	<div class="col-md-8 col-sm-8 header-right">
-		<aside <?php hybrid_attr( 'sidebar', 'header-right' ); ?>>
 
-			<?php if ( is_active_sidebar( 'header-right' ) ) : // If the sidebar has widgets. ?>
+	<aside <?php hybrid_attr( 'sidebar', 'header-right' ); ?>>
 
-				<?php dynamic_sidebar( 'header-right' ); // Displays the header-right sidebar. ?>
+		<?php if ( is_active_sidebar( 'header-right' ) ) : // If the sidebar has widgets. ?>
 
-			<?php else : // If the sidebar has no widgets, show search form. ?>
-				
-				<?php get_search_form(); ?>
-				
-			<?php endif; // End widgets check. ?>
+			<?php dynamic_sidebar( 'header-right' ); // Displays the header-right sidebar. ?>
 
-		</aside><!-- #sidebar-header-right -->
-	</div>
+		<?php else : // If the sidebar has no widgets, show search form. ?>
+			
+			<?php get_search_form(); ?>
+			
+		<?php endif; // End widgets check. ?>
+
+	</aside><!-- #sidebar-header-right -->
 <?php
 }
 

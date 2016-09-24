@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b93216c60881dec69878bf50a9aee926",
-    "content-hash": "9bd1e78ae03815a385a81105e0160ddc",
+    "hash": "1a65c945aa37b3e0347dac7b73685a98",
+    "content-hash": "f05ae8fb71cbe2c1c0d50a895225e5f3",
     "packages": [
         {
             "name": "justintadlock/hybrid-core",
@@ -46,61 +46,6 @@
             "time": "2015-08-17 21:31:12"
         },
         {
-            "name": "tgmpa/tgm-plugin-activation",
-            "version": "2.5.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/TGMPA/TGM-Plugin-Activation.git",
-                "reference": "ba41c10e821a10d3d6c3b8e468a16716bb03f125"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/TGMPA/TGM-Plugin-Activation/zipball/ba41c10e821a10d3d6c3b8e468a16716bb03f125",
-                "reference": "ba41c10e821a10d3d6c3b8e468a16716bb03f125",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "class-tgm-plugin-activation.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Thomas Griffin",
-                    "homepage": "http://thomasgriffinmedia.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Gary Jones",
-                    "homepage": "https://github.com/GaryJones",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Juliette Reinders Folmer",
-                    "homepage": "https://github.com/jrfnl",
-                    "role": "Developer"
-                }
-            ],
-            "description": "TGM Plugin Activation is a PHP library that allows you to easily require or recommend plugins for your WordPress themes (and plugins).",
-            "homepage": "http://tgmpluginactivation.com",
-            "keywords": [
-                "activation",
-                "library",
-                "plugins",
-                "theme",
-                "wordpress"
-            ],
-            "time": "2015-07-16 08:59:11"
-        },
-        {
             "name": "webcode/wp-bootstrap-navwalker",
             "version": "dev-master",
             "source": {
@@ -130,51 +75,6 @@
                 "wordpress"
             ],
             "time": "2014-12-18 02:58:45"
-        },
-        {
-            "name": "webdevstudios/cmb2",
-            "version": "v2.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/WebDevStudios/CMB2.git",
-                "reference": "22fd55f4a89346323b8a7d66ed70d9989ce52622"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/WebDevStudios/CMB2/zipball/22fd55f4a89346323b8a7d66ed70d9989ce52622",
-                "reference": "22fd55f4a89346323b8a7d66ed70d9989ce52622",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">5.2.4"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "3.7.*"
-            },
-            "suggest": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "WebDevStudios",
-                    "email": "contact@webdevstudios.com",
-                    "homepage": "https://github.com/WebDevStudios",
-                    "role": "Developer"
-                }
-            ],
-            "description": "CMB2 is a metabox, custom fields, and forms library for WordPress that will blow your mind.",
-            "homepage": "https://github.com/WebDevStudios/CMB2",
-            "keywords": [
-                "metabox",
-                "plugin",
-                "wordpress"
-            ],
-            "time": "2016-02-29 22:09:38"
         },
         {
             "name": "zamoose/themehookalliance",
