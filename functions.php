@@ -12,7 +12,7 @@
  *
  * @package    Epic Base
  * @subpackage Functions
- * @version    0.2.5
+ * @version    0.2.6
  * @author     Septian Ahmad Fujianto <septianahmad@naisinpo.com>
  * @copyright  Copyright (c) 2013 - 2016, Septian Ahmad Fujianto
  * @link       http://septianfujianto.com/themes/epic-base/
@@ -30,18 +30,18 @@
 */
 
 /* Define constant for easy access to Theme directory*/
-define( 'HOME_URI'      , home_url()                   );
-define( 'THEME_URI'     , get_template_directory_uri() );
-define( 'THEME_DIR'     , get_template_directory() 	   );
-define( 'THEME_IMAGES'  , THEME_URI . '/images'        );
-define( 'THEME_CSS'     , THEME_URI . '/css'           );
-define( 'THEME_JS'      , THEME_URI . '/js'            );
-define( 'THEME_FONTS'   , THEME_URI . '/fonts'         );
-define( 'THEME_VENDOR'  , THEME_URI . '/vendor'        );
+define( 'EPIC_BASE_HOME_URI'      	, esc_url(home_url())              );
+define( 'EPIC_BASE_URI'     , get_template_directory_uri() 		);
+define( 'EPIC_BASE_DIR'     , get_template_directory() 	   		);
+define( 'EPIC_BASE_IMAGES'  , EPIC_BASE_URI . '/images'        );
+define( 'EPIC_BASE_CSS'     , EPIC_BASE_URI . '/css'           );
+define( 'EPIC_BASE_JS'      , EPIC_BASE_URI . '/js'            );
+define( 'EPIC_BASE_FONTS'   , EPIC_BASE_URI . '/fonts'         );
+define( 'EPIC_BASE_VENDOR'  , EPIC_BASE_URI . '/vendor'        );
 
 /* Set Hybrid Core to Composer custom directory */
-define( 'HYBRID_DIR'    , THEME_DIR . '/vendor/composer/justintadlock/hybrid-core/');
-define( 'HYBRID_URI'    , THEME_URI . '/vendor/composer/justintadlock/hybrid-core/');
+define( 'HYBRID_DIR'    , EPIC_BASE_DIR . '/vendor/composer/justintadlock/hybrid-core/');
+define( 'HYBRID_URI'    , EPIC_BASE_URI . '/vendor/composer/justintadlock/hybrid-core/');
 
 /* Get the template directory and make sure it has a trailing slash. */
 $epic_base_dir = trailingslashit( get_template_directory() );

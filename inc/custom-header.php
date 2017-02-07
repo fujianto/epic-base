@@ -16,7 +16,7 @@ function epic_base_custom_header_setup() {
 	add_theme_support(
 		'custom-header',
 		array(
-			'default-image'          => THEME_IMAGES.'/header.jpg',
+			'default-image'          => EPIC_BASE_IMAGES.'/header.jpg',
 			'random-default'         => false,
 			'width'                  => 1280,
 			'height'                 => 400,

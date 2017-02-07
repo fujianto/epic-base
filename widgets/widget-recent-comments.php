@@ -75,7 +75,7 @@ class Epic_Base_Recent_Comments extends WP_Widget{
           $auth       = $comment->comment_author;
           $title      = get_the_title($id);
           $content    = $comment->comment_content;
-          $link       = get_permalink($id);
+          $link       = esc_url(get_permalink($id));
           $end_dotted = (strlen($content) > 80 ) ? '...' : ''; ?>
 
           <li>

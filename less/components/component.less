@@ -1,5 +1,5 @@
 @import "../dependencies/variables-epic.less";
-/* Breadcrumbs
+/* Breadcrumbs */
 .breadcrumbs{
 	margin: 0 0 2rem 0;
 
@@ -19,10 +19,27 @@
 		padding-left: 1.5rem;
 		li{
 			display: inline-block;
-			margin-right: 1rem;
+
 		}
 	}
 }
+
+// Breadcrumb */
+.breadcrumb-trail li{
+ &:after{
+   content: '\f0da';
+   font-family: @font-awesome;
+   margin: -3px 1rem 0;
+   font-weight: 400;
+ }
+
+ &:last-of-type{
+  &:after{
+    content: '';
+  }
+ }
+}
+
 
 /* Main Pagination */
 .pagination-wrapper{

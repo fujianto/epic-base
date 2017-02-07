@@ -2,7 +2,7 @@
  Theme URI         : http://septianfujianto.com/themes/epic-base/
  Requires at least : 4.5
  Tested up to      : 4.6.1
- Stable tag        : 0.2.5
+ Stable tag        : 0.2.6
  Author            : Septian Ahmad Fujianto
  Author URI        : http://septianfujianto.com
  Tags              : one-column, two-columns, custom-background, custom-header, custom-menu, featured-images, left-sidebar, post-formats, editor-style, right-sidebar, rtl-language-support, threaded-comments, translation-ready, footer-widgets, microformats
@@ -42,6 +42,9 @@ The exceptions to this license are as follows:
 * Hybrid Core - http://themehybrid.com/hybrid-core copyrighted by Justin Tadlock licensed under GNU General Public License version 2 or later.
 * Lesshat - http://lesshat.madebysource.com copyrighted by Petr Brzek is licensed under MIT license.
 * Theme Hook Alliance - https://github.com/zamoose/themehookalliance copyrighted by Doug Stewart is licensed under GNU General Public License version 2 or later.
+* Fontawesome - http://fontawesome.io/license/ is licensed under SIL OFL 1.1
+* Open sans - license under Apache License 2.0
+* Header Image - https://pixabay.com/en/panorama-sunrise-dawn-bled-1993645/ by David Mark is licensed under CC0 Public Domain.
 
 == Theme Notes ==
 

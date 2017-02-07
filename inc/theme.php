@@ -118,14 +118,14 @@ function epic_base_register_sidebars() {
  */
 function epic_base_enqueue_scripts() {
 	/* Register the scripts to WP */
-	wp_register_script( 'bootstrap-script'  , THEME_VENDOR . '/bower/bootstrap/dist/js/bootstrap.min.js', array('jquery'), null, true );
-	wp_register_script( 'radio-tabs'        , THEME_JS     . '/radio-tabs.js', array('jquery'), null, true );
-	wp_register_script( 'main-js'           , THEME_JS     . '/scripts.js', array('jquery'), null, true );
+	wp_register_script( 'epic-base-bootstrap-script'  , EPIC_BASE_VENDOR . '/bower/bootstrap/dist/js/bootstrap.min.js', array('jquery'), null, true );
+	wp_register_script( 'epic-base-radio-tabs'        , EPIC_BASE_JS     . '/radio-tabs.js', array('jquery'), null, true );
+	wp_register_script( 'epic-base-main-js'           , EPIC_BASE_JS     . '/scripts.js', array('jquery'), null, true );
 
 	/* Enqueu scripts to WordPress Footer */
-	wp_enqueue_script('bootstrap-script');
-	wp_enqueue_script('radio-tabs');
-	wp_enqueue_script('main-js');
+	wp_enqueue_script('epic-base-bootstrap-script');
+	wp_enqueue_script('epic-base-radio-tabs');
+	wp_enqueue_script('epic-base-main-js');
 }
 
 /**
@@ -141,22 +141,22 @@ function epic_base_enqueue_styles() {
 	$suffix = hybrid_get_min_suffix();
 
 	/* Customized Bootstrap Css*/
-	wp_enqueue_style( 'bootstrap-epic',  THEME_CSS   . '/customs/bootstrap-epic.css');
-	wp_enqueue_style( 'fontawesome',     THEME_FONTS . '/font-awesome/css/font-awesome.min.css');
-	wp_enqueue_style( 'radio-tabs',      THEME_CSS   . '/components/radio-tabs.css');
+	wp_enqueue_style( 'epic-base-bootstrap-epic',  EPIC_BASE_CSS   . '/customs/bootstrap-epic.css');
+	wp_enqueue_style( 'epic-base-fontawesome',     EPIC_BASE_FONTS . '/font-awesome/css/font-awesome.min.css');
+	wp_enqueue_style( 'epic-base-radio-tabs',      EPIC_BASE_CSS   . '/components/radio-tabs.css');
 
 	/* Load gallery style if 'cleaner-gallery' is active. */
 	if ( current_theme_supports( 'cleaner-gallery' ) ) {
-		wp_enqueue_style( 'gallery', trailingslashit( HYBRID_CSS ) . "gallery{$suffix}.css" );
+		wp_enqueue_style( 'epic-base-gallery', trailingslashit( HYBRID_CSS ) . "gallery{$suffix}.css" );
 	}
 
 	/* Load parent theme stylesheet if child theme is active. */
 	if ( is_child_theme() ) {
-		wp_enqueue_style( 'parent', trailingslashit( get_template_directory_uri() ) . "style{$suffix}.css" );
+		wp_enqueue_style( 'epic-base-parent', trailingslashit( get_template_directory_uri() ) . "style{$suffix}.css" );
 	}
 
 	/* Load active theme stylesheet. */
-	wp_enqueue_style( 'style', get_stylesheet_uri() );
+	wp_enqueue_style( 'epic-base-style', get_stylesheet_uri() );
 }
 
 /**
@@ -209,7 +209,7 @@ function epic_base_get_several_gallery_thumbnail($images_count = 3, $width = '37
 		?>
 
 		<figure class="caviar_item">
-			<a href="<?php echo get_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+			<a href="<?php echo esc_url(get_permalink()); ?>" title="<?php the_title_attribute(); ?>">
 				<img src="<?php echo $src; ?>" class="caviar_img" alt="<?php the_title_attribute(); ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>"/>
 			</a>
 		</figure>
