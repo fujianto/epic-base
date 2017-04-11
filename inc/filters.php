@@ -207,9 +207,7 @@ add_action('hybrid_attr_entry-summary', 'epic_base_attr_entry_summary');
  * @return array
  */
 function epic_base_attr_post( $attr ){
-	if( has_post_format('status') ){
-		$attr['class']    = $attr['class'].' clearfix';
-	}
+	$attr['class']    = $attr['class'].' clearfix';
 
 	return $attr;
 }

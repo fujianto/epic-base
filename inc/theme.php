@@ -51,6 +51,12 @@ function epic_base_register_menus() {
 	register_nav_menu( 'primary',    esc_html_x( 'Primary',    'nav menu location', 'epic-base' ) );
 }
 
+function epic_base_default_menu() {
+	$html = '<div id="primary-menu" class="collapse navbar-collapse"> <ul id="menu-all-pages" class="nav navbar-nav"> <li id="menu-item-1719" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1719"><a title="Blog" href="#">Blog</a></li> <li id="menu-item-1718" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1718"><a title="Shop" href="#">Shop</a></li> <li id="menu-item-1717" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1717"><a title="My Account" href="#">My Account</a></li> </ul> </div>';
+
+	echo $html;
+}
+
 /**
  * Registers layouts.
  *

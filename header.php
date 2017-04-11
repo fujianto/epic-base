@@ -19,7 +19,7 @@
 	<div id="container" class="container-fluid">
 		
 		<?php tha_header_before(); ?>
-
+		
 		<header <?php hybrid_attr( 'header' ); ?>>
 
 			<?php tha_header_top(); ?>

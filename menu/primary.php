@@ -1,6 +1,5 @@
 <?php use Webcode\WordPress\Template\BootstrapNavWalker; ?>
 
-<?php if ( has_nav_menu( 'primary' ) ) : // Check if there's a menu assigned to the 'primary' location. ?>
 	<div class="primary-nav-menu">
 		<div class="row">
 			<nav class="navbar navbar-default" <?php hybrid_attr( 'menu', 'primary' ); ?>>
@@ -26,7 +25,7 @@
 							'container_class'   => 'collapse navbar-collapse',
 							'container_id'      => 'primary-menu',
 							'menu_class'        => 'nav navbar-nav',
-							'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+							'fallback_cb'       => 'epic_base_default_menu',
 							'walker'            => new wp_bootstrap_navwalker()
 						)
 					); ?>
@@ -34,4 +33,3 @@
 		</div>
 	</div>
 	<!-- End primary-nav-men  -->
-<?php endif; // End check for menu. ?>
