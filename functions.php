@@ -46,12 +46,11 @@ define( 'HYBRID_URI'    , EPIC_BASE_URI . '/vendor/composer/justintadlock/hybrid
 /* Get the template directory and make sure it has a trailing slash. */
 $epic_base_dir = trailingslashit( get_template_directory() );
 
-/* Load composer dependencies */
-require 'vendor/composer/autoload.php';
-
 /* Load the Hybrid Core framework and theme files. */
 require_once( $epic_base_dir . 'inc/theme.php'            );
 
+/* Hybrid core */
+require_once( $epic_base_dir . 'vendor/composer/justintadlock/hybrid-core/hybrid.php' );
 new Hybrid();
 
 /* Theme Hook Alliance */
