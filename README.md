@@ -2,7 +2,7 @@
  Theme URI         : http://septianfujianto.com/themes/epic-base/
  Requires at least : 4.5
  Tested up to      : 4.6.1
- Stable tag        : 0.2.6
+ Stable tag        : 0.2.7
  Author            : Septian Ahmad Fujianto
  Author URI        : http://septianfujianto.com
  Tags              : one-column, two-columns, custom-background, custom-header, custom-menu, featured-images, left-sidebar, post-formats, editor-style, right-sidebar, rtl-language-support, threaded-comments, translation-ready, footer-widgets, microformats

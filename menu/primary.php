@@ -1,5 +1,3 @@
-<?php use Webcode\WordPress\Template\BootstrapNavWalker; ?>
-
 	<div class="primary-nav-menu">
 		<div class="row">
 			<nav class="navbar navbar-default" <?php hybrid_attr( 'menu', 'primary' ); ?>>
@@ -18,7 +16,7 @@
 				<?php
 					wp_nav_menu(
 						array(
-							'menu'              => 'primary',
+							'menu'              => 'Primary Menu',
 							'theme_location'    => 'primary',
 							'depth'             => 2,
 							'container'         => 'div',
