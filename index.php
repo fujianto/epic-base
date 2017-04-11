@@ -15,7 +15,7 @@
 				<?php hybrid_get_menu( 'breadcrumbs' ); // Loads the menu/breadcrumbs.php template. ?>
 
 			<?php endif; // End check for Not viewing on Frontpage. ?>
-
+			
 
 			<?php if ( ! is_front_page() && hybrid_is_plural() ) : // If viewing a multi-post page ?>
 

@@ -12,6 +12,7 @@
  *
  * @package    Epic Base
  * @subpackage Functions
+
  * @version    0.2.8
  * @author     Septian Ahmad Fujianto <septianahmad@naisinpo.com>
  * @copyright  Copyright (c) 2013 - 2016, Septian Ahmad Fujianto
@@ -46,12 +47,11 @@ define( 'HYBRID_URI'    , EPIC_BASE_URI . '/vendor/composer/justintadlock/hybrid
 /* Get the template directory and make sure it has a trailing slash. */
 $epic_base_dir = trailingslashit( get_template_directory() );
 
-/* Load composer dependencies */
-require 'vendor/composer/autoload.php';
-
 /* Load the Hybrid Core framework and theme files. */
 require_once( $epic_base_dir . 'inc/theme.php'            );
 
+/* Hybrid core */
+require_once( $epic_base_dir . 'vendor/composer/justintadlock/hybrid-core/hybrid.php' );
 new Hybrid();
 
 /* Theme Hook Alliance */

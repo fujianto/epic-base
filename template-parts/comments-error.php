@@ -2,8 +2,8 @@
 
 	<p class="comments-closed pings-open">
 		<?php
-			/* Translators: The two %s are placeholders for HTML. The order can't be changed. */
-			printf( esc_html__( 'Comments are closed, but %strackbacks%s and pingbacks are open.', 'epic-base' ), '<a href="' . esc_url( get_trackback_url() ) . '">', '</a>' );
+			/* Translators: The two  are placeholders for HTML. The order can't be changed. */
+			printf( esc_html__( 'Comments are closed, but trackbacks and pingbacks are open.', 'epic-base' ), '<a href="' . esc_url( get_trackback_url() ) . '">', '</a>' );
 		?>
 	</p><!-- .comments-closed .pings-open -->
 
