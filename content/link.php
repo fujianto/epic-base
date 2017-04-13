@@ -32,7 +32,7 @@
 			<time <?php hybrid_attr( 'entry-published' ); ?>><?php echo get_the_date(); ?></time>
 			<a class="entry-permalink" href="<?php the_permalink(); ?>" rel="bookmark" itemprop="url"><?php esc_html_e( 'Permalink', 'epic-base' ); ?></a>
 			<?php comments_popup_link( number_format_i18n( 0 ), number_format_i18n( 1 ), '%', 'comments-link', '' ); ?>
-			<?php edit_post_link(); ?>
+			<?php esc_url(edit_post_link()); ?>
 		</footer><!-- .entry-footer -->
 
 	<?php endif; // End single post check. ?>

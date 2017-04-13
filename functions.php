@@ -13,7 +13,7 @@
  * @package    Epic Base
  * @subpackage Functions
 
- * @version    0.2.8
+ * @version    0.2.9
  * @author     Septian Ahmad Fujianto <septianahmad@naisinpo.com>
  * @copyright  Copyright (c) 2013 - 2016, Septian Ahmad Fujianto
  * @link       http://septianfujianto.com/themes/epic-base/

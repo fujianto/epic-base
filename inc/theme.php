@@ -52,7 +52,7 @@ function epic_base_register_menus() {
 }
 
 function epic_base_default_menu() {
-	$html = '<div id="primary-menu" class="collapse navbar-collapse"> <ul id="menu-all-pages" class="nav navbar-nav"> <li class="menu-item menu-item-type-post_type menu-item-object-page"><a title="Blog" href="'.home_url().'">Home</a></li> <li class="menu-item menu-item-type-post_type menu-item-object-page"><a title="Shop" href="#">About</a></li> <li class="menu-item menu-item-type-post_type menu-item-object-page"><a title="My Account" href="#">Blog</a></li> </ul> </div>';
+	$html = '<div id="primary-menu" class="collapse navbar-collapse"> <ul id="menu-all-pages" class="nav navbar-nav"> <li class="menu-item menu-item-type-post_type menu-item-object-page"><a title="Blog" href="'.esc_url(home_url()).'">Home</a></li> <li class="menu-item menu-item-type-post_type menu-item-object-page"><a title="Shop" href="#">About</a></li> <li class="menu-item menu-item-type-post_type menu-item-object-page"><a title="My Account" href="#">Blog</a></li> </ul> </div>';
 
 	echo $html;
 }
@@ -188,9 +188,9 @@ function epic_base_unregister_widget() {
  * @return Void
  */
 function epic_base_load_fonts(){
-	wp_register_style('open-sans', 'http://fonts.googleapis.com/css?family=Open+Sans:400,500,600,700,300');
+	wp_register_style('epic-base-open-sans', 'http://fonts.googleapis.com/css?family=Open+Sans:400,500,600,700,300');
 
-	wp_enqueue_style('open-sans');	
+	wp_enqueue_style('epic-base-open-sans');	
 }
 
 /**

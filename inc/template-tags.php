@@ -78,7 +78,7 @@ function epic_base_entry_byline(){?>
 
 		<?php comments_popup_link( number_format_i18n( 0 ), number_format_i18n( 1 ). ' Comment', '% Comments', 'comments-link', '' ); ?>
 		
-		<?php edit_post_link(); ?>
+		<?php esc_url(edit_post_link()); ?>
 	</div><!-- .entry-byline -->
 <?php }
 
