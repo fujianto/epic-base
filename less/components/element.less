@@ -1,0 +1,92 @@
+@import "../dependencies/variables-epic.less";
+
+/* Image
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+img.center {
+ display: block;
+ margin-right: 0;
+ margin-left: 0;
+}
+
+img{
+  max-width: 100%;
+  height: auto;
+}
+
+figure {
+  margin: 0;
+  max-width: 100%;
+}
+
+/* Text
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+// Font awesome */
+.fa{
+	font-family: @font-awesome;
+}
+
+a{
+	&:extend(.secondary-color);
+	&:hover{
+		&:extend(.primary-color);
+	}
+}
+
+.screen-reader-text{
+	position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Button
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+input[type="submit"],
+input[type="reset"],
+button {
+	.btn;
+	.btn-default;
+}
+
+.mfp-close{
+	&:hover, &:focus{
+		background: transparent;
+	}
+}
+
+/* Form 
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"]{
+  .form-control;
+}
+
+textarea{
+	height: auto;
+}
+
+/* Table 
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+table{
+	.table;
+	.table-bordered;
+}
