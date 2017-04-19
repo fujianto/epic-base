@@ -36,9 +36,9 @@ class Epic_Base_Recent_Posts extends WP_Widget{
 
   //Process widget options for saving
   public function update($new_instance, $old_instance) {
-   $instance = $old_instance;
-   $instance['title']          = sanitize_text_field(strip_tags($new_instance['title']));
-   $instance['posts_number']   = sanitize_text_field(strip_tags($new_instance['posts_number']));
+    $instance = $old_instance;
+    $instance['title']          = sanitize_title(strip_tags($new_instance['title']));
+    $instance['posts_number']   = sanitize_text_field(absint(strip_tags($new_instance['posts_number'])));
   
    return $instance;
   }
@@ -79,7 +79,7 @@ class Epic_Base_Recent_Posts extends WP_Widget{
             <li>
               <?php if ( $image !== '' ) :?>
                 <figure class="featured-thumb pull-left">
-                  <?php get_the_image(array('width' => '80px', 'height' => '80px')); ?>
+                  <?php get_the_image(array('width' => esc_attr('80px'), 'height' => esc_attr('80px'))); ?>
                 </figure>
               <?php endif; ?>
 
@@ -98,8 +98,10 @@ class Epic_Base_Recent_Posts extends WP_Widget{
   }
 }
 
-add_action( 'widgets_init', function(){
+function epc_base_register_recent_posts_widget(){
     register_widget("Epic_Base_Recent_Posts");
-} );
+}
+
+add_action( 'widgets_init', 'epc_base_register_recent_posts_widget');
 
 ?>

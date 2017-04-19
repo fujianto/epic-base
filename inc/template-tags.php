@@ -9,10 +9,11 @@ function epic_base_main_pagination(){
 		'prev_text'          => __('&laquo', 'epic-base'),
 		'next_text'          => __('&raquo', 'epic-base'),
 		'type'               => 'plain',
+		'mid_size' 			 => 2
 	); 
 
 	echo '<nav class="pagination-wrapper">';
-	echo paginate_links( $args );
+	echo the_posts_pagination( $args );
 	echo '</nav>';
 }
 

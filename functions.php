@@ -13,7 +13,7 @@
  * @package    Epic Base
  * @subpackage Functions
 
- * @version    0.2.9
+ * @version    0.3.0
  * @author     Septian Ahmad Fujianto <septianahmad@naisinpo.com>
  * @copyright  Copyright (c) 2013 - 2016, Septian Ahmad Fujianto
  * @link       http://septianfujianto.com/themes/epic-base/
@@ -92,8 +92,8 @@ function epic_base_theme_setup() {
 
 	/* Add Custom Logo Options */
 	add_theme_support( 'custom-logo', array(
-		'height'      => 100,
-		'width'       => 400,
+		'height'      => absint(100),
+		'width'       => absint(400),
 		'flex-height' => true,
 		'flex-width'  => true,
 		'header-text' => array( 'site-title', 'site-description' ),
@@ -146,5 +146,5 @@ function epic_base_theme_setup() {
 	) );
 
 	/* Handle content width for embeds and images. */
-	hybrid_set_content_width( 1280 );
+	hybrid_set_content_width( absint(1280) );
 }

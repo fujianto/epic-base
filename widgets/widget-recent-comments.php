@@ -40,8 +40,8 @@ class Epic_Base_Recent_Comments extends WP_Widget{
   public function  update($new_instance, $old_instance) {
    $instance = $old_instance;
 
-   $instance['title']                 = strip_tags($new_instance['title']);
-   $instance['comments_number']       = strip_tags($new_instance['comments_number']);
+   $instance['title']                 = sanitize_title(strip_tags($new_instance['title']));
+   $instance['comments_number']       = sanitize_text_field(absint(strip_tags($new_instance['comments_number'])));
 
    return $instance;
   }
@@ -75,7 +75,7 @@ class Epic_Base_Recent_Comments extends WP_Widget{
           $title      = esc_attr(get_the_title($id));
           $content    = wp_kses_post($comment->comment_content);
           $link       = esc_url(get_permalink($id));
-          $end_dotted = (strlen($content) > 80 ) ? '...' : ''; ?>
+          $end_dotted = (strlen($content) > 80 ) ? '&hellip;' : ''; ?>
 
           <li>
             <figure class="featured-thumb pull-left">
@@ -96,8 +96,10 @@ class Epic_Base_Recent_Comments extends WP_Widget{
   }
 }
 
-add_action( 'widgets_init', function(){
+function epic_base_register_recent_comments_widget(){
   register_widget("Epic_Base_Recent_Comments");
-} );
+}
+
+add_action( 'widgets_init', 'epic_base_register_recent_comments_widget');
 
 ?>
