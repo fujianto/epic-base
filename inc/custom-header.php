@@ -16,13 +16,13 @@ function epic_base_custom_header_setup() {
 	add_theme_support(
 		'custom-header',
 		array(
-			'default-image'          => EPIC_BASE_IMAGES.'/header.jpg',
+			'default-image'          => esc_url(EPIC_BASE_IMAGES.'/header.jpg'),
 			'random-default'         => false,
-			'width'                  => 1280,
-			'height'                 => 400,
+			'width'                  => absint(1280),
+			'height'                 => absint(400),
 			'flex-width'             => true,
 			'flex-height'            => true,
-			'default-text-color'     => '000000',
+			'default-text-color'     => esc_attr('000000'),
 			'header-text'            => true,
 			'uploads'                => true,
 			'wp-head-callback'       => 'epic_base_custom_header_wp_head'

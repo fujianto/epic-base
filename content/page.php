@@ -12,7 +12,7 @@
 		</div><!-- .entry-content -->
 
 		<footer class="entry-footer">
-			<?php edit_post_link(); ?>
+			<?php esc_url(edit_post_link()); ?>
 		</footer><!-- .entry-footer -->
 
 	<?php else : // If not viewing a single page. ?>

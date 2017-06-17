@@ -8,7 +8,7 @@ class Epic_Base_Recent_Comments extends WP_Widget{
   public function __construct(){
     parent::__construct(
       'recent_comments',
-      __('Recent Comments' , 'epic-base'),
+      __('Epic Base Recent Comments' , 'epic-base'),
       array('description' => __(' Display recent comments','epic-base'))
     );
   }
@@ -40,8 +40,8 @@ class Epic_Base_Recent_Comments extends WP_Widget{
   public function  update($new_instance, $old_instance) {
    $instance = $old_instance;
 
-   $instance['title']                 = strip_tags($new_instance['title']);
-   $instance['comments_number']       = strip_tags($new_instance['comments_number']);
+   $instance['title']                 = sanitize_title(strip_tags($new_instance['title']));
+   $instance['comments_number']       = sanitize_text_field(absint(strip_tags($new_instance['comments_number'])));
 
    return $instance;
   }
@@ -49,13 +49,12 @@ class Epic_Base_Recent_Comments extends WP_Widget{
     // Displays widget on the Front-end
   public function  widget($args, $instance) {
     extract($args);
-
-    $title                 = apply_filters('widget-title', $instance['title']);
     $comments_number       = $instance['comments_number'];
-
     echo $before_widget;
 
-    if($title){
+    $title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
+
+    if (!empty( $title ) ) {
       echo $before_title . $title . $after_title;
     }
 
@@ -73,14 +72,14 @@ class Epic_Base_Recent_Comments extends WP_Widget{
          foreach($comments as $comment) :
           $id         = $comment->comment_post_ID;
           $auth       = $comment->comment_author;
-          $title      = get_the_title($id);
-          $content    = $comment->comment_content;
+          $title      = esc_attr(get_the_title($id));
+          $content    = wp_kses_post($comment->comment_content);
           $link       = esc_url(get_permalink($id));
-          $end_dotted = (strlen($content) > 80 ) ? '...' : ''; ?>
+          $end_dotted = (strlen($content) > 80 ) ? '&hellip;' : ''; ?>
 
           <li>
             <figure class="featured-thumb pull-left">
-              <?php echo get_avatar( $comment, 60 ); ?>
+              <?php echo wp_kses_post(get_avatar( $comment, 60 )); ?>
             </figure>
 
             <div class="rcomment pull-right">
@@ -97,6 +96,10 @@ class Epic_Base_Recent_Comments extends WP_Widget{
   }
 }
 
-add_action( 'widgets_init', create_function( '', 'register_widget("Epic_Base_Recent_Comments");' ) );
+function epic_base_register_recent_comments_widget(){
+  register_widget("Epic_Base_Recent_Comments");
+}
+
+add_action( 'widgets_init', 'epic_base_register_recent_comments_widget');
 
 ?>

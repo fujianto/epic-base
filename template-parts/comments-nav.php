@@ -4,14 +4,14 @@
 
 		<h3 id="comments-nav-title" class="screen-reader-text"><?php esc_html_e( 'Comments Navigation', 'epic-base' ); ?></h3>
 
-		<?php previous_comments_link( esc_html_x( '&larr; Previous', 'comments navigation', 'epic-base' ) ); ?>
+		<?php esc_url(previous_comments_link( esc_html_x( '&larr; Previous', 'comments navigation', 'epic-base' ) )); ?>
 
 		<span class="page-numbers"><?php 
 			/* Translators: Comments page numbers. 1 is current page and 2 is total pages. */
 			printf( esc_html__( 'Page %1$s of %2$s', 'epic-base' ), get_query_var( 'cpage' ) ? absint( get_query_var( 'cpage' ) ) : 1, get_comment_pages_count() ); 
 		?></span>
 
-		<?php next_comments_link( esc_html_x( 'Next &rarr;', 'comments navigation', 'epic-base' ) ); ?>
+		<?php esc_url(next_comments_link( esc_html_x( 'Next &rarr;', 'comments navigation', 'epic-base' ) )); ?>
 
 	</nav><!-- .comments-nav -->
 

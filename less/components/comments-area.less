@@ -1,0 +1,109 @@
+@import "../dependencies/variables-epic.less";
+
+.comments-wrapper{
+	position: relative;	
+	.global-boxed();
+	margin-bottom: 2rem;
+
+	.comments-number-title {
+		padding: 2rem 0;
+		margin: 0;
+	}
+
+	ol, ul{
+		list-style: none; 
+
+		li{	
+			&:nth-child(odd){
+				// background: $comment-odd;
+			}
+
+			&:nth-child(even){
+				// background: $comment-even;
+			}
+
+			ol{
+				li{
+					&:nth-child(odd), &:nth-child(even){
+						background: transparent;
+					}
+				}
+			}
+		}
+	}
+
+	.comment-wrap{
+		padding: 2rem 0;
+		border-bottom: 1px dashed @secondary-text-color;
+		.clearfix;
+
+		.comment-content{
+			margin-top: 1rem;
+			ul, ol{
+				list-style: initial;
+			}
+		}
+	}
+
+	.comment-list{
+	list-style: none;
+	padding-left: 0;
+	margin: 0;
+
+		>li{
+				// border-bottom: 1px solid $comment-border;
+		}
+		.comment-avatar{
+			padding-right: 2rem;
+		}
+
+		.comment-author{
+			font-size: 2rem;
+			font-weight: @bold-font;
+			font-style: normal;
+			a{
+				// color: $dark-gray;
+			}
+		}
+
+		.published{
+			font-weight: @semi-bold-font;
+		}
+
+		.comment-reply-link{
+			/* padding: 0.5rem 3.5rem;
+			&:extend(.primary-bg);
+			color: @white;
+			position: relative;
+			
+			&:before{
+				font-family: @font-awesome;
+				position: absolute;
+				left: 1.5rem;
+				content: '\f086';
+			} */
+		}
+	}
+}
+
+.comment-respond{
+	padding: 2rem 0;
+	margin-bottom: 2rem;
+
+	background: @main-bg;
+	.comment-reply-title{
+		margin: 0 0 2rem 0;
+	}
+}
+
+.comment-navigation{
+	margin-top: 1rem;
+}	
+
+.comments-closed {
+    margin: 2rem 0;
+}
+
+.pingback {
+    margin: 0 0 2rem 0;
+}

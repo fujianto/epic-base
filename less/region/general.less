@@ -1,0 +1,88 @@
+@import "../dependencies/variables-epic.less";
+
+.container-fluid{
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.row{
+	max-width: 1170px;
+	margin: 0 auto;
+}
+
+body{
+	background: @body-color;
+	
+	&.box, &.frame{
+		.container-fluid{
+			max-width: 1170px;
+		}
+	}
+
+	&.frame{
+		.main{
+			margin: 3rem auto;
+		}
+	}
+
+	&.fluid{
+		.fullgrid-margin{
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		.row{
+			max-width: 1170px;
+		}
+	}
+}
+
+/* Flexbox Row */
+
+.flex-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+.col-1 {
+    width: 10%;
+}
+
+.col-2 {
+    width: 20%;
+}
+
+.col-3 {
+    width: 30%;
+}
+
+.col-4 {
+    width: 40%;
+}
+
+.col-5 {
+    width: 50%;
+}
+
+.col-6 {
+    width: 60%;
+}
+
+.col-7 {
+    width: 70%;
+}
+
+.col-8 {
+    width: 80%;
+}
+
+.col-9 {
+    width: 90%;
+}
+
+.col-10 {
+    width: 100%;
+}

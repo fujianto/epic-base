@@ -1,3 +1,5 @@
+<?php if (class_exists('wp_bootstrap_navwalker')) : ?>	
+
 	<div class="primary-nav-menu">
 		<div class="row">
 			<nav class="navbar navbar-default" <?php hybrid_attr( 'menu', 'primary' ); ?>>
@@ -16,9 +18,8 @@
 				<?php
 					wp_nav_menu(
 						array(
-							'menu'              => 'Primary Menu',
 							'theme_location'    => 'primary',
-							'depth'             => 2,
+							'depth'             => absint(2),
 							'container'         => 'div',
 							'container_class'   => 'collapse navbar-collapse',
 							'container_id'      => 'primary-menu',
@@ -31,3 +32,5 @@
 		</div>
 	</div>
 	<!-- End primary-nav-men  -->
+
+<?php endif; ?>
