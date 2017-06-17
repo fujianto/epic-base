@@ -28,6 +28,7 @@
 * 	$epic_base / Theme Variable
 * 	Epic_Base / Class Prefix
 * 	epic-base / Text Domain
+* 	EPIC_BASE_ / Constant Variables
 */
 
 /* Define constant for easy access to Theme directory*/
