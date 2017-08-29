@@ -1,1 +1,1 @@
-<?php /* The grass is always greener. */ ?>
+<?php /* The grass is always greener. */

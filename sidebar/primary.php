@@ -1,14 +1,25 @@
-<?php if ( '1c' !== hybrid_get_theme_layout() ) : // If not a one-column layout. ?>
+<?php
+/**
+ * Sidebar primary beside main content
+ *
+ * @package    Epic Base
+ * @subpackage sidebar
+ */
+
+?>
+
+<?php if ( '1c' !== hybrid_get_theme_layout() ) : ?>
 
 	<aside <?php hybrid_attr( 'sidebar', 'primary' ); ?>>
 
-		<?php if ( is_active_sidebar( 'primary' ) ) : // If the sidebar has widgets. ?>
+		<?php if ( is_active_sidebar( 'primary' ) ) : ?>
 
-			<?php dynamic_sidebar( 'primary' ); // Displays the primary sidebar. ?>
+			<?php dynamic_sidebar( 'primary' ); ?>
 
-		<?php else : // If the sidebar has no widgets. ?>
+		<?php else : ?>
 
-			<?php the_widget(
+			<?php
+			the_widget(
 				'WP_Widget_Text',
 				array(
 					'title'  => esc_html__( 'Example Widget', 'epic-base' ),
@@ -19,12 +30,13 @@
 					'before_widget' => '<section class="widget widget_text">',
 					'after_widget'  => '</section>',
 					'before_title'  => '<h3 class="widget-title">',
-					'after_title'   => '</h3>'
+					'after_title'   => '</h3>',
 				)
-			); ?>
+			);
+			?>
 
-		<?php endif; // End widgets check. ?>
+		<?php endif; ?>
 
 	</aside><!-- #sidebar-primary -->
 
-<?php endif; // End layout check. ?>
+<?php endif; ?>

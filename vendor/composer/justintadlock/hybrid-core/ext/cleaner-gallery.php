@@ -102,19 +102,20 @@ final class Cleaner_Gallery {
 	 *
 	 * @since  1.1.0
 	 * @access public
-	 * @param  string  $output
-	 * @param  array   $attr
+	 * @param  string $output
+	 * @param  array  $attr
 	 * @return string
 	 */
 	public function gallery_shortcode( $output, $attr ) {
 
 		// We're not worried about galleries in feeds, so just return the output here.
-		if ( is_feed() )
+		if ( is_feed() ) {
 			return $output;
+		}
 
 		// Filters to add Schema.org microdata support.
 		add_filter( 'wp_get_attachment_image_attributes', array( $this, 'attachment_image_attributes' ), 5, 2 );
-		add_filter( 'wp_get_attachment_link',             array( $this, 'get_attachment_link'         ), 5    );
+		add_filter( 'wp_get_attachment_link',             array( $this, 'get_attachment_link' ), 5 );
 
 		// Iterate the gallery instance.
 		$this->gallery_instance++;
@@ -136,41 +137,47 @@ final class Cleaner_Gallery {
 			'include'          => $this->args['include'],
 			'numberposts'      => $this->args['numberposts'],
 			'offset'           => $this->args['offset'],
-			'suppress_filters' => true
+			'suppress_filters' => true,
 		);
 
 		// If specific IDs should not be included, use the get_children() function.
 		if ( empty( $this->args['include'] ) ) {
-			$attachments = get_children( array_merge( array( 'post_parent' => $this->args['id'] ), $children ) );
-		}
-
-		// If getting specific attachments by ID, use get_posts().
+			$attachments = get_children(
+				array_merge(
+					array(
+						'post_parent' => $this->args['id'],
+					), $children
+				)
+			);
+		} // If getting specific attachments by ID, use get_posts().
 		else {
 			$attachments = get_posts( $children );
 		}
 
 		// If there are no attachments, return an empty string.
-		if ( empty( $attachments ) )
+		if ( empty( $attachments ) ) {
 			return '';
+		}
 
 		// Count the number of attachments returned.
 		$attachment_count = count( $attachments );
 
 		// Allow developers to overwrite the number of columns. This can be useful for reducing columns with with fewer images than number of columns.
-		//$columns = ( ( $columns <= $attachment_count ) ? intval( $columns ) : intval( $attachment_count ) );
+		// $columns = ( ( $columns <= $attachment_count ) ? intval( $columns ) : intval( $attachment_count ) );
 		$this->args['columns'] = apply_filters( 'cleaner_gallery_columns', intval( $this->args['columns'] ), $attachment_count, $this->args );
 
 		// Get each gallery item.
-		foreach ( $attachments as $attachment )
+		foreach ( $attachments as $attachment ) {
 			$output .= $this->get_gallery_item( $attachment );
+		}
 
 		// Remove filters for Schema.org microdata support.
 		remove_filter( 'wp_get_attachment_image_attributes', array( $this, 'attachment_image_attributes' ) );
-		remove_filter( 'wp_get_attachment_link',             array( $this, 'get_attachment_link'         ) );
+		remove_filter( 'wp_get_attachment_link',             array( $this, 'get_attachment_link' ) );
 
 		// Gallery attributes.
 		$gallery_attr  = sprintf( 'id="%s"', esc_attr( $this->args['id'] ) . '-' . esc_attr( $this->gallery_instance ) );
-		$gallery_attr .= sprintf( ' class="gallery gallery-%1$s gallery-col-%2$s gallery-columns-%2$s gallery-size-%3$s%4$s"', esc_attr( $this->args['id'] ), esc_attr( $this->args['columns'] ), sanitize_html_class( $this->args['size'] ), !empty( $this->args['type'] ) ? ' gallery-type-' . sanitize_html_class( $this->args['type'] ) : '' );
+		$gallery_attr .= sprintf( ' class="gallery gallery-%1$s gallery-col-%2$s gallery-columns-%2$s gallery-size-%3$s%4$s"', esc_attr( $this->args['id'] ), esc_attr( $this->args['columns'] ), sanitize_html_class( $this->args['size'] ), ! empty( $this->args['type'] ) ? ' gallery-type-' . sanitize_html_class( $this->args['type'] ) : '' );
 		$gallery_attr .= sprintf( ' itemscope itemtype="%s"', esc_attr( $this->get_gallery_itemtype() ) );
 
 		// Return out very nice, valid HTML gallery.
@@ -189,8 +196,9 @@ final class Cleaner_Gallery {
 		// Orderby.
 		if ( isset( $attr['orderby'] ) ) {
 			$attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
-			if ( !$attr['orderby'] )
+			if ( ! $attr['orderby'] ) {
 				unset( $attr['orderby'] );
+			}
 		}
 
 		// Default gallery settings.
@@ -237,7 +245,7 @@ final class Cleaner_Gallery {
 	 *
 	 * @since  1.1.0
 	 * @access public
-	 * @param  object  $attachment
+	 * @param  object $attachment
 	 * @return string
 	 */
 	public function get_gallery_item( $attachment ) {
@@ -249,14 +257,15 @@ final class Cleaner_Gallery {
 		$this->mime_types[] = $type;
 
 		// Set up the itemtype for the media based off the mime type.
-		if ( 'image' === $type )
+		if ( 'image' === $type ) {
 			$itemtype = 'http://schema.org/ImageObject';
-		elseif ( 'video' === $type )
+		} elseif ( 'video' === $type ) {
 			$itemtype = 'http://schema.org/VideoObject';
-		elseif ( 'audio' === $type )
+		} elseif ( 'audio' === $type ) {
 			$itemtype = 'http://schema.org/AudioObject';
-		else
+		} else {
 			$itemtype = 'http://schema.org/MediaObject';
+		}
 
 		// Open each gallery item.
 		$output = "\n\t\t\t\t\t<{$this->args['itemtag']} class='gallery-item col-{$this->args['columns']}' itemprop='associatedMedia' itemscope itemtype='{$itemtype}'>";
@@ -281,7 +290,7 @@ final class Cleaner_Gallery {
 	 *
 	 * @since  1.1.0
 	 * @access public
-	 * @param  object  $attachment
+	 * @param  object $attachment
 	 * @return string
 	 */
 	public function get_gallery_icon( $attachment ) {
@@ -298,9 +307,7 @@ final class Cleaner_Gallery {
 		// If the size for the current attachment exists and both the width and height are defined.
 		if ( isset( $image_meta['sizes'][ $size ] ) && isset( $image_meta['sizes'][ $size ]['height'], $image_meta['sizes'][ $size ]['width'] ) ) {
 			$orientation = ( $image_meta['sizes'][ $size ]['height'] > $image_meta['sizes'][ $size ]['width'] ) ? 'portrait' : 'landscape';
-		}
-
-		// Else, if both the width and height are defined, set the orientation.
+		} // Else, if both the width and height are defined, set the orientation.
 		elseif ( isset( $image_meta['height'], $image_meta['width'] ) ) {
 			$orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
 		}
@@ -311,14 +318,10 @@ final class Cleaner_Gallery {
 		// Get the image if it should link to the image file.
 		if ( isset( $this->args['link'] ) && 'file' == $this->args['link'] ) {
 			$image = wp_get_attachment_link( $attachment->ID, $size, false, true );
-		}
-
-		// Else if, get the image if it should link to nothing.
+		} // Else if, get the image if it should link to nothing.
 		elseif ( isset( $this->args['link'] ) && 'none' == $this->args['link'] ) {
 			$image = wp_get_attachment_image( $attachment->ID, $size, false );
-		}
-
-		// Else, get the image (links to attachment page).
+		} // Else, get the image (links to attachment page).
 		else {
 			$image = wp_get_attachment_link( $attachment->ID, $size, true, true );
 		}
@@ -338,7 +341,7 @@ final class Cleaner_Gallery {
 	 *
 	 * @since  1.1.0
 	 * @access public
-	 * @param  object  $attachment
+	 * @param  object $attachment
 	 * @return string
 	 */
 	public function get_gallery_caption( $attachment ) {
@@ -347,7 +350,7 @@ final class Cleaner_Gallery {
 		$caption = apply_filters( 'cleaner_gallery_caption', wptexturize( $attachment->post_excerpt ), $attachment->ID, $this->args, $this->gallery_instance );
 
 		// If image caption is set, format and return.
-		if ( !empty( $caption ) ) {
+		if ( ! empty( $caption ) ) {
 			$this->has_caption = true;
 			return "\n\t\t\t\t\t\t" . sprintf( '<%1$s id="%2$s" class="gallery-caption" itemprop="caption">%3$s</%1$s>', $this->args['captiontag'], esc_attr( "figcaption-{$this->args['id']}-{$attachment->ID}" ), $caption );
 		}
@@ -373,16 +376,15 @@ final class Cleaner_Gallery {
 		$mime_count = count( $this->mime_types );
 
 		// If the only mime type is 'image'.
-		if ( 1 === $mime_count && 'image' === $this->mime_types[0] )
+		if ( 1 === $mime_count && 'image' === $this->mime_types[0] ) {
 			$itemtype = 'http://schema.org/ImageGallery';
-
-		// If the only mime type is 'video'.
-		elseif ( 1 === $mime_count && 'video' === $this->mime_types[0] )
+		} // If the only mime type is 'video'.
+		elseif ( 1 === $mime_count && 'video' === $this->mime_types[0] ) {
 			$itemtype = 'http://schema.org/VideoGallery';
-
-		// Else, set up a general "collection".
-		else
+		} // Else, set up a general "collection".
+		else {
 			$itemtype = 'http://schema.org/CollectionPage';
+		}
 
 		// Return the itemtype.
 		return $itemtype;
@@ -399,8 +401,9 @@ final class Cleaner_Gallery {
 	 */
 	public function attachment_image_attributes( $attr, $attachment ) {
 
-		if ( true === $this->has_caption )
+		if ( true === $this->has_caption ) {
 			$attr['aria-describedby'] = esc_attr( "figcaption-{$this->args['id']}-{$attachment->ID}" );
+		}
 
 		$attr['itemprop'] = 'thumbnail';
 
@@ -412,7 +415,7 @@ final class Cleaner_Gallery {
 	 *
 	 * @since  1.1.0
 	 * @access public
-	 * @param  string  $link
+	 * @param  string $link
 	 * @return string
 	 */
 	public function get_attachment_link( $link ) {
@@ -429,8 +432,9 @@ final class Cleaner_Gallery {
 	 */
 	public static function get_instance() {
 
-		if ( !self::$instance )
-			self::$instance = new self;
+		if ( ! self::$instance ) {
+			self::$instance = new self();
+		}
 
 		return self::$instance;
 	}

@@ -1,8 +1,8 @@
 # Epic Base
  Theme URI         : http://septianfujianto.com/themes/epic-base/
  Requires at least : 4.5
- Tested up to      : 4.7.3
- Stable tag        : 0.3.0
+ Tested up to      : 4.8.1
+ Stable tag        : 0.3.3
  Author            : Septian Ahmad Fujianto
  Author URI        : http://septianfujianto.com
  Tags              : one-column, two-columns, custom-background, custom-header, custom-menu, featured-images, left-sidebar, post-formats, editor-style, right-sidebar, rtl-language-support, threaded-comments, translation-ready, footer-widgets, microformats
@@ -75,6 +75,9 @@ You can shoot me email at septianahmad[at]naisinpo[dot]com.
 1. Standard Theme Screenshot
 
 == Changelog ==
+
+= 0.3.3 =
+* Major fix to meet WordPress.org guidelines.
 
 = 0.2.5 =
 * Initial release to WordPress.org repository

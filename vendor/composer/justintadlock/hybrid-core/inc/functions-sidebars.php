@@ -19,7 +19,7 @@
  *
  * @since  2.0.0
  * @access public
- * @param  array   $args
+ * @param  array $args
  * @return string  Sidebar ID.
  */
 function hybrid_register_sidebar( $args ) {
@@ -32,7 +32,7 @@ function hybrid_register_sidebar( $args ) {
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h3 class="widget-title">',
-		'after_title'   => '</h3>'
+		'after_title'   => '</h3>',
 	);
 
 	// Parse the arguments.
@@ -45,7 +45,7 @@ function hybrid_register_sidebar( $args ) {
 	return register_sidebar( apply_filters( 'hybrid_sidebar_args', $args ) );
 }
 
-# Compatibility for when a theme doesn't register any sidebars.
+// Compatibility for when a theme doesn't register any sidebars.
 add_action( 'widgets_init', '__return_false', 95 );
 
 /**
@@ -54,7 +54,7 @@ add_action( 'widgets_init', '__return_false', 95 );
  * @since  2.0.0
  * @access public
  * @global array   $wp_registered_sidebars
- * @param  string  $sidebar_id
+ * @param  string $sidebar_id
  * @return string
  */
 function hybrid_get_sidebar_name( $sidebar_id ) {

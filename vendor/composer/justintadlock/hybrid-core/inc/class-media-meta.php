@@ -70,7 +70,7 @@ class Hybrid_Media_Meta {
 	 *
 	 * @since  3.0.0
 	 * @access public
-	 * @param  array   $args
+	 * @param  array $args
 	 * @return void
 	 */
 	public function __construct( $post_id ) {
@@ -96,7 +96,7 @@ class Hybrid_Media_Meta {
 	 *
 	 * @since  3.0.0
 	 * @access public
-	 * @param  string  $property
+	 * @param  string $property
 	 * @return mixed
 	 */
 	public function __get( $property ) {
@@ -112,14 +112,15 @@ class Hybrid_Media_Meta {
 	 *
 	 * @since  3.0.0
 	 * @access protected
-	 * @param  string|int  $value
-	 * @param  string      $property
+	 * @param  string|int $value
+	 * @param  string     $property
 	 * @return string|int
 	 */
 	protected function escape( $value, $property ) {
 
-		if ( has_filter( "hybrid_media_meta_escape_{$property}" ) )
+		if ( has_filter( "hybrid_media_meta_escape_{$property}" ) ) {
 			return apply_filters( "hybrid_media_meta_escape_{$property}", $value, $this->type );
+		}
 
 		return is_numeric( $value ) ? intval( $value ) : esc_html( $value );
 	}
@@ -154,10 +155,10 @@ class Hybrid_Media_Meta {
 	 */
 	protected function image_filters() {
 
-		add_filter( 'hybrid_media_meta_escape_dimensions',        array( $this, 'dimensions'        ), 5 );
+		add_filter( 'hybrid_media_meta_escape_dimensions',        array( $this, 'dimensions' ), 5 );
 		add_filter( 'hybrid_media_meta_escape_created_timestamp', array( $this, 'created_timestamp' ), 5 );
-		add_filter( 'hybrid_media_meta_escape_aperture',          array( $this, 'aperture'          ), 5 );
-		add_filter( 'hybrid_media_meta_escape_shutter_speed',     array( $this, 'shutter_speed'     ), 5 );
+		add_filter( 'hybrid_media_meta_escape_aperture',          array( $this, 'aperture' ), 5 );
+		add_filter( 'hybrid_media_meta_escape_shutter_speed',     array( $this, 'shutter_speed' ), 5 );
 		add_filter( 'hybrid_media_meta_escape_focal_length',      'absint',                            5 );
 		add_filter( 'hybrid_media_meta_escape_iso',               'absint',                            5 );
 	}
@@ -204,7 +205,7 @@ class Hybrid_Media_Meta {
 	 *
 	 * @since  3.0.0
 	 * @access public
-	 * @param  string  $property
+	 * @param  string $property
 	 * @return mixed
 	 */
 	public function get( $property ) {
@@ -212,16 +213,15 @@ class Hybrid_Media_Meta {
 		$value = null;
 
 		// If the property exists in the meta array.
-		if ( isset( $this->meta[ $property ] ) )
+		if ( isset( $this->meta[ $property ] ) ) {
 			$value = $this->meta[ $property ];
-
-		// If the property exists in the image meta array.
-		elseif ( 'image' === $this->type && isset( $this->meta['image_meta'][ $property ] ) )
+		} // If the property exists in the image meta array.
+		elseif ( 'image' === $this->type && isset( $this->meta['image_meta'][ $property ] ) ) {
 			$value = $this->meta['image_meta'][ $property ];
-
-		// If the property exists in the video's audio meta array.
-		elseif ( 'video' === $this->type && isset( $this->meta['audio'][ $property ] ) )
+		} // If the property exists in the video's audio meta array.
+		elseif ( 'video' === $this->type && isset( $this->meta['audio'][ $property ] ) ) {
 			$value = $this->meta['audio'][ $property ];
+		}
 
 		// Escape and return.
 		return $this->escape( $value, $property );
@@ -232,7 +232,7 @@ class Hybrid_Media_Meta {
 	 *
 	 * @since  3.0.0
 	 * @access public
-	 * @param  string  $dimensions
+	 * @param  string $dimensions
 	 * @return string
 	 */
 	public function dimensions( $dimensions ) {
@@ -256,7 +256,7 @@ class Hybrid_Media_Meta {
 	 *
 	 * @since  3.0.0
 	 * @access public
-	 * @param  string  $timestamp
+	 * @param  string $timestamp
 	 * @return string
 	 */
 	public function created_timestamp( $timestamp ) {
@@ -277,13 +277,14 @@ class Hybrid_Media_Meta {
 	 *
 	 * @since  3.0.0
 	 * @access public
-	 * @param  string  $aperture
+	 * @param  string $aperture
 	 * @return string
 	 */
 	public function aperture( $aperture ) {
 
-		if ( !empty( $this->meta['image_meta']['aperture'] ) )
+		if ( ! empty( $this->meta['image_meta']['aperture'] ) ) {
 			$aperture = sprintf( '<sup>f</sup>&#8260;<sub>%s</sub>', absint( $this->meta['image_meta']['aperture'] ) );
+		}
 
 		return $aperture;
 	}
@@ -293,7 +294,7 @@ class Hybrid_Media_Meta {
 	 *
 	 * @since  3.0.0
 	 * @access public
-	 * @param  string  $shutter
+	 * @param  string $shutter
 	 * @return string
 	 */
 	public function shutter_speed( $shutter ) {
@@ -306,11 +307,12 @@ class Hybrid_Media_Meta {
 			if ( ( 1 / $speed ) > 1 ) {
 				$shutter = sprintf( '<sup>%s</sup>&#8260;', number_format_i18n( 1 ) );
 
-				if ( number_format( ( 1 / $speed ), 1 ) ==  number_format( ( 1 / $speed ), 0 ) )
+				if ( number_format( ( 1 / $speed ), 1 ) == number_format( ( 1 / $speed ), 0 ) ) {
 					$shutter .= sprintf( '<sub>%s</sub>', number_format_i18n( ( 1 / $speed ), 0, '.', '' ) );
 
-				else
+				} else {
 					$shutter .= sprintf( '<sub>%s</sub>', number_format_i18n( ( 1 / $speed ), 1, '.', '' ) );
+				}
 			}
 		}
 
@@ -327,12 +329,12 @@ class Hybrid_Media_Meta {
 	public function lyrics( $lyrics ) {
 
 		// Look for the 'unsynchronised_lyric' tag.
-		if ( isset( $this->meta['unsynchronised_lyric'] ) )
+		if ( isset( $this->meta['unsynchronised_lyric'] ) ) {
 			$lyrics = $this->meta['unsynchronised_lyric'];
-
-		// Seen this misspelling of the id3 tag.
-		elseif ( isset( $this->meta['unsychronised_lyric'] ) )
+		} // Seen this misspelling of the id3 tag.
+		elseif ( isset( $this->meta['unsychronised_lyric'] ) ) {
 			$lyrics = $this->meta['unsychronised_lyric'];
+		}
 
 		return strip_tags( $lyrics );
 	}
@@ -358,7 +360,7 @@ class Hybrid_Media_Meta {
 	 *
 	 * @since  3.0.0
 	 * @access public
-	 * @param  int    $file_size
+	 * @param  int $file_size
 	 * @return int
 	 */
 	public function file_size( $file_size ) {
@@ -371,13 +373,14 @@ class Hybrid_Media_Meta {
 	 *
 	 * @since  3.0.0
 	 * @access public
-	 * @param  string  $file_type
+	 * @param  string $file_type
 	 * @return string
 	 */
 	public function file_type( $file_type ) {
 
-		if ( preg_match( '/^.*?\.(\w+)$/', get_attached_file( $this->post_id ), $matches ) )
+		if ( preg_match( '/^.*?\.(\w+)$/', get_attached_file( $this->post_id ), $matches ) ) {
 			$file_type = esc_html( strtoupper( $matches[1] ) );
+		}
 
 		return $file_type;
 	}
@@ -387,15 +390,16 @@ class Hybrid_Media_Meta {
 	 *
 	 * @since  3.0.0
 	 * @access public
-	 * @param  string  $mime_type
+	 * @param  string $mime_type
 	 * @return string
 	 */
 	public function mime_type( $mime_type ) {
 
 		$mime_type = get_post_mime_type( $this->post_id );
 
-		if ( empty( $mime_type ) && ! empty( $this->meta['mime_type'] ) )
+		if ( empty( $mime_type ) && ! empty( $this->meta['mime_type'] ) ) {
 			$mime_type = $this->meta['mime_type'];
+		}
 
 		return esc_html( $mime_type );
 	}

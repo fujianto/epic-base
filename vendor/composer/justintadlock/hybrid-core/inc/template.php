@@ -70,8 +70,9 @@ function hybrid_get_content_template() {
 	$template = apply_filters( 'hybrid_content_template', locate_template( $templates ), $templates );
 
 	// If template is found, include it.
-	if ( $template )
+	if ( $template ) {
 		include( $template );
+	}
 }
 
 /**
@@ -81,7 +82,7 @@ function hybrid_get_content_template() {
  *
  * @since  2.0.0
  * @access public
- * @param  string  $name
+ * @param  string $name
  * @return void
  */
 function hybrid_get_menu( $name = '' ) {
@@ -117,7 +118,7 @@ function hybrid_get_menu( $name = '' ) {
  *
  * @since  2.0.0
  * @access public
- * @param  string  $name
+ * @param  string $name
  * @return void
  */
 function hybrid_get_header( $name = '' ) {
@@ -155,7 +156,7 @@ function hybrid_get_header( $name = '' ) {
  *
  * @since  2.0.0
  * @access public
- * @param  string  $name
+ * @param  string $name
  * @return void
  */
 function hybrid_get_footer( $name = '' ) {
@@ -193,7 +194,7 @@ function hybrid_get_footer( $name = '' ) {
  *
  * @since  2.0.0
  * @access public
- * @param  string  $name
+ * @param  string $name
  * @return void
  */
 function hybrid_get_sidebar( $name = '' ) {

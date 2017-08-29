@@ -40,7 +40,7 @@ class Hybrid_Media_Meta_Factory {
 	 * @see    Hybrid_Media_Meta::__construct()
 	 * @since  3.0.0
 	 * @access protected
-	 * @param  int       $post_id
+	 * @param  int $post_id
 	 */
 	protected function create_media_meta( $post_id ) {
 
@@ -52,14 +52,15 @@ class Hybrid_Media_Meta_Factory {
 	 *
 	 * @since  3.0.0
 	 * @access public
-	 * @param  int     $post_id
+	 * @param  int $post_id
 	 * @return object
 	 */
 	public function get_media_meta( $post_id ) {
 
 		// If the media meta object doesn't exist, create it.
-		if ( ! isset( $this->media[ $post_id ] ) )
+		if ( ! isset( $this->media[ $post_id ] ) ) {
 			$this->create_media_meta( $post_id );
+		}
 
 		return $this->media[ $post_id ];
 	}
@@ -75,8 +76,9 @@ class Hybrid_Media_Meta_Factory {
 
 		static $instance = null;
 
-		if ( is_null( $instance ) )
-			$instance = new Hybrid_Media_Meta_Factory;
+		if ( is_null( $instance ) ) {
+			$instance = new Hybrid_Media_Meta_Factory();
+		}
 
 		return $instance;
 	}

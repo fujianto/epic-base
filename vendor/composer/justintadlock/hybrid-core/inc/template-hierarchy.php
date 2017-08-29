@@ -13,27 +13,27 @@
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
-# Filter the date template.
+// Filter the date template.
 add_filter( 'date_template', 'hybrid_date_template', 5 );
 
-# Filter the author/user template.
+// Filter the author/user template.
 add_filter( 'author_template', 'hybrid_user_template', 5 );
 
-# Filter the tag and category (taxonomy) templates.
+// Filter the tag and category (taxonomy) templates.
 add_filter( 'tag_template',      'hybrid_taxonomy_template', 5 );
 add_filter( 'category_template', 'hybrid_taxonomy_template', 5 );
 add_filter( 'taxonomy_template', 'hybrid_taxonomy_template', 5 );
 
-# Filter the single, page, and attachment (singular) templates.
+// Filter the single, page, and attachment (singular) templates.
 add_filter( 'single_template',     'hybrid_singular_template', 5 );
 add_filter( 'page_template',       'hybrid_singular_template', 5 );
 add_filter( 'attachment_template', 'hybrid_singular_template', 5 );
 
-# Filter the front page template.
+// Filter the front page template.
 add_filter( 'front_page_template', 'hybrid_front_page_template', 5 ); // Doesn't work b/c bug with get_query_template().
 add_filter( 'frontpage_template',  'hybrid_front_page_template', 5 );
 
-# Filter the comments template.
+// Filter the comments template.
 add_filter( 'comments_template', 'hybrid_comments_template', 5 );
 
 /**
@@ -52,32 +52,28 @@ function hybrid_date_template( $template ) {
 	if ( is_time() ) {
 
 		// If viewing a minutely archive.
-		if ( get_query_var( 'minute' ) )
+		if ( get_query_var( 'minute' ) ) {
 			$templates[] = 'minute.php';
-
-		// If viewing an hourly archive.
-		elseif ( get_query_var( 'hour' ) )
+		} // If viewing an hourly archive.
+		elseif ( get_query_var( 'hour' ) ) {
 			$templates[] = 'hour.php';
+		}
 
 		// Catchall for any time-based archive.
 		$templates[] = 'time.php';
-	}
-
-	// If viewing a daily archive.
-	elseif ( is_day() )
+	} // If viewing a daily archive.
+	elseif ( is_day() ) {
 		$templates[] = 'day.php';
-
-	// If viewing a weekly archive.
-	elseif ( get_query_var( 'w' ) )
+	} // If viewing a weekly archive.
+	elseif ( get_query_var( 'w' ) ) {
 		$templates[] = 'week.php';
-
-	// If viewing a monthly archive.
-	elseif ( is_month() )
+	} // If viewing a monthly archive.
+	elseif ( is_month() ) {
 		$templates[] = 'month.php';
-
-	// If viewing a yearly archive.
-	elseif ( is_year() )
+	} // If viewing a yearly archive.
+	elseif ( is_year() ) {
 		$templates[] = 'year.php';
+	}
 
 	// Catchall template for date-based archives.
 	$templates[] = 'date.php';
@@ -113,8 +109,9 @@ function hybrid_user_template( $template ) {
 
 	// Add role-based templates for the user.
 	if ( is_array( $user->roles ) ) {
-		foreach ( $user->roles as $role )
+		foreach ( $user->roles as $role ) {
 			$templates[] = "user-role-{$role}.php";
+		}
 	}
 
 	// Add a basic user template.
@@ -175,8 +172,9 @@ function hybrid_singular_template( $template ) {
 	// Check for a custom post template by custom field key '_wp_post_template'.
 	$custom = hybrid_get_post_template( get_queried_object_id() );
 
-	if ( $custom )
+	if ( $custom ) {
 		$templates[] = $custom;
+	}
 
 	// If viewing an attachment page, handle the files by mime type.
 	if ( is_attachment() ) {
@@ -191,9 +189,7 @@ function hybrid_singular_template( $template ) {
 		}
 
 		$templates[] = "attachment-{$type}.php";
-	}
-
-	// If viewing any other type of singular page.
+	} // If viewing any other type of singular page.
 	else {
 
 		// Add a post name (slug) template.
@@ -211,7 +207,7 @@ function hybrid_singular_template( $template ) {
 	$templates[] = 'single.php';
 
 	// Add a general template of singular.php.
-	$templates[] = "singular.php";
+	$templates[] = 'singular.php';
 
 	// Return the found template.
 	return locate_template( $templates );
@@ -228,7 +224,7 @@ function hybrid_singular_template( $template ) {
  * @link   http://www.chipbennett.net/2013/09/14/home-page-and-front-page-and-templates-oh-my/
  * @since  2.0.0
  * @access public
- * @param  string  $template
+ * @param  string $template
  * @return string
  */
 function hybrid_front_page_template( $template ) {
@@ -253,8 +249,9 @@ function hybrid_comments_template( $template ) {
 	// Allow for custom templates entered into comments_template( $file ).
 	$template = str_replace( HYBRID_CHILD, '', $template );
 
-	if ( 'comments.php' !== $template )
+	if ( 'comments.php' !== $template ) {
 		$templates[] = $template;
+	}
 
 	// Add a comments template based on the post type.
 	$templates[] = 'comments-' . get_post_type() . '.php';

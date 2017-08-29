@@ -10,21 +10,21 @@
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
-# Add the layout meta box on the 'add_meta_boxes' hook.
+// Add the layout meta box on the 'add_meta_boxes' hook.
 add_action( 'add_meta_boxes', 'hybrid_add_post_layout_meta_box', 10, 2 );
 
-# Saves the post layout on the post editing page.
+// Saves the post layout on the post editing page.
 add_action( 'save_post',       'hybrid_save_post_layout', 10, 2 );
-add_action( 'add_attachment',  'hybrid_save_post_layout'        );
-add_action( 'edit_attachment', 'hybrid_save_post_layout'        );
+add_action( 'add_attachment',  'hybrid_save_post_layout' );
+add_action( 'edit_attachment', 'hybrid_save_post_layout' );
 
 /**
  * Adds the layout meta box.
  *
  * @since  3.0.0
  * @access public
- * @param  string  $post_type
- * @param  object  $post
+ * @param  string $post_type
+ * @param  object $post
  * @return void
  */
 function hybrid_add_post_layout_meta_box( $post_type ) {
@@ -55,8 +55,8 @@ function hybrid_post_layout_enqueue() {
  *
  * @since  3.0.0
  * @access public
- * @param  object  $object
- * @param  array   $box
+ * @param  object $object
+ * @param  array  $box
  * @return void
  */
 function hybrid_post_layout_meta_box( $post, $box ) {
@@ -116,19 +116,21 @@ function hybrid_post_layout_meta_box( $post, $box ) {
  *
  * @since  3.0.0
  * @access public
- * @param  int      $post_id The ID of the current post being saved.
- * @param  object   $post    The post object currently being saved.
+ * @param  int    $post_id The ID of the current post being saved.
+ * @param  object $post    The post object currently being saved.
  * @return void|int
  */
 function hybrid_save_post_layout( $post_id, $post = '' ) {
 
 	// Fix for attachment save issue in WordPress 3.5. @link http://core.trac.wordpress.org/ticket/21963
-	if ( ! is_object( $post ) )
+	if ( ! is_object( $post ) ) {
 		$post = get_post();
+	}
 
 	// Verify the nonce for the post formats meta box.
-	if ( ! isset( $_POST['hybrid-post-layout-nonce'] ) || ! wp_verify_nonce( $_POST['hybrid-post-layout-nonce'], basename( __FILE__ ) ) )
+	if ( ! isset( $_POST['hybrid-post-layout-nonce'] ) || ! wp_verify_nonce( $_POST['hybrid-post-layout-nonce'], basename( __FILE__ ) ) ) {
 		return $post_id;
+	}
 
 	// Get the previous post layout.
 	$meta_value = hybrid_get_post_layout( $post_id );
@@ -137,10 +139,10 @@ function hybrid_save_post_layout( $post_id, $post = '' ) {
 	$new_meta_value = isset( $_POST['hybrid-post-layout'] ) ? sanitize_key( $_POST['hybrid-post-layout'] ) : '';
 
 	// If there is no new meta value but an old value exists, delete it.
-	if ( '' == $new_meta_value && $meta_value )
+	if ( '' == $new_meta_value && $meta_value ) {
 		hybrid_delete_post_layout( $post_id );
-
-	// If a new meta value was added and there was no previous value, add it.
-	elseif ( $meta_value !== $new_meta_value )
+	} // If a new meta value was added and there was no previous value, add it.
+	elseif ( $meta_value !== $new_meta_value ) {
 		hybrid_set_post_layout( $post_id, $new_meta_value );
+	}
 }

@@ -34,9 +34,9 @@ class Hybrid_Customize_Control_Layout extends Hybrid_Customize_Control_Radio_Ima
 	 *
 	 * @since  3.0.0
 	 * @access public
-	 * @param  object  $manager
-	 * @param  string  $id
-	 * @param  array   $args
+	 * @param  object $manager
+	 * @param  string $id
+	 * @param  array  $args
 	 * @return void
 	 */
 	public function __construct( $manager, $id, $args = array() ) {
@@ -51,7 +51,7 @@ class Hybrid_Customize_Control_Layout extends Hybrid_Customize_Control_Radio_Ima
 
 				$args['choices'][ $layout->name ] = array(
 					'label' => $layout->label,
-					'url'   => sprintf( $layout->image, get_template_directory_uri(), get_stylesheet_directory_uri() )
+					'url'   => sprintf( $layout->image, get_template_directory_uri(), get_stylesheet_directory_uri() ),
 				);
 			}
 		}

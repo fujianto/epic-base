@@ -12,12 +12,12 @@
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
-# Don't strip tags on single post titles.
+// Don't strip tags on single post titles.
 remove_filter( 'single_post_title', 'strip_tags' );
 
-# Use same default filters as 'the_content' with a little more flexibility.
-add_filter( 'hybrid_archive_description', array( $GLOBALS['wp_embed'], 'run_shortcode' ),   5  );
-add_filter( 'hybrid_archive_description', array( $GLOBALS['wp_embed'], 'autoembed'     ),   5  );
+// Use same default filters as 'the_content' with a little more flexibility.
+add_filter( 'hybrid_archive_description', array( $GLOBALS['wp_embed'], 'run_shortcode' ),   5 );
+add_filter( 'hybrid_archive_description', array( $GLOBALS['wp_embed'], 'autoembed' ),   5 );
 add_filter( 'hybrid_archive_description',                              'wptexturize',       10 );
 add_filter( 'hybrid_archive_description',                              'convert_smilies',   15 );
 add_filter( 'hybrid_archive_description',                              'convert_chars',     20 );
@@ -25,14 +25,14 @@ add_filter( 'hybrid_archive_description',                              'wpautop'
 add_filter( 'hybrid_archive_description',                              'do_shortcode',      30 );
 add_filter( 'hybrid_archive_description',                              'shortcode_unautop', 35 );
 
-# Default excerpt more.
+// Default excerpt more.
 add_filter( 'excerpt_more', 'hybrid_excerpt_more', 5 );
 
-# Modifies the arguments and output of wp_link_pages().
+// Modifies the arguments and output of wp_link_pages().
 add_filter( 'wp_link_pages_args', 'hybrid_link_pages_args', 5 );
 add_filter( 'wp_link_pages_link', 'hybrid_link_pages_link', 5 );
 
-# Filters to add microdata support to common template tags.
+// Filters to add microdata support to common template tags.
 add_filter( 'the_author_posts_link',          'hybrid_the_author_posts_link',          5 );
 add_filter( 'get_comment_author_link',        'hybrid_get_comment_author_link',        5 );
 add_filter( 'get_comment_author_url_link',    'hybrid_get_comment_author_url_link',    5 );
@@ -46,13 +46,14 @@ add_filter( 'comments_popup_link_attributes', 'hybrid_comments_popup_link_attrib
  *
  * @since  2.0.0
  * @access public
- * @param  string  $text
+ * @param  string $text
  * @return string
  */
 function hybrid_excerpt_more( $text ) {
 
-	if ( 0 !== strpos( $text, '<a' ) )
+	if ( 0 !== strpos( $text, '<a' ) ) {
 		$text = sprintf( ' <a href="%s" class="more-link">%s</a>', esc_url( get_permalink() ), trim( $text ) );
+	}
 
 	return $text;
 }
@@ -63,7 +64,7 @@ function hybrid_excerpt_more( $text ) {
  *
  * @since  2.0.0
  * @access public
- * @param  array  $args
+ * @param  array $args
  * @return array
  */
 function hybrid_link_pages_args( $args ) {
@@ -77,7 +78,7 @@ function hybrid_link_pages_args( $args ) {
  *
  * @since  2.0.0
  * @access public
- * @param  string  $link
+ * @param  string $link
  * @return string
  */
 function hybrid_link_pages_link( $link ) {
@@ -89,19 +90,19 @@ function hybrid_link_pages_link( $link ) {
  *
  * @since  2.0.0
  * @access public
- * @param  string  $link
+ * @param  string $link
  * @return string
  */
 function hybrid_the_author_posts_link( $link ) {
 
 	$pattern = array(
-		"/(<a.*?)(>)/i",
-		'/(<a.*?>)(.*?)(<\/a>)/i'
+		'/(<a.*?)(>)/i',
+		'/(<a.*?>)(.*?)(<\/a>)/i',
 	);
 
 	$replace = array(
 		'$1 class="url fn n" itemprop="url"$2',
-		'$1<span itemprop="name">$2</span>$3'
+		'$1<span itemprop="name">$2</span>$3',
 	);
 
 	return preg_replace( $pattern, $replace, $link );
@@ -112,21 +113,21 @@ function hybrid_the_author_posts_link( $link ) {
  *
  * @since  2.0.0
  * @access public
- * @param  string  $link
+ * @param  string $link
  * @return string
  */
 function hybrid_get_comment_author_link( $link ) {
 
 	$pattern = array(
 		'/(class=[\'"])(.+?)([\'"])/i',
-		"/(<a.*?)(>)/i",
-		'/(<a.*?>)(.*?)(<\/a>)/i'
+		'/(<a.*?)(>)/i',
+		'/(<a.*?>)(.*?)(<\/a>)/i',
 	);
 
 	$replace = array(
 		'$1$2 fn n$3',
 		'$1 itemprop="url"$2',
-		'$1<span itemprop="name">$2</span>$3'
+		'$1<span itemprop="name">$2</span>$3',
 	);
 
 	return preg_replace( $pattern, $replace, $link );
@@ -137,18 +138,18 @@ function hybrid_get_comment_author_link( $link ) {
  *
  * @since  2.0.0
  * @access public
- * @param  string  $link
+ * @param  string $link
  * @return string
  */
 function hybrid_get_comment_author_url_link( $link ) {
 
 	$pattern = array(
 		'/(class=[\'"])(.+?)([\'"])/i',
-		"/(<a.*?)(>)/i"
+		'/(<a.*?)(>)/i',
 	);
 	$replace = array(
 		'$1$2 fn n$3',
-		'$1 itemprop="url"$2'
+		'$1 itemprop="url"$2',
 	);
 
 	return preg_replace( $pattern, $replace, $link );
@@ -159,7 +160,7 @@ function hybrid_get_comment_author_url_link( $link ) {
  *
  * @since  2.0.0
  * @access public
- * @param  string  $link
+ * @param  string $link
  * @return string
  */
 function hybrid_comment_reply_link_filter( $link ) {
@@ -171,7 +172,7 @@ function hybrid_comment_reply_link_filter( $link ) {
  *
  * @since  2.0.0
  * @access public
- * @param  string  $avatar
+ * @param  string $avatar
  * @return string
  */
 function hybrid_get_avatar( $avatar ) {
@@ -183,7 +184,7 @@ function hybrid_get_avatar( $avatar ) {
  *
  * @since  2.0.0
  * @access public
- * @param  string  $html
+ * @param  string $html
  * @return string
  */
 function hybrid_post_thumbnail_html( $html ) {
@@ -195,7 +196,7 @@ function hybrid_post_thumbnail_html( $html ) {
  *
  * @since  2.0.0
  * @access public
- * @param  string  $attr
+ * @param  string $attr
  * @return string
  */
 function hybrid_comments_popup_link_attributes( $attr ) {

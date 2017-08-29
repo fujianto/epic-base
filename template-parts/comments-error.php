@@ -1,4 +1,14 @@
-<?php if ( pings_open() && !comments_open() ) : ?>
+<?php
+/**
+ * Content for comment error.
+ *
+ * @package    Epic Base
+ * @subpackage template parts
+ */
+
+?>
+
+<?php if ( pings_open() && ! comments_open() ) : ?>
 
 	<p class="comments-closed pings-open">
 		<?php
@@ -7,10 +17,10 @@
 		?>
 	</p><!-- .comments-closed .pings-open -->
 
-<?php elseif ( !comments_open() ) : ?>
+<?php elseif ( ! comments_open() ) : ?>
 
 	<p class="comments-closed">
-		<?php _e( 'Comments are closed.', 'epic-base' ); ?>
+		<?php esc_attr_e( 'Comments are closed.', 'epic-base' ); ?>
 	</p><!-- .comments-closed -->
 
 <?php endif; ?>

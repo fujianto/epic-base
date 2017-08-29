@@ -62,7 +62,8 @@ class Hybrid_Customize_Control_Checkbox_Multiple extends WP_Customize_Control {
 	 * @access public
 	 * @return void
 	 */
-	public function content_template() { ?>
+	public function content_template() {
+	?>
 
 		<# if ( ! data.choices ) {
 			return;
@@ -86,5 +87,6 @@ class Hybrid_Customize_Control_Checkbox_Multiple extends WP_Customize_Control {
 				</li>
 			<# } ) #>
 		</ul>
-	<?php }
+	<?php
+	}
 }
