@@ -29,7 +29,7 @@
  * @since      loop-pagination-0.1.0
  * @deprecated 3.0.0
  * @access     public
- * @param      array   $args
+ * @param      array $args
  * @return     string
  */
 function loop_pagination( $args = array() ) {
@@ -118,7 +118,7 @@ function hybrid_admin_register_scripts() {}
 class Hybrid_Theme_Settings{}
 function hybrid_get_styles() {}
 function hybrid_doctitle() {}
-//function hybrid_admin_register_styles() {} // Re-added in 3.0.0.
+// function hybrid_admin_register_styles() {} // Re-added in 3.0.0.
 function hybrid_admin_enqueue_styles() {}
 function hybrid_settings_field_id() {}
 function hybrid_settings_field_name() {}

@@ -11,15 +11,15 @@
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
-# Add extra support for post types.
+// Add extra support for post types.
 add_action( 'init', 'hybrid_add_post_type_support', 15 );
 
-# Filters the title for untitled posts.
+// Filters the title for untitled posts.
 add_filter( 'the_title', 'hybrid_untitled_post' );
 
-# Filters the archive title and description.
-add_filter( 'get_the_archive_title',       'hybrid_archive_title_filter',       5  );
-add_filter( 'get_the_archive_description', 'hybrid_archive_description_filter', 0  );
+// Filters the archive title and description.
+add_filter( 'get_the_archive_title',       'hybrid_archive_title_filter',       5 );
+add_filter( 'get_the_archive_description', 'hybrid_archive_description_filter', 0 );
 add_filter( 'get_the_archive_description', 'hybrid_archive_description_format', 95 );
 
 /**
@@ -60,7 +60,7 @@ function hybrid_add_post_type_support() {
  *
  * @since  1.2.0
  * @access public
- * @param  int    $width
+ * @param  int $width
  * @return void
  */
 function hybrid_set_content_width( $width = '' ) {
@@ -85,14 +85,15 @@ function hybrid_get_content_width() {
  *
  * @since  1.6.0
  * @access public
- * @param  string  $title
+ * @param  string $title
  * @return string
  */
 function hybrid_untitled_post( $title ) {
 
 	// Translators: Used as a placeholder for untitled posts on non-singular views.
-	if ( ! $title && ! is_singular() && in_the_loop() && ! is_admin() )
+	if ( ! $title && ! is_singular() && in_the_loop() && ! is_admin() ) {
 		$title = esc_html__( '(Untitled)', 'epic-base' );
+	}
 
 	return $title;
 }
@@ -105,7 +106,7 @@ function hybrid_untitled_post( $title ) {
  * @since  1.5.0
  * @access public
  * @link   http://core.trac.wordpress.org/ticket/18302
- * @param  array  $file_names The files to search for.
+ * @param  array $file_names The files to search for.
  * @return string
  */
 function hybrid_locate_theme_file( $file_names ) {
@@ -119,9 +120,7 @@ function hybrid_locate_theme_file( $file_names ) {
 		if ( is_child_theme() && file_exists( HYBRID_CHILD . $file ) ) {
 			$located = HYBRID_CHILD_URI . $file;
 			break;
-		}
-
-		// If the file exists in the template (parent theme) directory.
+		} // If the file exists in the template (parent theme) directory.
 		elseif ( file_exists( HYBRID_PARENT . $file ) ) {
 			$located = HYBRID_PARENT_URI . $file;
 			break;
@@ -136,7 +135,7 @@ function hybrid_locate_theme_file( $file_names ) {
  *
  * @since  2.0.0
  * @access public
- * @param  string  $hex
+ * @param  string $hex
  * @return array
  */
 function hybrid_hex_to_rgb( $hex ) {
@@ -145,8 +144,9 @@ function hybrid_hex_to_rgb( $hex ) {
 	$color = trim( $hex, '#' );
 
 	// If the color is three characters, convert it to six.
-        if ( 3 === strlen( $color ) )
+	if ( 3 === strlen( $color ) ) {
 		$color = $color[0] . $color[0] . $color[1] . $color[1] . $color[2] . $color[2];
+	}
 
 	// Get the red, green, and blue values.
 	$red   = hexdec( $color[0] . $color[1] );
@@ -154,7 +154,11 @@ function hybrid_hex_to_rgb( $hex ) {
 	$blue  = hexdec( $color[4] . $color[5] );
 
 	// Return the RGB colors as an array.
-	return array( 'r' => $red, 'g' => $green, 'b' => $blue );
+	return array(
+		'r' => $red,
+		'g' => $green,
+		'b' => $blue,
+	);
 }
 
 /**
@@ -162,7 +166,7 @@ function hybrid_hex_to_rgb( $hex ) {
  *
  * @since  2.0.0
  * @access public
- * @param  string  $location
+ * @param  string $location
  * @return string
  */
 function hybrid_get_menu_location_name( $location ) {
@@ -177,7 +181,7 @@ function hybrid_get_menu_location_name( $location ) {
  *
  * @since  3.0.0
  * @access public
- * @param  string  $location
+ * @param  string $location
  * @return string
  */
 function hybrid_get_menu_name( $location ) {
@@ -206,14 +210,15 @@ function hybrid_get_min_suffix() {
  *
  * @since  3.0.0
  * @access public
- * @param  string  $feature
- * @param  string  $file
+ * @param  string $feature
+ * @param  string $file
  * @return void
  */
 function hybrid_require_if_theme_supports( $feature, $file ) {
 
-	if ( current_theme_supports( $feature ) && file_exists( $file ) )
+	if ( current_theme_supports( $feature ) && file_exists( $file ) ) {
 		require_once( $file );
+	}
 }
 
 /**
@@ -221,55 +226,56 @@ function hybrid_require_if_theme_supports( $feature, $file ) {
  *
  * @since  3.0.0
  * @access public
- * @param  string  $title
+ * @param  string $title
  * @return string
  */
 function hybrid_archive_title_filter( $title ) {
 
-	if ( is_home() && ! is_front_page() )
+	if ( is_home() && ! is_front_page() ) {
 		$title = get_post_field( 'post_title', get_queried_object_id() );
 
-	elseif ( is_category() )
+	} elseif ( is_category() ) {
 		$title = single_cat_title( '', false );
 
-	elseif ( is_tag() )
+	} elseif ( is_tag() ) {
 		$title = single_tag_title( '', false );
 
-	elseif ( is_tax() )
+	} elseif ( is_tax() ) {
 		$title = single_term_title( '', false );
 
-	elseif ( is_author() )
+	} elseif ( is_author() ) {
 		$title = hybrid_get_single_author_title();
 
-	elseif ( is_search() )
+	} elseif ( is_search() ) {
 		$title = hybrid_get_search_title();
 
-	elseif ( is_post_type_archive() )
+	} elseif ( is_post_type_archive() ) {
 		$title = post_type_archive_title( '', false );
 
-	elseif ( get_query_var( 'minute' ) && get_query_var( 'hour' ) )
+	} elseif ( get_query_var( 'minute' ) && get_query_var( 'hour' ) ) {
 		$title = hybrid_get_single_minute_hour_title();
 
-	elseif ( get_query_var( 'minute' ) )
+	} elseif ( get_query_var( 'minute' ) ) {
 		$title = hybrid_get_single_minute_title();
 
-	elseif ( get_query_var( 'hour' ) )
+	} elseif ( get_query_var( 'hour' ) ) {
 		$title = hybrid_get_single_hour_title();
 
-	elseif ( is_day() )
+	} elseif ( is_day() ) {
 		$title = hybrid_get_single_day_title();
 
-	elseif ( get_query_var( 'w' ) )
+	} elseif ( get_query_var( 'w' ) ) {
 		$title = hybrid_get_single_week_title();
 
-	elseif ( is_month() )
+	} elseif ( is_month() ) {
 		$title = single_month_title( ' ', false );
 
-	elseif ( is_year() )
+	} elseif ( is_year() ) {
 		$title = hybrid_get_single_year_title();
 
-	elseif ( is_archive() )
+	} elseif ( is_archive() ) {
 		$title = hybrid_get_single_archive_title();
+	}
 
 	return apply_filters( 'hybrid_archive_title', $title );
 }
@@ -279,30 +285,31 @@ function hybrid_archive_title_filter( $title ) {
  *
  * @since  3.0.0
  * @access public
- * @param  string  $desc
+ * @param  string $desc
  * @return string
  */
 function hybrid_archive_description_filter( $desc ) {
 
 	$new_desc = '';
 
-	if ( is_home() && ! is_front_page() )
+	if ( is_home() && ! is_front_page() ) {
 		$new_desc = get_post_field( 'post_content', get_queried_object_id(), 'raw' );
 
-	elseif ( is_category() )
+	} elseif ( is_category() ) {
 		$new_desc = get_term_field( 'description', get_queried_object_id(), 'category', 'raw' );
 
-	elseif ( is_tag() )
+	} elseif ( is_tag() ) {
 		$new_desc = get_term_field( 'description', get_queried_object_id(), 'post_tag', 'raw' );
 
-	elseif ( is_tax() )
+	} elseif ( is_tax() ) {
 		$new_desc = get_term_field( 'description', get_queried_object_id(), get_query_var( 'taxonomy' ), 'raw' );
 
-	elseif ( is_author() )
+	} elseif ( is_author() ) {
 		$new_desc = get_the_author_meta( 'description', get_query_var( 'author' ) );
 
-	elseif ( is_post_type_archive() )
+	} elseif ( is_post_type_archive() ) {
 		$new_desc = get_post_type_object( get_query_var( 'post_type' ) )->description;
+	}
 
 	return $new_desc ? $new_desc : $desc;
 }
@@ -312,7 +319,7 @@ function hybrid_archive_description_filter( $desc ) {
  *
  * @since  3.1.0
  * @access public
- * @param  string  $desc
+ * @param  string $desc
  * @return string
  */
 function hybrid_archive_description_format( $desc ) {

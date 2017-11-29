@@ -16,7 +16,7 @@
  *
  * @since  3.0.0
  * @access public
- * @param  int     $post_id
+ * @param  int $post_id
  * @return bool
  */
 function hybrid_get_post_template( $post_id ) {
@@ -28,8 +28,8 @@ function hybrid_get_post_template( $post_id ) {
  *
  * @since  3.0.0
  * @access public
- * @param  int     $post_id
- * @param  string  $template
+ * @param  int    $post_id
+ * @param  string $template
  * @return bool
  */
 function hybrid_set_post_template( $post_id, $template ) {
@@ -41,7 +41,7 @@ function hybrid_set_post_template( $post_id, $template ) {
  *
  * @since  3.0.0
  * @access public
- * @param  int     $post_id
+ * @param  int $post_id
  * @return bool
  */
 function hybrid_delete_post_template( $post_id ) {
@@ -54,24 +54,26 @@ function hybrid_delete_post_template( $post_id ) {
  *
  * @since  1.2.0
  * @access public
- * @param  string  $template  The name of the template to check for.
- * @param  int     $post_id
+ * @param  string $template  The name of the template to check for.
+ * @param  int    $post_id
  * @return bool
  */
 function hybrid_has_post_template( $template = '', $post_id = '' ) {
 
-	if ( ! $post_id )
+	if ( ! $post_id ) {
 		$post_id = get_the_ID();
+	}
 
 	// Get the post template, which is saved as metadata.
 	$post_template = hybrid_get_post_template( $post_id );
 
 	// If a specific template was input, check that the post template matches.
-	if ( $template && $template === $post_template )
+	if ( $template && $template === $post_template ) {
 		return true;
+	}
 
 	// Return whether we have a post template.
-	return !empty( $post_template );
+	return ! empty( $post_template );
 }
 
 /**
@@ -79,7 +81,7 @@ function hybrid_has_post_template( $template = '', $post_id = '' ) {
  *
  * @since  3.0.0
  * @access public
- * @param  int     $post_id
+ * @param  int $post_id
  * @return string
  */
 function hybrid_get_post_template_meta_key( $post_id ) {
@@ -92,7 +94,7 @@ function hybrid_get_post_template_meta_key( $post_id ) {
  *
  * @since  1.6.0
  * @access public
- * @param  int    $post_id
+ * @param  int $post_id
  * @return bool
  */
 function hybrid_post_has_content( $post_id = 0 ) {
@@ -132,7 +134,7 @@ function hybrid_get_post_format_link() {
  *
  * @since  2.0.0
  * @access public
- * @param  array   $args
+ * @param  array $args
  * @return void
  */
 function hybrid_post_author( $args = array() ) {
@@ -147,7 +149,7 @@ function hybrid_post_author( $args = array() ) {
  *
  * @since  2.0.0
  * @access public
- * @param  array   $args
+ * @param  array $args
  * @return string
  */
 function hybrid_get_post_author( $args = array() ) {
@@ -168,7 +170,6 @@ function hybrid_get_post_author( $args = array() ) {
 	the_author_posts_link();
 	$link = ob_get_clean();
 	// A small piece of my soul just died.  Kittens no longer purr.  Dolphins lost the ability to swim with grace.
-
 	if ( $link ) {
 		$html .= $args['before'];
 		$html .= sprintf( $args['wrap'], hybrid_get_attr( 'entry-author' ), sprintf( $args['text'], $link ) );
@@ -183,7 +184,7 @@ function hybrid_get_post_author( $args = array() ) {
  *
  * @since  2.0.0
  * @access public
- * @param  array   $args
+ * @param  array $args
  * @return void
  */
 function hybrid_post_terms( $args = array() ) {
@@ -201,7 +202,7 @@ function hybrid_post_terms( $args = array() ) {
  *
  * @since  2.0.0
  * @access public
- * @param  array   $args
+ * @param  array $args
  * @return string
  */
 function hybrid_get_post_terms( $args = array() ) {
@@ -216,7 +217,7 @@ function hybrid_get_post_terms( $args = array() ) {
 		'after'      => '',
 		'wrap'       => '<span %s>%s</span>',
 		// Translators: Separates tags, categories, etc. when displaying a post.
-		'sep'        => _x( ', ', 'taxonomy terms separator', 'epic-base' )
+		'sep'        => _x( ', ', 'taxonomy terms separator', 'epic-base' ),
 	);
 
 	$args = wp_parse_args( $args, $defaults );
@@ -255,13 +256,15 @@ function hybrid_get_gallery_item_count() {
 	if ( ! empty( $galleries ) ) {
 		$items = '';
 
-		foreach ( $galleries as $gallery => $gallery_items )
+		foreach ( $galleries as $gallery => $gallery_items ) {
 			$items .= $gallery_items;
+		}
 
 		preg_match_all( '#src=([\'"])(.+?)\1#is', $items, $sources, PREG_SET_ORDER );
 
-		if ( ! empty( $sources ) )
+		if ( ! empty( $sources ) ) {
 			return count( $sources );
+		}
 	}
 
 	// If an item count wasn't returned, get the post attachments.
@@ -270,7 +273,7 @@ function hybrid_get_gallery_item_count() {
 			'fields'         => 'ids',
 			'post_parent'    => get_the_ID(),
 			'post_type'      => 'attachment',
-			'numberposts'    => -1
+			'numberposts'    => -1,
 		)
 	);
 
@@ -294,8 +297,9 @@ function hybrid_get_gallery_image_count() {
 	$galleries = get_post_galleries_images();
 
 	// Merge each gallery image into a single array.
-	foreach ( $galleries as $gallery_images )
+	foreach ( $galleries as $gallery_images ) {
 		$images = array_merge( $images, $gallery_images );
+	}
 
 	// If there are no images in the array, just grab the attached images.
 	if ( empty( $images ) ) {
@@ -305,7 +309,7 @@ function hybrid_get_gallery_image_count() {
 				'post_parent'    => get_the_ID(),
 				'post_type'      => 'attachment',
 				'post_mime_type' => 'image',
-				'numberposts'    => -1
+				'numberposts'    => -1,
 			)
 		);
 	}
@@ -321,7 +325,7 @@ function hybrid_get_gallery_image_count() {
  *
  * @since  1.6.0
  * @access public
- * @param  string  $content
+ * @param  string $content
  * @return string
  */
 function hybrid_get_content_url( $content ) {
@@ -338,8 +342,8 @@ function hybrid_get_content_url( $content ) {
  *
  * @since  1.6.0
  * @access public
- * @param  string  $url
- * @param  object  $post
+ * @param  string $url
+ * @param  object $post
  * @return string
  */
 function hybrid_get_the_post_format_url( $url = '', $post = null ) {

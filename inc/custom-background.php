@@ -24,9 +24,9 @@ function epic_base_custom_background_setup() {
 }
 
 /**
- * This is a fix for when a user sets a custom background color with no custom background image.  What 
- * happens is the theme's background image hides the user-selected background color.  If a user selects a 
- * background image, we'll just use the WordPress custom background callback.  This also fixes WordPress 
+ * This is a fix for when a user sets a custom background color with no custom background image.  What
+ * happens is the theme's background image hides the user-selected background color.  If a user selects a
+ * background image, we'll just use the WordPress custom background callback.  This also fixes WordPress
  * not correctly handling the theme's default background color.
  *
  * @link http://core.trac.wordpress.org/ticket/16919
@@ -42,17 +42,18 @@ function epic_base_custom_background_callback() {
 	$image = get_background_image();
 
 	/* If there's an image, just call the normal WordPress callback. We won't do anything here. */
-	if ( !empty( $image ) ) {
+	if ( ! empty( $image ) ) {
 		_custom_background_cb();
 		return;
 	}
 
 	/* Get the background color. */
-	$color = get_background_color();
+	$color =  sanitize_hex_color_no_hash(get_background_color());
 
 	/* If no background color, return. */
-	if ( empty( $color ) )
+	if ( empty( $color ) ) {
 		return;
+	}
 
 	/* Use 'background' instead of 'background-color'. */
 	$style = "background: #{$color};";

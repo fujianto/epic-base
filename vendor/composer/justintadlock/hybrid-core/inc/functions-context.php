@@ -10,13 +10,13 @@
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
-# Filters the WordPress 'body_class' early.
+// Filters the WordPress 'body_class' early.
 add_filter( 'body_class', 'hybrid_body_class_filter', 0, 2 );
 
-# Filters the WordPress 'post_class' early.
+// Filters the WordPress 'post_class' early.
 add_filter( 'post_class', 'hybrid_post_class_filter', 0, 3 );
 
-# Filters the WordPress 'comment_class' early.
+// Filters the WordPress 'comment_class' early.
 add_filter( 'comment_class', 'hybrid_comment_class_filter', 0, 3 );
 
 /**
@@ -41,22 +41,19 @@ function hybrid_get_context() {
 	$object_id = get_queried_object_id();
 
 	// Front page of the site.
-	if ( is_front_page() )
+	if ( is_front_page() ) {
 		$context[] = 'home';
+	}
 
 	// Blog page.
 	if ( is_home() ) {
 		$context[] = 'blog';
-	}
-
-	// Singular views.
+	} // Singular views.
 	elseif ( is_singular() ) {
 		$context[] = 'singular';
 		$context[] = "singular-{$object->post_type}";
 		$context[] = "singular-{$object->post_type}-{$object_id}";
-	}
-
-	// Archive views.
+	} // Archive views.
 	elseif ( is_archive() ) {
 		$context[] = 'archive';
 
@@ -64,8 +61,9 @@ function hybrid_get_context() {
 		if ( is_post_type_archive() ) {
 			$post_type = get_query_var( 'post_type' );
 
-			if ( is_array( $post_type ) )
+			if ( is_array( $post_type ) ) {
 				reset( $post_type );
+			}
 
 			$context[] = "archive-{$post_type}";
 		}
@@ -91,37 +89,39 @@ function hybrid_get_context() {
 		if ( is_date() ) {
 			$context[] = 'date';
 
-			if ( is_year() )
+			if ( is_year() ) {
 				$context[] = 'year';
+			}
 
-			if ( is_month() )
+			if ( is_month() ) {
 				$context[] = 'month';
+			}
 
-			if ( get_query_var( 'w' ) )
+			if ( get_query_var( 'w' ) ) {
 				$context[] = 'week';
+			}
 
-			if ( is_day() )
+			if ( is_day() ) {
 				$context[] = 'day';
+			}
 		}
 
 		// Time archives.
 		if ( is_time() ) {
 			$context[] = 'time';
 
-			if ( get_query_var( 'hour' ) )
+			if ( get_query_var( 'hour' ) ) {
 				$context[] = 'hour';
+			}
 
-			if ( get_query_var( 'minute' ) )
+			if ( get_query_var( 'minute' ) ) {
 				$context[] = 'minute';
+			}
 		}
-	}
-
-	// Search results.
+	} // Search results.
 	elseif ( is_search() ) {
 		$context[] = 'search';
-	}
-
-	// Error 404 pages.
+	} // Error 404 pages.
 	elseif ( is_404() ) {
 		$context[] = 'error-404';
 	}
@@ -152,8 +152,9 @@ function hybrid_body_class_filter( $classes, $class ) {
 	$locale = get_locale();
 	$lang   = hybrid_get_language( $locale );
 
-	if ( $locale !== $lang )
+	if ( $locale !== $lang ) {
 		$classes[] = $lang;
+	}
 
 	$classes[] = strtolower( str_replace( '_', '-', $locale ) );
 
@@ -174,28 +175,34 @@ function hybrid_body_class_filter( $classes, $class ) {
 	$classes[] = is_user_logged_in() ? 'logged-in' : 'logged-out';
 
 	// WP admin bar.
-	if ( is_admin_bar_showing() )
+	if ( is_admin_bar_showing() ) {
 		$classes[] = 'admin-bar';
+	}
 
 	// Use the '.custom-background' class to integrate with the WP background feature.
-	if ( get_background_image() || get_background_color() )
+	if ( get_background_image() || get_background_color() ) {
 		$classes[] = 'custom-background';
+	}
 
 	// Add the '.custom-header' class if the user is using a custom header.
-	if ( get_header_image() || ( display_header_text() && get_header_textcolor() ) )
+	if ( get_header_image() || ( display_header_text() && get_header_textcolor() ) ) {
 		$classes[] = 'custom-header';
+	}
 
 	// Add the `.custom-logo` class if user is using a custom logo.
-	if ( function_exists( 'has_custom_logo' ) && has_custom_logo() )
+	if ( function_exists( 'has_custom_logo' ) && has_custom_logo() ) {
 		$classes[] = 'wp-custom-logo';
+	}
 
 	// Add the '.display-header-text' class if the user chose to display it.
-	if ( display_header_text() )
+	if ( display_header_text() ) {
 		$classes[] = 'display-header-text';
+	}
 
 	// Plural/multiple-post view (opposite of singular).
-	if ( hybrid_is_plural() )
+	if ( hybrid_is_plural() ) {
 		$classes[] = 'plural';
+	}
 
 	// Merge base contextual classes with $classes.
 	$classes = array_merge( $classes, hybrid_get_context() );
@@ -207,10 +214,11 @@ function hybrid_body_class_filter( $classes, $class ) {
 		$post = get_queried_object();
 
 		// Checks for custom template.
-		$template = str_replace( array ( "{$post->post_type}-template-", "{$post->post_type}-" ), '', basename( hybrid_get_post_template( $post->ID ), '.php' ) );
+		$template = str_replace( array( "{$post->post_type}-template-", "{$post->post_type}-" ), '', basename( hybrid_get_post_template( $post->ID ), '.php' ) );
 
-		if ( $template )
+		if ( $template ) {
 			$classes[] = "{$post->post_type}-template-{$template}";
+		}
 
 		// Post format.
 		if ( current_theme_supports( 'post-formats' ) && post_type_supports( $post->post_type, 'post-formats' ) ) {
@@ -220,8 +228,9 @@ function hybrid_body_class_filter( $classes, $class ) {
 
 		// Attachment mime types.
 		if ( is_attachment() ) {
-			foreach ( explode( '/', get_post_mime_type() ) as $type )
+			foreach ( explode( '/', get_post_mime_type() ) as $type ) {
 				$classes[] = "attachment-{$type}";
+			}
 		}
 	}
 
@@ -229,17 +238,16 @@ function hybrid_body_class_filter( $classes, $class ) {
 	if ( is_paged() ) {
 		$classes[] = 'paged';
 		$classes[] = 'paged-' . intval( get_query_var( 'paged' ) );
-	}
-
-	// Singular post paged views using <!-- nextpage -->.
+	} // Singular post paged views using <!-- nextpage -->.
 	elseif ( is_singular() && 1 < get_query_var( 'page' ) ) {
 		$classes[] = 'paged';
 		$classes[] = 'paged-' . intval( get_query_var( 'page' ) );
 	}
 
 	// Theme layouts.
-	if ( current_theme_supports( 'theme-layouts' ) )
+	if ( current_theme_supports( 'theme-layouts' ) ) {
 		$classes[] = sanitize_html_class( 'layout-' . hybrid_get_theme_layout() );
+	}
 
 	// Input class.
 	if ( $class ) {
@@ -264,8 +272,9 @@ function hybrid_body_class_filter( $classes, $class ) {
  */
 function hybrid_post_class_filter( $classes, $class, $post_id ) {
 
-	if ( is_admin() )
+	if ( is_admin() ) {
 		return $classes;
+	}
 
 	$_classes    = array();
 	$post        = get_post( $post_id );
@@ -274,8 +283,9 @@ function hybrid_post_class_filter( $classes, $class, $post_id ) {
 	// Set up array of classes that we want to remove.
 	$remove = array( 'hentry', 'post-password-required' );
 
-	if ( post_type_supports( $post_type, 'post-formats' ) )
+	if ( post_type_supports( $post_type, 'post-formats' ) ) {
 		$remove[] = 'post_format-post-format-' . get_post_format();
+	}
 
 	// Remove classes.
 	$classes = array_diff( $classes, $remove );
@@ -287,20 +297,24 @@ function hybrid_post_class_filter( $classes, $class, $post_id ) {
 	$_classes[] = 'author-' . sanitize_html_class( get_the_author_meta( 'user_nicename' ), get_the_author_meta( 'ID' ) );
 
 	// Password-protected posts.
-	if ( post_password_required() )
+	if ( post_password_required() ) {
 		$_classes[] = 'protected';
+	}
 
 	// Has excerpt.
-	if ( post_type_supports( $post_type, 'excerpt' ) && has_excerpt() )
+	if ( post_type_supports( $post_type, 'excerpt' ) && has_excerpt() ) {
 		$_classes[] = 'has-excerpt';
+	}
 
 	// Has <!--more--> link.
-	if ( ! is_singular() && false !== strpos( $post->post_content, '<!--more' ) )
+	if ( ! is_singular() && false !== strpos( $post->post_content, '<!--more' ) ) {
 		$_classes[] = 'has-more-link';
+	}
 
 	// Has <!--nextpage--> links.
-	if ( false !== strpos( $post->post_content, '<!--nextpage' ) )
+	if ( false !== strpos( $post->post_content, '<!--nextpage' ) ) {
 		$_classes[] = 'has-pages';
+	}
 
 	return array_map( 'esc_attr', array_unique( array_merge( $_classes, $classes ) ) );
 }
@@ -320,8 +334,9 @@ function hybrid_comment_class_filter( $classes, $class, $comment_id ) {
 	$comment = get_comment( $comment_id );
 
 	// If the comment type is 'pingback' or 'trackback', add the 'ping' comment class.
-	if ( in_array( $comment->comment_type, array( 'pingback', 'trackback' ) ) )
+	if ( in_array( $comment->comment_type, array( 'pingback', 'trackback' ) ) ) {
 		$classes[] = 'ping';
+	}
 
 	// User classes to match user role and user.
 	if ( 0 < $comment->user_id ) {
@@ -331,8 +346,9 @@ function hybrid_comment_class_filter( $classes, $class, $comment_id ) {
 
 		// Set a class with the user's role(s).
 		if ( is_array( $user->roles ) ) {
-			foreach ( $user->roles as $role )
+			foreach ( $user->roles as $role ) {
 				$classes[] = sanitize_html_class( "role-{$role}" );
+			}
 		}
 	}
 
@@ -340,8 +356,9 @@ function hybrid_comment_class_filter( $classes, $class, $comment_id ) {
 	$avatar_types = apply_filters( 'get_avatar_comment_types', array( 'comment' ) );
 
 	// If avatars are enabled and the comment types can display avatars, add the 'has-avatar' class.
-	if ( get_option( 'show_avatars' ) && in_array( $comment->comment_type, $avatar_types ) )
+	if ( get_option( 'show_avatars' ) && in_array( $comment->comment_type, $avatar_types ) ) {
 		$classes[] = 'has-avatar';
+	}
 
 	return array_map( 'esc_attr', array_unique( $classes ) );
 }

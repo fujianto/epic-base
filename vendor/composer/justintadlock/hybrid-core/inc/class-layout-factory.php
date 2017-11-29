@@ -45,8 +45,8 @@ class Hybrid_Layout_Factory {
 	 * @see    Hybrid_Layout::__construct()
 	 * @since  3.0.0
 	 * @access public
-	 * @param  string  $name
-	 * @param  array   $args
+	 * @param  string $name
+	 * @param  array  $args
 	 * @return void
 	 */
 	public function register_layout( $name, $args = array() ) {
@@ -64,13 +64,14 @@ class Hybrid_Layout_Factory {
 	 *
 	 * @since  3.0.0
 	 * @access public
-	 * @param  string  $name
+	 * @param  string $name
 	 * @return void
 	 */
 	public function unregister_layout( $name ) {
 
-		if ( $this->layout_exists( $name ) && false === $this->get( $name )->_internal )
+		if ( $this->layout_exists( $name ) && false === $this->get( $name )->_internal ) {
 			unset( $this->layouts[ $name ] );
+		}
 	}
 
 	/**
@@ -78,7 +79,7 @@ class Hybrid_Layout_Factory {
 	 *
 	 * @since  3.0.0
 	 * @access public
-	 * @param  string  $name
+	 * @param  string $name
 	 * @return bool
 	 */
 	public function layout_exists( $name ) {
@@ -91,7 +92,7 @@ class Hybrid_Layout_Factory {
 	 *
 	 * @since  3.0.0
 	 * @access public
-	 * @param  string  $name
+	 * @param  string $name
 	 * @return object|bool
 	 */
 	public function get_layout( $name ) {
@@ -110,8 +111,9 @@ class Hybrid_Layout_Factory {
 
 		static $instance = null;
 
-		if ( is_null( $instance ) )
-			$instance = new Hybrid_Layout_Factory;
+		if ( is_null( $instance ) ) {
+			$instance = new Hybrid_Layout_Factory();
+		}
 
 		return $instance;
 	}

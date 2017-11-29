@@ -5,8 +5,8 @@
  *
  * Note, the `$choices` array is slightly different than normal and should be in the form of
  * `array(
- *	$value => array( 'url' => $image_url, 'label' => $text_label ),
- *	$value => array( 'url' => $image_url, 'label' => $text_label ),
+ *  $value => array( 'url' => $image_url, 'label' => $text_label ),
+ *  $value => array( 'url' => $image_url, 'label' => $text_label ),
  * )`
  *
  * @package    Hybrid
@@ -43,7 +43,7 @@ class Hybrid_Customize_Control_Radio_Image extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 		wp_enqueue_script( 'hybrid-customize-controls' );
-		wp_enqueue_style(  'hybrid-customize-controls' );
+		wp_enqueue_style( 'hybrid-customize-controls' );
 	}
 
 	/**
@@ -57,8 +57,9 @@ class Hybrid_Customize_Control_Radio_Image extends WP_Customize_Control {
 		parent::to_json();
 
 		// We need to make sure we have the correct image URL.
-		foreach ( $this->choices as $value => $args )
+		foreach ( $this->choices as $value => $args ) {
 			$this->choices[ $value ]['url'] = esc_url( sprintf( $args['url'], get_template_directory_uri(), get_stylesheet_directory_uri() ) );
+		}
 
 		$this->json['choices'] = $this->choices;
 		$this->json['link']    = $this->get_link();
@@ -73,7 +74,8 @@ class Hybrid_Customize_Control_Radio_Image extends WP_Customize_Control {
 	 * @access public
 	 * @return void
 	 */
-	public function content_template() { ?>
+	public function content_template() {
+	?>
 
 		<# if ( ! data.choices ) {
 			return;
@@ -98,5 +100,6 @@ class Hybrid_Customize_Control_Radio_Image extends WP_Customize_Control {
 				<span style="display: none">{{i++}}</span>
 			</label>
 		<# } ) #>
-	<?php }
+	<?php
+	}
 }

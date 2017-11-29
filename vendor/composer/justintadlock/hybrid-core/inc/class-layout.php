@@ -36,7 +36,7 @@ class Hybrid_Layout {
 	 *
 	 * @since  3.0.0
 	 * @access public
-	 * @param  string  $property
+	 * @param  string $property
 	 * @return mixed
 	 */
 	public function __get( $property ) {
@@ -49,14 +49,15 @@ class Hybrid_Layout {
 	 *
 	 * @since  3.0.0
 	 * @access public
-	 * @param  string  $property
-	 * @param  mixed   $value
+	 * @param  string $property
+	 * @param  mixed  $value
 	 * @return void
 	 */
 	public function __set( $property, $value ) {
 
-		if ( isset( $this->$property ) )
+		if ( isset( $this->$property ) ) {
 			$this->args[ $property ] = $value;
+		}
 	}
 
 	/**
@@ -64,7 +65,7 @@ class Hybrid_Layout {
 	 *
 	 * @since  3.0.0
 	 * @access public
-	 * @param  string  $property
+	 * @param  string $property
 	 * @return bool
 	 */
 	public function __isset( $property ) {
@@ -77,7 +78,7 @@ class Hybrid_Layout {
 	 *
 	 * @since  3.0.0
 	 * @access public
-	 * @param  string  $property
+	 * @param  string $property
 	 * @return void
 	 */
 	public function __unset( $property ) {}
@@ -99,8 +100,8 @@ class Hybrid_Layout {
 	 *
 	 * @since  3.0.0
 	 * @access public
-	 * @param  string  $name
-	 * @param  array   $args  {
+	 * @param  string $name
+	 * @param  array  $args  {
 	 *     @type bool    $is_global_layout
 	 *     @type bool    $is_post_layout
 	 *     @type bool    $is_user_layout
@@ -149,8 +150,9 @@ class Hybrid_Layout {
 
 			foreach ( $this->post_types as $post_type ) {
 
-				if ( ! post_type_supports( $post_type, 'theme-layouts' ) )
+				if ( ! post_type_supports( $post_type, 'theme-layouts' ) ) {
 					add_post_type_support( $post_type, 'theme-layouts' );
+				}
 			}
 		}
 	}

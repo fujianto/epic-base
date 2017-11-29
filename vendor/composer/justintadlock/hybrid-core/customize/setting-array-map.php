@@ -35,7 +35,7 @@ class Hybrid_Customize_Setting_Array_Map extends WP_Customize_Setting {
 	 *
 	 * @since  3.0.0
 	 * @access public
-	 * @param  array|string  $values
+	 * @param  array|string $values
 	 * @return array
 	 */
 	public function sanitize( $values ) {
@@ -51,7 +51,7 @@ class Hybrid_Customize_Setting_Array_Map extends WP_Customize_Setting {
 	 *
 	 * @since  3.0.0
 	 * @access public
-	 * @param  mixed  $value
+	 * @param  mixed $value
 	 * @return mixed
 	 */
 	public function map( $value ) {

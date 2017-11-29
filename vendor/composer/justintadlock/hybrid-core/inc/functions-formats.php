@@ -11,7 +11,7 @@
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
-# Add support for structured post formats.
+// Add support for structured post formats.
 add_action( 'wp_loaded', 'hybrid_structured_post_formats', 0 );
 
 /**
@@ -25,20 +25,24 @@ add_action( 'wp_loaded', 'hybrid_structured_post_formats', 0 );
 function hybrid_structured_post_formats() {
 
 	// Add infinity symbol to aside posts.
-	if ( current_theme_supports( 'post-formats', 'aside' ) )
+	if ( current_theme_supports( 'post-formats', 'aside' ) ) {
 		add_filter( 'the_content', 'hybrid_aside_infinity', 9 ); // run before wpautop
+	}
 
 	// Adds the link to the content if it's not in the post.
-	if ( current_theme_supports( 'post-formats', 'link' ) )
+	if ( current_theme_supports( 'post-formats', 'link' ) ) {
 		add_filter( 'the_content', 'hybrid_link_content', 9 ); // run before wpautop
+	}
 
 	// Wraps `<blockquote>` around quote posts.
-	if ( current_theme_supports( 'post-formats', 'quote' ) )
+	if ( current_theme_supports( 'post-formats', 'quote' ) ) {
 		add_filter( 'the_content', 'hybrid_quote_content' );
+	}
 
 	// Filter the content of chat posts.
-	if ( current_theme_supports( 'post-formats', 'chat' ) )
+	if ( current_theme_supports( 'post-formats', 'chat' ) ) {
 		add_filter( 'the_content', 'hybrid_chat_content', 9 ); // run before wpautop
+	}
 }
 
 /**
@@ -46,7 +50,7 @@ function hybrid_structured_post_formats() {
  *
  * @since  1.6.0
  * @access public
- * @param  string  $slug
+ * @param  string $slug
  * @return string
  */
 function hybrid_clean_post_format_slug( $slug ) {
@@ -65,8 +69,9 @@ function hybrid_clean_post_format_slug( $slug ) {
  */
 function hybrid_aside_infinity( $content ) {
 
-	if ( has_post_format( 'aside' ) && ! is_singular() && ! post_password_required() )
+	if ( has_post_format( 'aside' ) && ! is_singular() && ! post_password_required() ) {
 		$content .= apply_filters( 'hybrid_aside_infinity', sprintf( ' <a class="permalink" href="%s">&#8734;</a>', esc_url( get_permalink() ) ) );
+	}
 
 	return $content;
 }
@@ -79,7 +84,7 @@ function hybrid_aside_infinity( $content ) {
  *
  * @since  1.6.0
  * @access public
- * @param  string  $content
+ * @param  string $content
  * @return string
  */
 function hybrid_image_content( $content ) {
@@ -87,11 +92,19 @@ function hybrid_image_content( $content ) {
 	if ( has_post_format( 'image' ) && ! post_password_required() ) {
 		preg_match( '/<img.*?>/', $content, $matches );
 
-		if ( empty( $matches ) && function_exists( 'get_the_image' ) )
-			$content = get_the_image( array( 'meta_key' => false, 'size' => 'large', 'link' => false, 'echo' => false ) ) . $content;
+		if ( empty( $matches ) && function_exists( 'get_the_image' ) ) {
+			$content = get_the_image(
+				array(
+					'meta_key' => false,
+					'size' => 'large',
+					'link' => false,
+					'echo' => false,
+				)
+			) . $content;
 
-		elseif ( empty( $matches ) )
+		} elseif ( empty( $matches ) ) {
 			$content = get_the_post_thumbnail( get_the_ID(), 'large' ) . $content;
+		}
 	}
 
 	return $content;
@@ -110,8 +123,9 @@ function hybrid_image_content( $content ) {
  */
 function hybrid_link_content( $content ) {
 
-	if ( has_post_format( 'link' ) && ! post_password_required() && ! preg_match( '/<a\s[^>]*?href=[\'"](.+?)[\'"]/is', $content ) )
+	if ( has_post_format( 'link' ) && ! post_password_required() && ! preg_match( '/<a\s[^>]*?href=[\'"](.+?)[\'"]/is', $content ) ) {
 		$content = make_clickable( $content );
+	}
 
 	return $content;
 }
@@ -132,8 +146,9 @@ function hybrid_quote_content( $content ) {
 	if ( has_post_format( 'quote' ) && ! post_password_required() ) {
 		preg_match( '/<blockquote.*?>/', $content, $matches );
 
-		if ( empty( $matches ) )
+		if ( empty( $matches ) ) {
 			$content = "<blockquote>{$content}</blockquote>";
+		}
 	}
 
 	return $content;
@@ -146,7 +161,7 @@ function hybrid_quote_content( $content ) {
  *
  * @since  1.6.0
  * @access public
- * @param  string  $content
+ * @param  string $content
  * @return string
  */
 function hybrid_chat_content( $content ) {
@@ -158,7 +173,7 @@ function hybrid_chat_content( $content ) {
  *
  * @since  3.0.0
  * @access public
- * @param  string  $content
+ * @param  string $content
  * @return string
  */
 function hybrid_get_chat_transcript( $content ) {
