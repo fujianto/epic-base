@@ -5,7 +5,7 @@
  Stable tag        : 0.3.0
  Author            : Septian Ahmad Fujianto
  Author URI        : http://septianfujianto.com
- Tags              : one-column, two-columns, custom-background, custom-header, custom-menu, featured-images, left-sidebar, post-formats, editor-style, right-sidebar, rtl-language-support, threaded-comments, translation-ready, footer-widgets, microformats
+ Tags              : one-column, two-columns, custom-background, custom-header, custom-menu, featured-images, left-sidebar, editor-style, right-sidebar, rtl-language-support, threaded-comments, translation-ready, footer-widgets, microformats
  Text Domain       : epic-base
  License           : GNU General Public License v2.0 or later
  License URI       : http://www.gnu.org/licenses/gpl-2.0.html

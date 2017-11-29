@@ -1,7 +1,7 @@
 <?php
 
 /* Register custom image sizes. */
-add_action( 'init', 'epic_base_register_image_sizes', 5 );
+// add_action( 'init', 'epic_base_register_image_sizes', 5 );
 
 /* Register custom menus. */
 add_action( 'init', 'epic_base_register_menus', 5 );
@@ -22,7 +22,7 @@ add_action('wp_print_styles'     , 'epic_base_load_fonts');
 add_action( 'init', 'epic_base_add_editor_styles' );
 
 /* Unregister WordPress default Widget */
-add_action('widgets_init', 'epic_base_unregister_widget', 1);
+// add_action('widgets_init', 'epic_base_unregister_widget', 1);
 
 # Register custom layouts.
 add_action( 'hybrid_register_layouts', 'epic_base_register_layouts' );
@@ -34,11 +34,11 @@ add_action( 'hybrid_register_layouts', 'epic_base_register_layouts' );
  * @access public
  * @return void
  */
-function epic_base_register_image_sizes() {
+/*function epic_base_register_image_sizes() {
 
-	/* Sets the 'post-thumbnail' size. */
+	 Sets the 'post-thumbnail' size. 
 	//set_post_thumbnail_size( 150, 150, true );
-}
+}*/
 
 /**
  * Registers nav menu locations.
@@ -148,7 +148,7 @@ function epic_base_enqueue_styles() {
 
 	/* Customized Bootstrap Css*/
 	wp_enqueue_style( 'epic-base-bootstrap-epic',  EPIC_BASE_CSS   . '/customs/bootstrap-epic.css');
-	wp_enqueue_style( 'epic-base-fontawesome',     EPIC_BASE_FONTS . '/font-awesome/css/font-awesome.min.css');
+	wp_enqueue_style( 'font-awesome',     EPIC_BASE_FONTS . '/font-awesome/css/font-awesome.min.css');
 	wp_enqueue_style( 'epic-base-radio-tabs',      EPIC_BASE_CSS   . '/components/radio-tabs.css');
 
 	/* Load gallery style if 'cleaner-gallery' is active. */
@@ -177,11 +177,11 @@ function epic_base_add_editor_styles() {
  * Remove unused default widget
  * @return void
  */
-function epic_base_unregister_widget() {
-	unregister_widget('WP_Widget_Recent_Posts');
-	unregister_widget('WP_Widget_Recent_Comments');
-	// unregister_widget('WP_Widget_Categories');
-}
+// function epic_base_unregister_widget() {
+// 	unregister_widget('WP_Widget_Recent_Posts');
+// 	unregister_widget('WP_Widget_Recent_Comments');
+// 	// unregister_widget('WP_Widget_Categories');
+// }
 
 /**
  * Load custom font / css from CDN
